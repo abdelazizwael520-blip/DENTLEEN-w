@@ -37,6 +37,16 @@
             height: 12rem;
             object-fit: contain;
         }
+        /* Product card animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         /* Modal Styles */
         .modal-overlay {
             position: fixed;
@@ -46,10 +56,17 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(8px);
-            display: none; /* Initially hidden */
+            display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .modal-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
         }
         .modal-content {
             background-color: #2c2c2c;
@@ -60,6 +77,11 @@
             text-align: center;
             max-width: 90%;
             width: 500px;
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .modal-overlay.is-open .modal-content {
+            transform: translateY(0) scale(1);
         }
         
         /* Loading Indicator Styles */
@@ -142,7 +164,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
 
                 <!-- Product 1: SDF -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="sdf.png" alt="SDF Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=SDF';">
                     <h3 class="text-2xl font-semibold text-white mb-2">SDF</h3>
                     <p class="text-gray-400 mb-4">متوفر بحجمين مختلفين.</p>
@@ -160,7 +182,7 @@
                 </div>
                 
                 <!-- Product 2: Caries detector dye (Moved to second position) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="cdd.jpg" alt="Caries detector dye" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Caries+Detector';">
                     <h3 class="text-2xl font-semibold text-white mb-2">Caries detector dye</h3>
                     <p class="text-gray-400 mb-4">4gm</p>
@@ -174,7 +196,7 @@
                 </div>
 
                 <!-- Product 3: MTA (Moved to third position) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="mta.jpg" alt="MTA Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=MTA';">
                     <h3 class="text-2xl font-semibold text-white mb-2">MTA</h3>
                     <p class="text-gray-400 mb-4">0.25gm</p>
@@ -188,7 +210,7 @@
                 </div>
 
                 <!-- Product 4: HEMOSTATIC LIQUID -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="beld-of.png" alt="HEMOSTATIC LIQUID" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=HEMOSTATIC+LIQUID';">
                     <h3 class="text-2xl font-semibold text-white mb-2">HEMOSTATIC LIQUID</h3>
                     <p class="text-gray-400 mb-4">15ml</p>
@@ -202,7 +224,7 @@
                 </div>
                 
                 <!-- Product 5: D-Seal 12g -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="d-seal12.png" alt="D-Seal Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+12g';">
                     <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 12g</h3>
                     <p class="text-gray-400 mb-4">12gm automix syringe</p>
@@ -216,7 +238,7 @@
                 </div>
                 
                 <!-- Product 6: D-Seal 8g (New product) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="d-seal 8.PNG" alt="D-Seal 8g Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+8g';">
                     <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 8g</h3>
                     <p class="text-gray-400 mb-4">8gm sebrate syringe base&catalyst كل منها 4 جرام.</p>
@@ -230,7 +252,7 @@
                 </div>
 
                 <!-- Product 7: D-Seal 20g (New product added here) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="D-Seal20.JPG" alt="D-Seal 20g Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+20g';">
                     <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 20g</h3>
                     <p class="text-gray-400 mb-4"> .20gm separate tubes base&catalyst كل منهما 10 جرام.</p>
@@ -244,7 +266,7 @@
                 </div>
 
                 <!-- Product 8: Edta -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="edta.png" alt="Edta" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=EDTA';">
                     <h3 class="text-2xl font-semibold text-white mb-2">Edta</h3>
                     <p class="text-gray-400 mb-4">5gm</p>
@@ -258,7 +280,7 @@
                 </div>
 
                 <!-- Product 9: Porcelain Acid Etch -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="porclean.png" alt="Porcelain Acid Etch" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Porcelain+Acid+Etch';">
                     <h3 class="text-2xl font-semibold text-white mb-2">Porcelain Acid Etch</h3>
                     <p class="text-gray-400 mb-4">2.5gm</p>
@@ -272,7 +294,7 @@
                 </div>
 
                 <!-- Product 10: Etch -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="etch.jpg" alt="Etch Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Etch';">
                     <h3 class="text-2xl font-semibold text-white mb-2">Etch</h3>
                     <p class="text-gray-400 mb-4">5gm</p>
@@ -286,7 +308,7 @@
                 </div>
 
                 <!-- Product 11: ROOT HEAL -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="root heal.png" alt="ROOT HEAL" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Root+Heal';">
                     <h3 class="text-2xl font-semibold text-white mb-2">ROOT HEAL</h3>
                     <p class="text-gray-400 mb-4">5gm</p>
@@ -300,7 +322,7 @@
                 </div>
 
                 <!-- Product 12: HOLDENT ADHESIVE -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="hole.PNG" alt="HOLDENT ADHESIVE" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Holdent';">
                     <h3 class="text-2xl font-semibold text-white mb-2">HOLDENT</h3>
                     <p class="text-gray-400 mb-4">20gm</p>
@@ -314,7 +336,7 @@
                 </div>
                 
                 <!-- Product 13: Package -->
-                <div class="p-6 rounded-2xl shadow-lg product-card">
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
                     <img src="bakedg.png" alt="Package" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Package';">
                     <h3 class="text-2xl font-semibold text-white mb-2">باكدج</h3>
                     <p class="text-gray-400 mb-4">جرب معظم منتجاتنا بسعر اقتصادي يشمل: Etch 5 gm, Edta 5 gm, MTA 0.25 gm, Resin sealer 6 gm, Caires detector 1ml.</p>
@@ -359,7 +381,7 @@
                             <div id="products-list-dropdown" class="absolute hidden w-full mt-2 bg-gray-700 border border-gray-600 rounded-xl shadow-lg max-h-60 overflow-y-auto z-10">
                                 <ul id="product-list-ul">
                                     <!-- المنتجات سيتم إضافتها هنا عبر JavaScript -->
-                                </ul>
+                                    </ul>
                             </div>
                         </div>
                         <div id="selected-products-container" class="space-y-4 p-4 border border-gray-600 rounded-xl bg-gray-800 mt-4">
@@ -488,7 +510,7 @@
             'HEMOSTATIC LIQUID 15ml': { name: 'HEMOSTATIC LIQUID 15 مل', price: 135 },
             'D-Seal 12g': { name: 'D-Seal 12 جرام', price: 400 },
             'D-Seal 8g': { name: 'D-Seal 8 جرام', price: 300 },
-            'D-Seal 20g': { name: 'D-Seal 20 جرام', price: 400 },
+            'D-Seal 20g': { name: 'D-Seal 20 جرام', price: 495 },
             'Edta 5g': { name: 'Edta 5 جرام', price: 170 },
             'Porcelain Acid Etch 5g': { name: 'Porcelain Acid Etch 5 جرام', price: 170 },
             'Etch 5g': { name: 'Etch 5 جرام', price: 50 },
@@ -546,7 +568,7 @@
             'D-Seal': {
                 body: `
                     <div class="space-y-4 text-left" dir="ltr">
-                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties D_Seal</h4>
+                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties</h4>
                         <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
                             <li>✅ Biocompatible – calcium hydroxide & CaO enhance healing.</li>
                             <li>✅ Low solubility – resists dissolution in periapical fluids.</li>
@@ -556,8 +578,8 @@
                             <li>✅ Radiopaque – visible under X-ray.</li>
                             <li>✅ Adequate working & setting time – allows proper placement
                                 <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
-                                    <li>Working time: ~5–10 minutes (depending on accelerator/initiator ratio).</li>
-                                    <li>Setting time: ~40–60 minutes intraorally (varies by formulation).</li>
+                                    <li>Working time: ~5–10 minutes.</li>
+                                    <li>Setting time: ~40–60 minutes.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -567,18 +589,18 @@
             'D-Seal 8g': {
                 body: `
                     <div class="space-y-4 text-left" dir="ltr">
-                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties D_Seal</h4>
+                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties</h4>
                         <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                            <li>✅ <strong>Biocompatible</strong> – calcium hydroxide & CaO enhance healing.</li>
-                            <li>✅ <strong>Low solubility</strong> – resists dissolution in periapical fluids.</li>
-                            <li>✅ <strong>Good adhesion</strong> – penetrates dentinal tubules and bonds with gutta-percha.</li>
-                            <li>✅ <strong>Alkaline pH</strong> – antimicrobial, prevents bacterial regrowth.</li>
-                            <li>✅ <strong>Dimensional stability</strong> – does not shrink after setting.</li>
-                            <li>✅ <strong>Radiopaque</strong> – visible under X-ray.</li>
-                            <li>✅ <strong>Adequate working & setting time</strong> – allows proper placement
+                            <li>✅ Biocompatible – calcium hydroxide & CaO enhance healing.</li>
+                            <li>✅ Low solubility – resists dissolution in periapical fluids.</li>
+                            <li>✅ Good adhesion – penetrates dentinal tubules and bonds with gutta-percha.</li>
+                            <li>✅ Alkaline pH – antimicrobial, prevents bacterial regrowth.</li>
+                            <li>✅ Dimensional stability – does not shrink after setting.</li>
+                            <li>✅ Radiopaque – visible under X-ray.</li>
+                            <li>✅ Adequate working & setting time – allows proper placement
                                 <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
-                                    <li>Working time: ~5–10 minutes (depending on accelerator/initiator ratio).</li>
-                                    <li>Setting time: ~40–60 minutes intraorally (varies by formulation).</li>
+                                    <li>Working time: ~5–10 minutes.</li>
+                                    <li>Setting time: ~40–60 minutes.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -588,18 +610,18 @@
             'D-Seal 20g': {
                 body: `
                     <div class="space-y-4 text-left" dir="ltr">
-                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties D_Seal</h4>
+                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties</h4>
                         <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                            <li>✅ <strong>Biocompatible</strong> – calcium hydroxide & CaO enhance healing.</li>
-                            <li>✅ <strong>Low solubility</strong> – resists dissolution in periapical fluids.</li>
-                            <li>✅ <strong>Good adhesion</strong> – penetrates dentinal tubules and bonds with gutta-percha.</li>
-                            <li>✅ <strong>Alkaline pH</strong> – antimicrobial, prevents bacterial regrowth.</li>
-                            <li>✅ <strong>Dimensional stability</strong> – does not shrink after setting.</li>
-                            <li>✅ <strong>Radiopaque</strong> – visible under X-ray.</li>
-                            <li>✅ <strong>Adequate working & setting time</strong> – allows proper placement
+                            <li>✅ Biocompatible – calcium hydroxide & CaO enhance healing.</li>
+                            <li>✅ Low solubility – resists dissolution in periapical fluids.</li>
+                            <li>✅ Good adhesion – penetrates dentinal tubules and bonds with gutta-percha.</li>
+                            <li>✅ Alkaline pH – antimicrobial, prevents bacterial regrowth.</li>
+                            <li>✅ Dimensional stability – does not shrink after setting.</li>
+                            <li>✅ Radiopaque – visible under X-ray.</li>
+                            <li>✅ Adequate working & setting time – allows proper placement
                                 <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
-                                    <li>Working time: ~5–10 minutes (depending on accelerator/initiator ratio).</li>
-                                    <li>Setting time: ~40–60 minutes intraorally (varies by formulation).</li>
+                                    <li>Working time: ~5–10 minutes.</li>
+                                    <li>Setting time: ~40–60 minutes.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -626,7 +648,7 @@
                             <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400 pr-4">
                                 <li>باكدج Dentleen يجمع مجموعة من منتجاتنا الأساسية في حزمة واحدة.</li>
                                 <li>يُعد خياراً اقتصادياً مثالياً لتجربة منتجاتنا المتنوعة.</li>
-                                <li>يشمل: Etch, Edta, MTA, Resin Sealer, و Caries detector.</li>
+                                <li>يشمل: Etch, Edta, MTA, Resin sealer, و Caires detector.</li>
                             </ul>
                         </div>
                     </div>
@@ -675,25 +697,7 @@
                 `
             },
             'HEMOSTATIC LIQUID': {
-                body: `
-                    <div class="space-y-4 text-left" dir="ltr">
-                        <h4 class="font-bold text-xl text-teal-700">🔹Dentleen Bleed-Off Gel – Hemostatic Dental Gel</h4>
-                        <h5 class="text-lg text-teal-500 mt-4">Purpose & Use</h5>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                            <li>A hemostatic agent designed to control gingival and pulpal bleeding during dental procedures.</li>
-                            <li>Ensures a dry and clean field before restorative, prosthodontic, or periodontal treatments.</li>
-                            <li>Useful for:
-                                <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
-                                    <li>Cavity preparations near gingiva.</li>
-                                    <li>Crown & bridge impressions.</li>
-                                    <li>Periodontal surgery.</li>
-                                    <li>Scaling & root planing.</li>
-                                    <li>Direct/indirect restorations.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                `
+                body: ``
             },
             'ROOT HEAL': {
                 body: `
@@ -865,15 +869,22 @@
                     // Inject the body content
                     productDetailsBody.innerHTML = details.body;
                     
-                    // Show the modal
-                    productDetailsModal.style.display = 'flex';
+                    // Show the modal with animation
+                    productDetailsModal.classList.add('is-open');
                 }
             });
         });
         
         // Close product details modal
         closeProductDetailsModalBtn.addEventListener('click', () => {
-            productDetailsModal.style.display = 'none';
+            productDetailsModal.classList.remove('is-open');
+        });
+        
+        // Close modal when clicking outside the content
+        productDetailsModal.addEventListener('click', (event) => {
+            if (event.target === productDetailsModal) {
+                productDetailsModal.classList.remove('is-open');
+            }
         });
 
 
@@ -941,11 +952,11 @@
             });
             summaryHTML += `</ul><div class="mt-4 font-bold text-lg">الإجمالي الكلي: ${calculateTotal()} ج.م</div>`;
             orderSummaryDiv.innerHTML = summaryHTML;
-            confirmationModal.style.display = 'flex';
+            confirmationModal.classList.add('is-open');
         });
 
         confirmYesBtn.addEventListener('click', function() {
-            confirmationModal.style.display = 'none';
+            confirmationModal.classList.remove('is-open');
 
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
@@ -972,18 +983,44 @@
             window.open(whatsappUrl, '_blank');
             
             // Show a success message to the user
-            successModal.style.display = 'flex';
+            successModal.classList.add('is-open');
             form.reset();
             selectedProducts = [];
             renderSelectedProducts();
         });
 
         confirmNoBtn.addEventListener('click', () => {
-            confirmationModal.style.display = 'none';
+            confirmationModal.classList.remove('is-open');
         });
 
         closeSuccessModalBtn.addEventListener('click', () => {
-            successModal.style.display = 'none';
+            successModal.classList.remove('is-open');
+        });
+
+        // Intersection Observer for fade-in effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const productCards = document.querySelectorAll('.product-card');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the item is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Remove the class when the element is no longer visible
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            productCards.forEach(card => {
+                observer.observe(card);
+            });
         });
     </script>
 </body>
