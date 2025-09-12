@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DENTLEEN</title>
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="دنت لين, dentleen, Dentleen, منتجات اسنان, SDF, مواد اسنان, مستلزمات طبية">
+    <meta name="description" content="شركة Dentleen تقدم حلول متكاملة لعيادات الأسنان. اكتشف منتجاتنا المميزة من SDF، MTA، وغيرها بجودة عالية وأسعار تنافسية.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="image_d71077.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .hero-bg {
+            background-color: #0b5351;
+            background-image: linear-gradient(to bottom right, #0b5351, #063130);
+        }
+        .product-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: #212121;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .product-card img {
+            height: 12rem;
+            object-fit: contain;
+        }
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 90%;
+            width: 500px;
+        }
+        
+        /* Loading Indicator Styles */
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .spinner {
+            border: 8px solid #444;
+            border-top: 8px solid #0b5351;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Small image on modal */
+        #product-details-image.small-image {
+            width: 50%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <!-- Header Section -->
+    <header class="bg-[#1a1a1a] shadow-lg p-4 sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="image_1b3cde.png" alt="Dentleen Logo" class="h-10 w-auto">
+            </div>
+
+            <nav class="hidden md:flex md:gap-12 items-center">
+                <a href="#products" class="text-gray-400 hover:text-white transition-colors duration-300 px-3">المنتجات</a>
+                <a href="#contact" class="text-gray-400 hover:text-white transition-colors duration-300 px-3">اتصل بنا</a>
+            </nav>
+            <!-- Updated WhatsApp link with new phone number -->
+            <a href="https://wa.me/201508259538" target="_blank" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors duration-300 shadow-lg flex items-center gap-2">
+                <i class="fab fa-whatsapp"></i> تواصل معنا
+            </a>
+
+            <button class="md:hidden text-gray-400 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-20 px-4">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="text-center md:text-right md:w-1/2">
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4">أهلاً بك في شركة Dentleen</h1>
+                <p class="text-xl font-light mb-8">
+                    حلول متكاملة لعيادات الأسنان. جودة لا مثيل لها، نتائج مضمونة.
+                </p>
+                <a href="#contact" class="smooth-scroll-link bg-teal-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-teal-700 transition-colors duration-300 shadow-xl">اطلب الآن</a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="logo.png" alt="Main Dentleen Product" class="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-500 object-contain w-96 h-96" onerror="this.onerror=null;this.src='https://placehold.co/400x400/1a1a1a/e0e0e0?text=Main+Product';">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 px-4 bg-[#212121]">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-12">منتجاتنا المميزة</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+                <!-- Product 1: SDF -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="sdf.png" alt="SDF Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=SDF';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">SDF</h3>
+                    <p class="text-gray-400 mb-4">متوفر بحجمين مختلفين.</p>
+                    <div class="space-y-2 mt-4">
+                        <button class="product-link inline-block w-full bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="SDF 1ml">
+                            1ml: 400 L.E
+                        </button>
+                        <button class="product-link inline-block w-full bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="SDF 4ml">
+                            4ml: 1190 L.E
+                        </button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="SDF">
+                        عرض التفاصيل
+                    </button>
+                </div>
+                
+                <!-- Product 2: Caries detector dye (Moved to second position) -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="cdd.jpg" alt="Caries detector dye" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Caries+Detector';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Caries detector dye</h3>
+                    <p class="text-gray-400 mb-4">4gm</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">225 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Caries detector dye 4ml">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Caries detector dye">
+                        عرض التفاصيل
+                    </button>
+                </div>
+
+                <!-- Product 3: MTA (Moved to third position) -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="mta.jpg" alt="MTA Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=MTA';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">MTA</h3>
+                    <p class="text-gray-400 mb-4">0.25gm</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">50 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="MTA 0.25g">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="MTA">
+                        عرض التفاصيل
+                    </button>
+                </div>
+
+                <!-- Product 4: HEMOSTATIC LIQUID -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="beld-of.png" alt="HEMOSTATIC LIQUID" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=HEMOSTATIC+LIQUID';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">HEMOSTATIC LIQUID</h3>
+                    <p class="text-gray-400 mb-4">15ml</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">135 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="HEMOSTATIC LIQUID 15ml">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="HEMOSTATIC LIQUID">
+                        عرض التفاصيل
+                    </button>
+                </div>
+                
+                <!-- Product 5: D-Seal 12g -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="d-seal12.png" alt="D-Seal Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+12g';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 12g</h3>
+                    <p class="text-gray-400 mb-4">12gm automix syringe</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">400 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 12g">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal">
+                        عرض التفاصيل
+                    </button>
+                </div>
+                
+                <!-- Product 6: D-Seal 8g (New product) -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="d-seal 8.PNG" alt="D-Seal 8g Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+8g';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 8g</h3>
+                    <p class="text-gray-400 mb-4">8gm sebrate syringe base&catalyst كل منها 4 جرام.</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">300 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 8g">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal 8g">
+                        عرض التفاصيل
+                    </button>
+                </div>
+
+                <!-- Product 7: D-Seal 20g (New product added here) -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="D-Seal20.JPG" alt="D-Seal 20g Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+20g';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 20g</h3>
+                    <p class="text-gray-400 mb-4"> .20gm separate tubes base&catalyst كل منهما 10 جرام.</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">495 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 20g">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal 20g">
+                        عرض التفاصيل
+                    </button>
+                </div>
+
+                <!-- Product 8: Edta -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="edta.png" alt="Edta" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=EDTA';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Edta</h3>
+                    <p class="text-gray-400 mb-4">5gm</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">170 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Edta 5g">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Edta">
+                        عرض التفاصيل
+                    </button>
+                </div>
+
+                <!-- Product 9: Porcelain Acid Etch -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="porclean.png" alt="Porcelain Acid Etch" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Porcelain+Acid+Etch';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Porcelain Acid Etch</h3>
+                    <p class="text-gray-400 mb-4">2.5gm</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">170 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Porcelain Acid Etch 5g">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Porcelain Acid Etch">
+                        عرض التفاصيل
+                    </button>
+                </div>
+
+                <!-- Product 10: Etch -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="etch.jpg" alt="Etch Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Etch';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">Etch</h3>
+                    <p class="text-gray-400 mb-4">5gm</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">50 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Etch 5g">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Etch">
+                        عرض التفاصيل
+                    </button>
+                </div>
+
+                <!-- Product 11: ROOT HEAL -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="root heal.png" alt="ROOT HEAL" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Root+Heal';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">ROOT HEAL</h3>
+                    <p class="text-gray-400 mb-4">5gm</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">110 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="ROOT HEAL">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="ROOT HEAL">
+                        عرض التفاصيل
+                    </button>
+                </div>
+
+                <!-- Product 12: HOLDENT ADHESIVE -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="hole.PNG" alt="HOLDENT ADHESIVE" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Holdent';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">HOLDENT</h3>
+                    <p class="text-gray-400 mb-4">20gm</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">155 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="HOLDENT 20g">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="HOLDENT">
+                        عرض التفاصيل
+                    </button>
+                </div>
+                
+                <!-- Product 13: Package -->
+                <div class="p-6 rounded-2xl shadow-lg product-card">
+                    <img src="bakedg.png" alt="Package" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Package';">
+                    <h3 class="text-2xl font-semibold text-white mb-2">باكدج</h3>
+                    <p class="text-gray-400 mb-4">جرب معظم منتجاتنا بسعر اقتصادي يشمل: Etch 5 gm, Edta 5 gm, MTA 0.25 gm, Resin sealer 6 gm, Caires detector 1ml.</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xl font-bold text-teal-600">260 ج.م</span>
+                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="باكدج">اطلب الآن</button>
+                    </div>
+                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="باكدج">
+                        عرض التفاصيل
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-20 px-4 bg-[#1a1a1a]">
+        <div class="container mx-auto flex flex-col md:flex-row-reverse md:items-start justify-center gap-12">
+            <div class="w-full md:w-1/2 bg-[#212121] p-8 rounded-2xl shadow-lg">
+                <form id="orderForm" action="#" method="post" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-lg font-medium text-gray-400">الاسم بالكامل</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-lg font-medium text-gray-400">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white">
+                    </div>
+                    <div>
+                        <label for="address" class="block text-lg font-medium text-gray-400">العنوان</label>
+                        <input type="text" id="address" name="address" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white">
+                    </div>
+                    <!-- حقل جديد لعرض المنتجات المختارة مع قائمة منسدلة لإضافة المزيد -->
+                    <div>
+                        <label class="block text-lg font-medium text-gray-400 mb-2">المنتجات المختارة</label>
+                        <div class="relative">
+                            <button type="button" id="toggle-products-list" class="flex items-center justify-between w-full px-4 py-2 text-right bg-gray-600 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 text-white">
+                                <span class="text-gray-200">إضافة المزيد من المنتجات</span>
+                                <i id="toggle-icon" class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                            </button>
+                            <!-- قائمة المنتجات المنسدلة -->
+                            <div id="products-list-dropdown" class="absolute hidden w-full mt-2 bg-gray-700 border border-gray-600 rounded-xl shadow-lg max-h-60 overflow-y-auto z-10">
+                                <ul id="product-list-ul">
+                                    <!-- المنتجات سيتم إضافتها هنا عبر JavaScript -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="selected-products-container" class="space-y-4 p-4 border border-gray-600 rounded-xl bg-gray-800 mt-4">
+                            <p class="text-gray-500 text-sm" id="empty-cart-message">لم يتم اختيار أي منتجات بعد.</p>
+                        </div>
+
+                        <!-- إجمالي الفاتورة -->
+                        <div id="total-price-container" class="mt-4 p-4 rounded-xl bg-teal-800 text-teal-200 font-bold text-lg flex justify-between items-center hidden">
+                            <span>الإجمالي:</span>
+                            <span id="total-price">0 ج.م</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-teal-600 text-white font-bold py-3 rounded-full text-lg hover:bg-teal-700 transition-colors duration-300 shadow-md">
+                            إرسال الطلب
+                        </button>
+                        <!-- New note for desktop users -->
+                        <p class="text-center text-sm text-red-400 mt-2">
+                            <i class="fas fa-info-circle ml-1"></i>
+                            ملاحظة: إذا كنت تستخدم جهاز كمبيوتر، يرجى فتح تطبيق واتساب الخاص بك أولاً لتجنب أي مشاكل في إرسال الطلب.
+                        </p>
+                    </div>
+                </form>
+            </div>
+            <div class="text-center w-full md:w-1/2 md:text-right">
+                <h2 class="text-4xl font-bold text-white mb-4">تواصل معنا</h2>
+                <p class="text-xl text-gray-400 mb-8">
+                    املأ النموذج أو تواصل معنا عبر وسائل التواصل الاجتماعي.
+                </p>
+                <div class="flex justify-center md:justify-start gap-8 text-4xl mb-8">
+                    <a href="https://wa.me/201508259538" target="_blank" class="text-green-600 hover:text-green-700 transition-colors duration-300">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61563008606045" target="_blank" class="text-blue-600 hover:text-blue-700 transition-colors duration-300">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-400 text-center py-6">
+        <p>&copy; <span id="currentYear"></span> Dentleen. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- Custom Confirmation Modal -->
+    <div id="confirmationModal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 class="text-2xl font-bold mb-4">تأكيد الطلب</h3>
+            <div id="order-summary" class="text-gray-400 mb-6 text-right"></div>
+            <p class="text-gray-400 mb-6">هل أنت متأكد من إرسال هذا الطلب؟</p>
+            <div class="flex justify-center gap-4">
+                <button id="confirmYes" class="bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300">
+                    نعم
+                </button>
+                <button id="confirmNo" class="bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300">
+                    إلغاء
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message Modal -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-content">
+            <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
+            <h3 class="text-2xl font-bold mb-2">تم استلام طلبك!</h3>
+            <p class="text-gray-400">سيتم توجيهك الآن إلى واتساب لإرسال تفاصيل طلبك. شكراً لك.</p>
+            <button id="closeSuccessModal" class="mt-6 bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300">
+                إغلاق
+            </button></div>
+    </div>
+    
+    <!-- Product Details Modal -->
+    <div id="productDetailsModal" class="modal-overlay">
+        <div class="modal-content max-w-sm p-6 rounded-lg">
+            <img id="product-details-image" src="" alt="Product Image" class="w-full h-auto mb-4 rounded-xl hidden">
+            <div id="product-details-body" class="text-gray-400 text-right space-y-4">
+                <!-- Product details will be injected here -->
+            </div>
+            <button id="closeProductDetailsModal" class="mt-6 bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300 w-full">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay (kept for future use if needed, but not used in this version) -->
+    <div id="loadingOverlay" class="flex flex-col gap-4">
+        <div class="spinner"></div>
+        <p class="text-xl font-bold text-gray-400">جاري إرسال الطلب...</p>
+    </div>
+
+
+    <script>
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+        const form = document.getElementById('orderForm');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const successModal = document.getElementById('successModal');
+        const confirmYesBtn = document.getElementById('confirmYes');
+        const confirmNoBtn = document.getElementById('confirmNo');
+        const closeSuccessModalBtn = document.getElementById('closeSuccessModal');
+        const productsContainer = document.getElementById('selected-products-container');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const toggleListBtn = document.getElementById('toggle-products-list');
+        const productsListDropdown = document.getElementById('products-list-dropdown');
+        const toggleIcon = document.getElementById('toggle-icon');
+        const productListUL = document.getElementById('product-list-ul');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const totalPriceContainer = document.getElementById('total-price-container');
+        const totalPriceSpan = document.getElementById('total-price');
+
+        // Product details modal elements
+        const productDetailsModal = document.getElementById('productDetailsModal');
+        const productDetailsBody = document.getElementById('product-details-body');
+        const closeProductDetailsModalBtn = document.getElementById('closeProductDetailsModal');
+        const productDetailsImage = document.getElementById('product-details-image');
+        
+        // Replace with your WhatsApp Business number, including the country code
+        const whatsappNumber = '201508259538';
+
+        // قائمة بجميع المنتجات المتاحة مع أسعارها.
+        const allProducts = {
+            'SDF 1ml': { name: 'SDF 1ml', price: 400 },
+            'SDF 4ml': { name: 'SDF 4ml', price: 1190 },
+            'MTA 0.25g': { name: 'MTA 0.25 جرام', price: 50 },
+            'HEMOSTATIC LIQUID 15ml': { name: 'HEMOSTATIC LIQUID 15 مل', price: 135 },
+            'D-Seal 12g': { name: 'D-Seal 12 جرام', price: 400 },
+            'D-Seal 8g': { name: 'D-Seal 8 جرام', price: 300 },
+            'D-Seal 20g': { name: 'D-Seal 20 جرام', price: 400 },
+            'Edta 5g': { name: 'Edta 5 جرام', price: 170 },
+            'Porcelain Acid Etch 5g': { name: 'Porcelain Acid Etch 5 جرام', price: 170 },
+            'Etch 5g': { name: 'Etch 5 جرام', price: 50 },
+            'ROOT HEAL': { name: 'ROOT HEAL', price: 110 },
+            'HOLDENT 20g': { name: 'HOLDENT 20 جرام', price: 155 },
+            'باكدج': { name: 'باكدج', price: 260 },
+            'Caries detector dye 4ml': { name: 'Caries detector dye 4 مل', price: 225 }
+        };
+
+        // Product details data
+        const productDetails = {
+            'SDF': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹 What is SDF?</h4>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>Silver Diamine Fluoride (SDF) is a topical cariostatic agent used in dentistry.</li>
+                            <li>It is a colorless to blue liquid, strongly alkaline (pH ~10).</li>
+                            <li>Approved in many countries for arresting dental caries and desensitizing dentin.</li>
+                        </ul>
+                        <div class="pt-4 mt-4 border-t border-gray-600">
+                            <h4 class="font-bold text-xl text-teal-700">🔹 Application Method (Clinical Use)</h4>
+                            <ol class="list-decimal list-inside space-y-2 mt-2 text-gray-400">
+                                <li>Isolate tooth with cotton rolls.</li>
+                                <li>Remove debris and dry lesion.</li>
+                                <li>Apply small amount of SDF with a microbrush.</li>
+                                <li>Allow to absorb for 1–3 minutes.</li>
+                                <li>Remove excess and instruct patient not to rinse for a few minutes.</li>
+                                <li>Reapplication every 6–12 months for sustained effect.</li>
+                            </ol>
+                        </div>
+                    </div>
+                `
+            },
+            'MTA': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <div>
+                            <p class="text-right" dir="rtl">
+                                Mineral Trioxide Aggregate (MTA) is a bioactive endodontic material used for pulp therapy, perforation repair, root-end filling, and regenerative procedures.
+                            </p>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-600">
+                            <h4 class="font-bold text-xl text-teal-700">🔹 Mechanism of Action</h4>
+                            <ol class="list-decimal list-inside space-y-2 mt-2 text-gray-400">
+                                <li>Hydration Reaction: When mixed with water, tricalcium silicate and dicalcium silicate hydrate and produce calcium hydroxide + C–S–H (calcium silicate hydrate) gel.</li>
+                                <li>High pH (~12): Antimicrobial effect, promotes hard tissue formation.</li>
+                                <li>Bioactivity: Calcium hydroxide reacts with phosphate ions in body fluids → forms hydroxyapatite layer at the interface.</li>
+                                <li>Sealing ability: Hydroxyapatite crystals grow into dentinal tubules → creates a biological seal.</li>
+                            </ol>
+                        </div>
+                    </div>
+                `
+            },
+            'D-Seal': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties D_Seal</h4>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>✅ Biocompatible – calcium hydroxide & CaO enhance healing.</li>
+                            <li>✅ Low solubility – resists dissolution in periapical fluids.</li>
+                            <li>✅ Good adhesion – penetrates dentinal tubules and bonds with gutta-percha.</li>
+                            <li>✅ Alkaline pH – antimicrobial, prevents bacterial regrowth.</li>
+                            <li>✅ Dimensional stability – does not shrink after setting.</li>
+                            <li>✅ Radiopaque – visible under X-ray.</li>
+                            <li>✅ Adequate working & setting time – allows proper placement
+                                <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
+                                    <li>Working time: ~5–10 minutes (depending on accelerator/initiator ratio).</li>
+                                    <li>Setting time: ~40–60 minutes intraorally (varies by formulation).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                `
+            },
+            'D-Seal 8g': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties D_Seal</h4>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>✅ <strong>Biocompatible</strong> – calcium hydroxide & CaO enhance healing.</li>
+                            <li>✅ <strong>Low solubility</strong> – resists dissolution in periapical fluids.</li>
+                            <li>✅ <strong>Good adhesion</strong> – penetrates dentinal tubules and bonds with gutta-percha.</li>
+                            <li>✅ <strong>Alkaline pH</strong> – antimicrobial, prevents bacterial regrowth.</li>
+                            <li>✅ <strong>Dimensional stability</strong> – does not shrink after setting.</li>
+                            <li>✅ <strong>Radiopaque</strong> – visible under X-ray.</li>
+                            <li>✅ <strong>Adequate working & setting time</strong> – allows proper placement
+                                <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
+                                    <li>Working time: ~5–10 minutes (depending on accelerator/initiator ratio).</li>
+                                    <li>Setting time: ~40–60 minutes intraorally (varies by formulation).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                `
+            },
+            'D-Seal 20g': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹 Properties D_Seal</h4>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>✅ <strong>Biocompatible</strong> – calcium hydroxide & CaO enhance healing.</li>
+                            <li>✅ <strong>Low solubility</strong> – resists dissolution in periapical fluids.</li>
+                            <li>✅ <strong>Good adhesion</strong> – penetrates dentinal tubules and bonds with gutta-percha.</li>
+                            <li>✅ <strong>Alkaline pH</strong> – antimicrobial, prevents bacterial regrowth.</li>
+                            <li>✅ <strong>Dimensional stability</strong> – does not shrink after setting.</li>
+                            <li>✅ <strong>Radiopaque</strong> – visible under X-ray.</li>
+                            <li>✅ <strong>Adequate working & setting time</strong> – allows proper placement
+                                <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
+                                    <li>Working time: ~5–10 minutes (depending on accelerator/initiator ratio).</li>
+                                    <li>Setting time: ~40–60 minutes intraorally (varies by formulation).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                `
+            },
+            'Etch': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹 What is Dentleen 37% Phosphoric Acid Etch?</h4>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>A dental etching gel manufactured under the Dentleen brand.</li>
+                            <li>Contains 37% phosphoric acid ($$H_3PO_4$$) in a thixotropic gel base.</li>
+                            <li>Used in etch-and-rinse adhesive dentistry to condition enamel and dentin before bonding.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'باكدج': {
+                body: `
+                    <div class="space-y-4 text-right">
+                        <div>
+                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو الباكدج؟</h4>
+                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400 pr-4">
+                                <li>باكدج Dentleen يجمع مجموعة من منتجاتنا الأساسية في حزمة واحدة.</li>
+                                <li>يُعد خياراً اقتصادياً مثالياً لتجربة منتجاتنا المتنوعة.</li>
+                                <li>يشمل: Etch, Edta, MTA, Resin Sealer, و Caries detector.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            'Edta': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹 What is Dentleen EDTA Gel?</h4>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>A 17% EDTA (Ethylenediaminetetraacetic Acid) gel manufactured under the Dentleen brand.</li>
+                            <li>Used in endodontics to remove the smear layer, chelate calcium ions, and aid in root canal instrumentation.</li>
+                            <li>Gel form allows better control and lubrication compared to liquid solutions.</li>
+                        </ul>
+                        <div class="pt-4 mt-4 border-t border-gray-600">
+                            <h4 class="font-bold text-xl text-teal-700">🔹 Clinical Applications</h4>
+                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                                <li>✅ Smear layer removal in root canals.</li>
+                                <li>✅ Used with files during canal instrumentation for lubrication.</li>
+                                <li>✅ Opens dentinal tubules, improving penetration of sealers and irrigants.</li>
+                                <li>✅ Facilitates negotiation of calcified canals.</li>
+                                <li>✅ Prepares canal walls for obturation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            'Porcelain Acid Etch': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹 What is Dentleen 9.5% Porcelain Etch?</h4>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>A 9.5% hydrofluoric acid (HF) gel produced under the Dentleen brand.</li>
+                            <li>Used for etching porcelain and ceramic restorations (veneers, inlays, onlays, crowns) before bonding with resin cement or composite.</li>
+                            <li>Provides micromechanical retention by creating microporosities on the ceramic surface.</li>
+                        </ul>
+                        <div class="pt-4 mt-4 border-t border-gray-600">
+                            <h4 class="font-bold text-xl text-teal-700">🔹 Clinical Applications</h4>
+                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                                <li>✅ Etching porcelain/ceramic restorations prior to bonding (veneers, inlays, onlays, crowns).</li>
+                                <li>✅ Conditioning fractured ceramic before composite repair.</li>
+                                <li>✅ Surface treatment before applying silane coupling agent.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            'HEMOSTATIC LIQUID': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹Dentleen Bleed-Off Gel – Hemostatic Dental Gel</h4>
+                        <h5 class="text-lg text-teal-500 mt-4">Purpose & Use</h5>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>A hemostatic agent designed to control gingival and pulpal bleeding during dental procedures.</li>
+                            <li>Ensures a dry and clean field before restorative, prosthodontic, or periodontal treatments.</li>
+                            <li>Useful for:
+                                <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
+                                    <li>Cavity preparations near gingiva.</li>
+                                    <li>Crown & bridge impressions.</li>
+                                    <li>Periodontal surgery.</li>
+                                    <li>Scaling & root planing.</li>
+                                    <li>Direct/indirect restorations.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                `
+            },
+            'ROOT HEAL': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <h4 class="font-bold text-xl text-teal-700">🔹 Dentleen Rootheal – Intracanal Medicament</h4>
+                        <h5 class="text-lg text-teal-500">Purpose & Clinical Use</h5>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                            <li>A root canal dressing material designed to:
+                                <ul class="list-circle list-inside mt-1 space-y-1 ml-4">
+                                    <li>Disinfect the canal between appointments.</li>
+                                    <li>Promote healing of periapical tissues.</li>
+                                    <li>Neutralize bacterial toxins (especially endotoxins from Gram-negative bacteria).</li>
+                                    <li>Aid in apexification and apexogenesis in immature teeth.</li>
+                                    <li>Provide temporary intracanal medication after instrumentation.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                `
+            },
+            'HOLDENT': {
+                body: `
+                    <div class="space-y-4 text-right">
+                        <div>
+                            <h4 class="font-bold text-xl text-teal-700">🔹 Dentleen Holdent – كريم مثبت أطقم الأسنان</h4>
+                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400 pr-4">
+                                <li>مصمم لتثبيت الأطقم الكاملة أو الجزئية بإحكام.</li>
+                                <li>يمنع الحركة أو الانزلاق أثناء الأكل والكلام.</li>
+                                <li>يمنح المريض راحة وثقة في الحياة اليومية.</li>
+                            </ul>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-600">
+                            <h4 class="font-bold text-xl text-teal-700">🔹 مميزات Dentleen Holdent</h4>
+                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400 pr-4">
+                                <li>ثبات قوي لعدة ساعات.</li>
+                                <li>راحة وحماية من التهابات اللثة الناتجة عن حركة الطقم.</li>
+                                <li>حاجز فعال يمنع دخول بقايا الطعام.</li>
+                                <li>سهل التنظيف بدون بقايا مزعجة.</li>
+                                <li>مكوّنات آمنة طبيعية.</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            'Caries detector dye': {
+                body: `
+                    <div class="space-y-4 text-left" dir="ltr">
+                        <div>
+                            <h4 class="font-bold text-xl text-teal-700">🔹 What is Selective Caries Detector Dye?</h4>
+                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
+                                <li>A diagnostic aid used during cavity preparation to distinguish between infected dentin (irreversibly damaged, must be removed) and affected dentin (partially demineralized but remineralizable, should be preserved).</li>
+                                <li>Helps achieve minimal invasive dentistry (MID) by avoiding unnecessary removal of healthy dentin.</li>
+                            </ul>
+                            <p class="mt-4 text-gray-400">Applied for 50 -60 seconds.</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // قائمة المنتجات المختارة
+        let selectedProducts = [];
+
+        // دالة لحساب الإجمالي
+        function calculateTotal() {
+            let total = 0;
+            selectedProducts.forEach(product => {
+                if (typeof product.price === 'number') {
+                    total += product.price * product.quantity;
+                }
+            });
+            return total;
+        }
+
+        // دالة لعرض المنتجات في نموذج الطلب
+        function renderSelectedProducts() {
+            productsContainer.innerHTML = '';
+            if (selectedProducts.length === 0) {
+                emptyCartMessage.style.display = 'block';
+                productsContainer.appendChild(emptyCartMessage);
+                totalPriceContainer.classList.add('hidden');
+            } else {
+                emptyCartMessage.style.display = 'none';
+                totalPriceContainer.classList.remove('hidden');
+                selectedProducts.forEach(product => {
+                    const productItem = document.createElement('div');
+                    productItem.className = 'flex items-center justify-between bg-gray-700 p-4 rounded-xl shadow-sm border border-gray-600';
+                    const priceText = typeof product.price === 'number' ? product.price + ' ج.م' : 'غير محدد';
+                    
+                    productItem.innerHTML = `
+                        <div class="flex-grow font-medium">${product.name}</div>
+                        <div class="text-sm text-gray-400 ml-4">${priceText}</div>
+                        <div class="flex items-center gap-2">
+                            <input type="number" value="${product.quantity}" min="1" class="w-16 text-center border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 bg-gray-800 text-white">
+                            <button type="button" class="remove-product-btn text-red-400 hover:text-red-500 transition-colors" data-product-name="${product.name}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    `;
+                    productsContainer.appendChild(productItem);
+                });
+
+                // إضافة مستمعي الأحداث لزر الإزالة وتعديل الكمية
+                productsContainer.querySelectorAll('.remove-product-btn').forEach(button => {
+                    button.addEventListener('click', (event) => {
+                        const productName = event.target.dataset.productName || event.target.closest('button').dataset.productName;
+                        selectedProducts = selectedProducts.filter(p => p.name !== productName);
+                        renderSelectedProducts();
+                    });
+                });
+
+                productsContainer.querySelectorAll('input[type="number"]').forEach(input => {
+                    input.addEventListener('input', (event) => {
+                        const productName = event.target.dataset.productName;
+                        const newQuantity = parseInt(event.target.value, 10);
+                        const product = selectedProducts.find(p => p.name === productName);
+                        if (product && newQuantity > 0) {
+                            product.quantity = newQuantity;
+                        } else if (newQuantity <= 0) {
+                            // إذا كانت الكمية صفر أو أقل، يتم إزالة المنتج
+                            selectedProducts = selectedProducts.filter(p => p.name !== productName);
+                            renderSelectedProducts();
+                        }
+                        // تحديث الإجمالي بعد تغيير الكمية
+                        totalPriceSpan.textContent = calculateTotal() + ' ج.م';
+                    });
+                });
+            }
+            totalPriceSpan.textContent = calculateTotal() + ' ج.م';
+        }
+
+        // دالة لإضافة منتج إلى سلة التسوق
+        function addProductToCart(productKey) {
+            const product = allProducts[productKey];
+            if (!product) return;
+
+            const existingProduct = selectedProducts.find(p => p.name === product.name);
+
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                selectedProducts.push({ name: product.name, quantity: 1, price: product.price });
+            }
+            renderSelectedProducts();
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // إضافة حركة السكرول السلسة للروابط التي لها الفئة .smooth-scroll-link
+        document.querySelectorAll('a.smooth-scroll-link[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add event listeners for "View Details" buttons
+        document.querySelectorAll('.view-details-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productKey = event.target.dataset.product;
+                const details = productDetails[productKey];
+                if (details) {
+                    // Hide the image and clear its source
+                    productDetailsImage.classList.add('hidden');
+                    productDetailsImage.classList.remove('small-image');
+                    productDetailsImage.src = '';
+                    
+                    // Inject the body content
+                    productDetailsBody.innerHTML = details.body;
+                    
+                    // Show the modal
+                    productDetailsModal.style.display = 'flex';
+                }
+            });
+        });
+        
+        // Close product details modal
+        closeProductDetailsModalBtn.addEventListener('click', () => {
+            productDetailsModal.style.display = 'none';
+        });
+
+
+        // دالة لملء القائمة المنسدلة بالمنتجات
+        function populateProductDropdown() {
+            productListUL.innerHTML = '';
+            // Get all product keys from the allProducts object
+            const productKeys = Object.keys(allProducts);
+            productKeys.forEach(key => {
+                const li = document.createElement('li');
+                li.className = 'px-4 py-2 text-gray-200 hover:bg-gray-600 cursor-pointer transition-colors';
+                li.textContent = allProducts[key].name;
+                li.dataset.product = key;
+                li.addEventListener('click', (event) => {
+                    addProductToCart(event.target.dataset.product);
+                    productsListDropdown.classList.add('hidden');
+                    toggleIcon.classList.remove('rotate-180');
+                });
+                productListUL.appendChild(li);
+            });
+        }
+        populateProductDropdown();
+
+        // إضافة مستمعي الأحداث لجميع أزرار "اطلب الآن"
+        const productLinks = document.querySelectorAll('.product-link');
+        productLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                const productKey = event.target.dataset.product;
+                addProductToCart(productKey);
+            });
+        });
+
+        // التعامل مع القائمة المنسدلة
+        toggleListBtn.addEventListener('click', () => {
+            productsListDropdown.classList.toggle('hidden');
+            toggleIcon.classList.toggle('rotate-180');
+        });
+
+        // إغلاق القائمة المنسدلة عند النقر خارجها
+        document.addEventListener('click', (event) => {
+            if (!toggleListBtn.contains(event.target) && !productsListDropdown.contains(event.target)) {
+                productsListDropdown.classList.add('hidden');
+                toggleIcon.classList.remove('rotate-180');
+            }
+        });
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // منع إرسال النموذج الافتراضي
+            if (selectedProducts.length === 0) {
+                const noProductMessage = document.createElement('div');
+                noProductMessage.className = 'bg-red-900 text-red-300 px-4 py-3 rounded relative mt-4 border border-red-700';
+                noProductMessage.textContent = 'الرجاء اختيار منتج واحد على الأقل قبل الإرسال.';
+                form.insertBefore(noProductMessage, form.lastElementChild);
+                setTimeout(() => noProductMessage.remove(), 3000);
+                return;
+            }
+
+            // تحديث محتوى نافذة التأكيد
+            const orderSummaryDiv = document.getElementById('order-summary');
+            let summaryHTML = '<ul>';
+            selectedProducts.forEach(product => {
+                const priceText = typeof product.price === 'number' ? product.price + ' ج.م' : 'غير محدد';
+                const itemTotal = typeof product.price === 'number' ? (product.price * product.quantity) + ' ج.م' : 'غير محدد';
+                summaryHTML += `<li><i class="fas fa-check-circle text-green-500 ml-2"></i><strong>${product.name}</strong> - الكمية: ${product.quantity} - السعر: ${priceText} - الإجمالي: ${itemTotal}</li>`;
+            });
+            summaryHTML += `</ul><div class="mt-4 font-bold text-lg">الإجمالي الكلي: ${calculateTotal()} ج.م</div>`;
+            orderSummaryDiv.innerHTML = summaryHTML;
+            confirmationModal.style.display = 'flex';
+        });
+
+        confirmYesBtn.addEventListener('click', function() {
+            confirmationModal.style.display = 'none';
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            
+            // Prepare the order message for WhatsApp
+            let message = `*طلب جديد من موقع Dentleen*\n\n`;
+            message += `*الاسم:* ${name}\n`;
+            message += `*رقم الهاتف:* ${phone}\n`;
+            message += `*العنوان:* ${address}\n\n`;
+            message += `*المنتجات المطلوبة:*\n`;
+            selectedProducts.forEach(product => {
+                const priceText = typeof product.price === 'number' ? product.price + ' ج.م' : 'غير محدد';
+                const itemTotal = typeof product.price === 'number' ? (product.price * product.quantity) + ' ج.م' : 'غير محدد';
+                message += `- ${product.name} (الكمية: ${product.quantity}, السعر: ${priceText}, الإجمالي: ${itemTotal})\n`;
+            });
+            message += `\n*الإجمالي الكلي:* ${calculateTotal()} ج.م`;
+
+            // Encode the message for the URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open the WhatsApp link in a new tab for desktop and mobile compatibility
+            window.open(whatsappUrl, '_blank');
+            
+            // Show a success message to the user
+            successModal.style.display = 'flex';
+            form.reset();
+            selectedProducts = [];
+            renderSelectedProducts();
+        });
+
+        confirmNoBtn.addEventListener('click', () => {
+            confirmationModal.style.display = 'none';
+        });
+
+        closeSuccessModalBtn.addEventListener('click', () => {
+            successModal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
