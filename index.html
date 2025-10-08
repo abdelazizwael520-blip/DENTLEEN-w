@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DENTLEEN</title>
     
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+
     <!-- Preload LCP Image & Preconnect to critical origins for faster loading -->
     <link rel="preload" as="image" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,184 +55,31 @@
     <!-- Font Awesome - Asynchronous loading to prevent render blocking -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
-
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #212121; /* Unified background color */
-            color: #e0e0e0;
-        }
-        .product-card, .testimonial-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            background-color: #2b2b2b; /* Slightly lighter card background for contrast */
-        }
-        .product-card:hover, .testimonial-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
-        .product-card img {
-            height: 12rem;
-            object-fit: contain;
-        }
-        /* Product card animation - Already uses transform for performance */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-        }
-        .modal-overlay.is-open {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-content {
-            background-color: #2c2c2c;
-            color: #e0e0e0;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            max-width: 90%;
-            width: 500px;
-            transform: translateY(20px) scale(0.95);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .modal-overlay.is-open .modal-content {
-            transform: translateY(0) scale(1);
-        }
-        
-        /* Loading Indicator Styles */
-        #loadingOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .spinner {
-            border: 8px solid #444;
-            border-top: 8px solid #0b5351;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Small image on modal */
-        #product-details-image.small-image {
-            width: 50%;
-            height: auto;
-            object-fit: contain;
-            margin: 0 auto;
-        }
-
-        /* Scroll-to-top arrow styles */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 99;
-        }
-        .scroll-to-top.show {
-            opacity: 0.5;
-            visibility: visible;
-        }
-        .scroll-to-top:hover {
-            opacity: 1;
-        }
-
-        /* Custom Scrollbar for Product Details Modal */
-        #product-details-body::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        #product-details-body::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        #product-details-body::-webkit-scrollbar-thumb {
-            background-color: rgba(224, 224, 224, 0.3); /* Semi-transparent white */
-            border-radius: 10px;
-        }
-        
-        #product-details-body::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(224, 224, 224, 0.5); /* Less transparent on hover */
-        }
-
-        /* Hide horizontal scrollbar for product details body */
-        #product-details-body {
-            overflow-x: hidden;
-        }
-    </style>
 </head>
 <body class="text-gray-200">
 
-<!-- ... a lot of existing code ... -->
     <!-- Header Section -->
-    <header class="bg-[#212121] shadow-lg p-4 sticky top-0 z-50 border-b border-gray-700">
+    <header class="bg-[#1f1f1f] shadow-lg p-4 sticky top-0 z-50 border-b border-gray-700">
         <div class="container mx-auto flex justify-between items-center relative">
-            <!-- Logo -->
             <div class="flex items-center gap-2">
                 <img src="image_1b3cde.png" alt="Dentleen Logo" class="h-10 w-auto" decoding="async">
             </div>
-    
-            <!-- Desktop Navigation (Centered) -->
             <nav class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
                 <a href="#products" class="font-semibold text-teal-400 hover:text-white transition-colors duration-300 py-2 px-3">المنتجات</a>
                 <a href="#offers" class="font-semibold text-red-400 hover:text-white transition-colors duration-300 py-2 px-3">العروض</a>
                 <a href="#testimonials" class="font-semibold text-blue-400 hover:text-white transition-colors duration-300 py-2 px-3">آراء العملاء</a>
                 <a href="#contact" class="font-semibold text-teal-400 hover:text-white transition-colors duration-300 py-2 px-3">اتصل بنا</a>
             </nav>
-    
-            <!-- Right Side: WhatsApp & Mobile Menu Toggle -->
             <div class="flex items-center gap-4">
-                 <!-- WhatsApp Button -->
                 <a href="https://wa.me/201508259538" target="_blank" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors duration-300 shadow-lg items-center gap-2 hidden sm:flex">
                     <i class="fab fa-whatsapp"></i> تواصل معنا
                 </a>
-                <!-- Mobile Menu Button -->
                 <button id="mobile-menu-button" class="md:hidden text-gray-400 focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu Dropdown -->
-        <nav id="mobile-menu" class="hidden md:hidden bg-[#212121] mt-2">
+        <nav id="mobile-menu" class="hidden md:hidden bg-[#1f1f1f] mt-2">
             <div class="container mx-auto flex flex-col items-center gap-2 py-4">
                 <a href="#products" class="w-full text-center font-semibold text-teal-400 hover:bg-gray-700 rounded-md transition-colors duration-300 py-2 px-3">المنتجات</a>
                 <a href="#offers" class="w-full text-center font-semibold text-red-400 hover:bg-gray-700 rounded-md transition-colors duration-300 py-2 px-3">العروض</a>
@@ -240,8 +90,9 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-[#212121] text-white py-20 px-4">
-        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+    <section class="hero-section bg-[#1f1f1f] text-white py-20 px-4">
+        <div class="bg-animation" id="bg-animation"></div>
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
             <div class="text-center md:text-right md:w-1/2">
                 <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4">أهلاً بك في شركة Dentleen</h1>
                 <p class="text-xl font-light mb-8">
@@ -255,380 +106,107 @@
         </div>
     </section>
 
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-20 px-4 bg-[#1f1f1f]">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-12">لماذا تختار <span class="text-teal-400">Dentleen</span>؟</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1: Quality -->
+                <div class="p-8 rounded-2xl text-center transition-all duration-300 hover:bg-[#2a2a2a] hover:shadow-lg">
+                    <div class="text-5xl text-teal-400 mb-4"><i class="fas fa-gem"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-3">جودة فائقة</h3>
+                    <p class="text-gray-400">نحن نستخدم أفضل المواد لضمان نتائج تدوم طويلاً وموثوقة لمرضاك.</p>
+                </div>
+                <!-- Feature 2: Value -->
+                <div class="p-8 rounded-2xl text-center transition-all duration-300 hover:bg-[#2a2a2a] hover:shadow-lg">
+                    <div class="text-5xl text-red-400 mb-4"><i class="fas fa-tags"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-3">أسعار تنافسية</h3>
+                    <p class="text-gray-400">نقدم أفضل قيمة مقابل السعر، مع عروض مستمرة لتلبية احتياجات عيادتك.</p>
+                </div>
+                <!-- Feature 3: Support -->
+                <div class="p-8 rounded-2xl text-center transition-all duration-300 hover:bg-[#2a2a2a] hover:shadow-lg">
+                    <div class="text-5xl text-blue-400 mb-4"><i class="fas fa-headset"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-3">دعم فني متميز</h3>
+                    <p class="text-gray-400">فريقنا جاهز دائمًا للإجابة على استفساراتك وتقديم المساعدة الفورية.</p>
+                </div>
+                <!-- Feature 4: Free Delivery -->
+                <div class="p-8 rounded-2xl text-center transition-all duration-300 hover:bg-[#2a2a2a] hover:shadow-lg">
+                    <div class="text-5xl text-orange-400 mb-4"><i class="fas fa-truck-fast"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-3">توصيل مجاني</h3>
+                    <p class="text-gray-400">نوفر توصيلاً مجانياً وسريعاً لجميع محافظات مصر.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Products Section -->
-    <section id="products" class="py-20 px-4 bg-[#212121]">
+    <section id="products" class="py-20 px-4 bg-[#1f1f1f]">
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold text-teal-400 mb-12">منتجاتنا المميزة</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-
-                <!-- Product 1: SDF -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="sdf.png" alt="SDF Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=SDF';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">SDF</h3>
-                    <p class="text-gray-400 mb-4">متوفر بحجمين مختلفين.</p>
-                    <div class="space-y-2 mt-4">
-                        <button class="product-link inline-block w-full bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="SDF 1ml" data-price="400">
-                            1ml: 400 L.E
-                        </button>
-                        <button class="product-link inline-block w-full bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="SDF 4ml" data-price="1190">
-                            4ml: 1190 L.E
-                        </button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="SDF">
-                        عرض التفاصيل
-                    </button>
-                </div>
-                
-                <!-- Product 2: Caries detector dye (Moved to second position) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="cdd.jpg" alt="Caries detector dye" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Caries+Detector';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">Caries detector dye</h3>
-                    <p class="text-gray-400 mb-4">4gm</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">225 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Caries detector dye 4ml" data-price="225">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Caries detector dye">
-                        عرض التفاصيل
-                    </button>
-                </div>
-
-                <!-- Product 3: MTA (Moved to third position) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="mta.jpg" alt="MTA Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=MTA';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">MTA</h3>
-                    <p class="text-gray-400 mb-4">0.25gm</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">50 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="MTA 0.25g" data-price="50">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="MTA">
-                        عرض التفاصيل
-                    </button>
-                </div>
-
-                <!-- Product 4: HEMOSTATIC LIQUID -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="beld-of.png" alt="HEMOSTATIC LIQUID" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=HEMOSTATIC+LIQUID';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">HEMOSTATIC LIQUID</h3>
-                    <p class="text-gray-400 mb-4">15ml</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">135 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="HEMOSTATIC LIQUID 15ml" data-price="135">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="HEMOSTATIC LIQUID">
-                        عرض التفاصيل
-                    </button>
-                </div>
-                
-                <!-- Product 5: D-Seal 12g (Price changed to 395) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="d-seal12.png" alt="D-Seal Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+12g';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 12g</h3>
-                    <p class="text-gray-400 mb-4">12gm automix syringe</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">395 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 12g" data-price="395">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal">
-                        عرض التفاصيل
-                    </button>
-                </div>
-                
-                <!-- Product 6: D-Seal 8g (New product) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="d-seal 8.PNG" alt="D-Seal 8g Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+8g';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 8g</h3>
-                    <p class="text-gray-400 mb-4">8gm sebrate syringe base&catalyst كل منها 4 جرام.</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">300 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 8g" data-price="300">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal 8g">
-                        عرض التفاصيل
-                    </button>
-                </div>
-
-                <!-- Product 7: D-Seal 20g (New product added here) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="D-Seal20.JPG" alt="D-Seal 20g Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+20g';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 20g</h3>
-                    <p class="text-gray-400 mb-4"> .20gm separate tubes base&catalyst كل منهما 10 جرام.</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">495 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 20g" data-price="495">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal 20g">
-                        عرض التفاصيل
-                    </button>
-                </div>
-
-                <!-- Product 8: Edta -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="edta.png" alt="Edta" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=EDTA';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">Edta</h3>
-                    <p class="text-gray-400 mb-4">5gm</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">170 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Edta 5g" data-price="170">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Edta">
-                        عرض التفاصيل
-                    </button>
-                </div>
-
-                <!-- Product 9: Porcelain Acid Etch -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="porclean.png" alt="Porcelain Acid Etch" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Porcelain+Acid+Etch';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">Porcelain Acid Etch</h3>
-                    <p class="text-gray-400 mb-4">2.5gm</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">170 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Porcelain Acid Etch 5g" data-price="170">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Porcelain Acid Etch">
-                        عرض التفاصيل
-                    </button>
-                </div>
-
-                <!-- Product 10: Etch -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="etch.jpg" alt="Etch Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Etch';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">Etch</h3>
-                    <p class="text-gray-400 mb-4">5gm</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">50 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Etch 5g" data-price="50">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Etch">
-                        عرض التفاصيل
-                    </button>
-                </div>
-
-                <!-- Product 11: ROOT HEAL -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="root heal.png" alt="ROOT HEAL" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Root+Heal';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">ROOT HEAL</h3>
-                    <p class="text-gray-400 mb-4">5gm</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">110 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="ROOT HEAL" data-price="110">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="ROOT HEAL">
-                        عرض التفاصيل
-                    </button>
-                </div>
-
-                <!-- Product 12: HOLDENT ADHESIVE -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="hole.PNG" alt="HOLDENT ADHESIVE" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Holdent';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">HOLDENT</h3>
-                    <p class="text-gray-400 mb-4">20gm</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">155 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="HOLDENT 20g" data-price="155">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="HOLDENT">
-                        عرض التفاصيل
-                    </button>
-                </div>
-                
-                <!-- Product 13: Package -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up">
-                    <img src="bakedg.png" alt="Package" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Package';">
-                    <h3 class="text-2xl font-semibold text-white mb-2">باكدج</h3>
-                    <p class="text-gray-400 mb-4">جرب معظم منتجاتنا بسعر اقتصادي يشمل: Etch 5 gm, Edta 5 gm, MTA 0.25 gm, Resin sealer 6 gm, Caires detector 1ml.</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-xl font-bold text-teal-600">260 ج.م</span>
-                        <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="باكدج" data-price="260">اطلب الآن</button>
-                    </div>
-                    <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="باكدج">
-                        عرض التفاصيل
-                    </button>
-                </div>
+                <!-- All Product cards remain here -->
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="sdf.png" alt="SDF Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=SDF';"> <h3 class="text-2xl font-semibold text-white mb-2">SDF</h3> <p class="text-gray-400 mb-4">متوفر بحجمين مختلفين.</p> <div class="space-y-2 mt-4"> <button class="product-link inline-block w-full bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="SDF 1ml" data-price="400"> 1ml: 400 L.E </button> <button class="product-link inline-block w-full bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="SDF 4ml" data-price="1190"> 4ml: 1190 L.E </button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="SDF"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="cdd.jpg" alt="Caries detector dye" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Caries+Detector';"> <h3 class="text-2xl font-semibold text-white mb-2">Caries detector dye</h3> <p class="text-gray-400 mb-4">4gm</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">225 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Caries detector dye 4ml" data-price="225">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Caries detector dye"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="mta.jpg" alt="MTA Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=MTA';"> <h3 class="text-2xl font-semibold text-white mb-2">MTA</h3> <p class="text-gray-400 mb-4">0.25gm</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">50 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="MTA 0.25g" data-price="50">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="MTA"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="beld-of.png" alt="HEMOSTATIC LIQUID" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=HEMOSTATIC+LIQUID';"> <h3 class="text-2xl font-semibold text-white mb-2">HEMOSTATIC LIQUID</h3> <p class="text-gray-400 mb-4">15ml</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">135 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="HEMOSTATIC LIQUID 15ml" data-price="135">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="HEMOSTATIC LIQUID"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="d-seal12.png" alt="D-Seal Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+12g';"> <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 12g</h3> <p class="text-gray-400 mb-4">12gm automix syringe</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">395 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 12g" data-price="395">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="d-seal 8.PNG" alt="D-Seal 8g Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+8g';"> <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 8g</h3> <p class="text-gray-400 mb-4">8gm sebrate syringe base&catalyst كل منها 4 جرام.</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">300 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 8g" data-price="300">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal 8g"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="D-Seal20.JPG" alt="D-Seal 20g Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=D-Seal+20g';"> <h3 class="text-2xl font-semibold text-white mb-2">D-Seal 20g</h3> <p class="text-gray-400 mb-4"> .20gm separate tubes base&catalyst كل منهما 10 جرام.</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">495 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="D-Seal 20g" data-price="495">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="D-Seal 20g"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="edta.png" alt="Edta" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=EDTA';"> <h3 class="text-2xl font-semibold text-white mb-2">Edta</h3> <p class="text-gray-400 mb-4">5gm</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">170 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Edta 5g" data-price="170">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Edta"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="porclean.png" alt="Porcelain Acid Etch" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Porcelain+Acid+Etch';"> <h3 class="text-2xl font-semibold text-white mb-2">Porcelain Acid Etch</h3> <p class="text-gray-400 mb-4">2.5gm</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">170 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Porcelain Acid Etch 5g" data-price="170">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Porcelain Acid Etch"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="etch.jpg" alt="Etch Product" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Etch';"> <h3 class="text-2xl font-semibold text-white mb-2">Etch</h3> <p class="text-gray-400 mb-4">5gm</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">50 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="Etch 5g" data-price="50">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="Etch"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="root heal.png" alt="ROOT HEAL" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Root+Heal';"> <h3 class="text-2xl font-semibold text-white mb-2">ROOT HEAL</h3> <p class="text-gray-400 mb-4">5gm</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">110 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="ROOT HEAL" data-price="110">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="ROOT HEAL"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="hole.PNG" alt="HOLDENT ADHESIVE" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Holdent';"> <h3 class="text-2xl font-semibold text-white mb-2">HOLDENT</h3> <p class="text-gray-400 mb-4">20gm</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">155 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="HOLDENT 20g" data-price="155">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="HOLDENT"> عرض التفاصيل </button> </div>
+                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up"> <img src="bakedg.png" alt="Package" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://placehold.co/200x200/212121/e0e0e0?text=Package';"> <h3 class="text-2xl font-semibold text-white mb-2">باكدج</h3> <p class="text-gray-400 mb-4">يشمل: Etch 5 gm, Edta 5 gm, MTA 0.25 gm, Resin sealer 6 gm, Caires detector 1ml.</p> <div class="flex items-center justify-between mt-4"> <span class="text-xl font-bold text-teal-600">260 ج.م</span> <button class="product-link bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300" data-product="باكدج" data-price="260">اطلب الآن</button> </div> <button class="view-details-btn mt-4 inline-block w-full bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300" data-product="باكدج"> عرض التفاصيل </button> </div>
             </div>
         </div>
     </section>
 
-    <!-- Offers Section (New) -->
-    <section id="offers" class="py-20 px-4 bg-[#212121]">
+    <!-- Offers Section -->
+    <section id="offers" class="py-20 px-4 bg-[#1f1f1f]">
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold text-red-500 mb-12">عروضنا الخاصة والموفرة</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                <!-- Offer 1: D-seal 8 gm + File mani 10 -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up border-2 border-red-700 flex flex-col">
-                    <img src="guta.png" alt="Offer 1" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async">
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-white mb-2">D-seal 8 gm + File mani 10</h3>
-                    </div>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-2xl font-bold text-red-500">370 ج.م</span>
-                        <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 1: D-seal 8g + File mani 10" data-price="370">اطلب العرض</button>
-                    </div>
-                </div>
-                
-                <!-- Offer 2: Caries detector dye 4ml + ever x capsule -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up border-2 border-red-700 flex flex-col">
-                    <img src="bond.png" alt="Offer 2" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async">
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-white mb-2">Caries detector dye 4ml + ever x capsule</h3>
-                    </div>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-2xl font-bold text-red-500">320 ج.م</span>
-                        <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 2: Caries dye 4ml + ever x capsule" data-price="320">اطلب العرض</button>
-                    </div>
-                </div>
-
-                <!-- Offer 3: Caries detector dye 4ml + etch 5gm + Bond bisco 0.5ml -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up border-2 border-red-700 flex flex-col">
-                    <img src="Ever x capsule.png" alt="Offer 3" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async">
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-white mb-2">Caries detector dye 4ml + etch 5gm + Bond bisco 0.5ml</h3>
-                    </div>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-2xl font-bold text-red-500">620 ج.م</span>
-                        <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 3: Caries dye 4ml + etch 5g + Bond bisco 0.5ml" data-price="620">اطلب العرض</button>
-                    </div>
-                </div>
-
-                <!-- Offer 4: D-seal 20 gm + syringe tokuyma -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up border-2 border-red-700 flex flex-col">
-                    <img src="ever x .png" alt="Offer 4" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async">
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-white mb-2">D-seal 20 gm + syringe tokuyma</h3>
-                    </div>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-2xl font-bold text-red-500">1300 ج.م</span>
-                        <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 4: D-seal 20g + syringe tokuyma" data-price="1300">اطلب العرض</button>
-                    </div>
-                </div>
-
-                <!-- Offer 5: D-seal 20 gm + gutta percha 25 taper 4 -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up border-2 border-red-700 flex flex-col">
-                    <img src="tok.png" alt="Offer 5" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async">
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-white mb-2">D-seal 20 gm + gutta percha 25 taper 4</h3>
-                    </div>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-2xl font-bold text-red-500">550 ج.м</span>
-                        <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 5: D-seal 20g + gutta percha #25/4" data-price="550">اطلب العرض</button>
-                    </div>
-                </div>
-
-                <!-- Offer 6: Ever x capsule + D-seal 8 gm (New Offer) -->
-                <div class="p-6 rounded-2xl shadow-lg product-card fade-in-up border-2 border-red-700 flex flex-col">
-                    <img src="file.png" alt="Offer 6" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async">
-                    <div class="flex-grow">
-                        <h3 class="text-xl font-semibold text-white mb-2">Ever x capsule + D-seal 8 gm</h3>
-                    </div>
-                    <div class="flex items-center justify-between mt-4">
-                        <span class="text-2xl font-bold text-red-500">400 ج.م</span>
-                        <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 6: Ever x capsule + D-seal 8 gm" data-price="400">اطلب العرض</button>
-                    </div>
-                </div>
-
+                <!-- All Offer cards remain here -->
+                 <div class="p-6 rounded-2xl shadow-lg product-card offer-card fade-in-up flex flex-col"> <img src="guta.png" alt="Offer 1" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async"> <div class="flex-grow"> <h3 class="text-xl font-semibold text-white mb-2">D-seal 8 gm + File mani 10</h3> </div> <div class="flex items-center justify-between mt-4"> <span class="text-2xl font-bold text-red-500">370 ج.م</span> <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 1: D-seal 8g + File mani 10" data-price="370">اطلب العرض</button> </div> </div> <div class="p-6 rounded-2xl shadow-lg product-card offer-card fade-in-up flex flex-col"> <img src="bond.png" alt="Offer 2" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async"> <div class="flex-grow"> <h3 class="text-xl font-semibold text-white mb-2">Caries detector dye 4ml + ever x capsule</h3> </div> <div class="flex items-center justify-between mt-4"> <span class="text-2xl font-bold text-red-500">320 ج.م</span> <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 2: Caries dye 4ml + ever x capsule" data-price="320">اطلب العرض</button> </div> </div> <div class="p-6 rounded-2xl shadow-lg product-card offer-card fade-in-up flex flex-col"> <img src="Ever x capsule.png" alt="Offer 3" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async"> <div class="flex-grow"> <h3 class="text-xl font-semibold text-white mb-2">Caries detector dye 4ml + etch 5gm + Bond bisco 0.5ml</h3> </div> <div class="flex items-center justify-between mt-4"> <span class="text-2xl font-bold text-red-500">620 ج.م</span> <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 3: Caries dye 4ml + etch 5g + Bond bisco 0.5ml" data-price="620">اطلب العرض</button> </div> </div> <div class="p-6 rounded-2xl shadow-lg product-card offer-card fade-in-up flex flex-col"> <img src="ever x .png" alt="Offer 4" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async"> <div class="flex-grow"> <h3 class="text-xl font-semibold text-white mb-2">D-seal 20 gm + syringe tokuyma</h3> </div> <div class="flex items-center justify-between mt-4"> <span class="text-2xl font-bold text-red-500">1300 ج.م</span> <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 4: D-seal 20g + syringe tokuyma" data-price="1300">اطلب العرض</button> </div> </div> <div class="p-6 rounded-2xl shadow-lg product-card offer-card fade-in-up flex flex-col"> <img src="tok.png" alt="Offer 5" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async"> <div class="flex-grow"> <h3 class="text-xl font-semibold text-white mb-2">D-seal 20 gm + gutta percha 25 taper 4</h3> </div> <div class="flex items-center justify-between mt-4"> <span class="text-2xl font-bold text-red-500">550 ج.м</span> <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 5: D-seal 20g + gutta percha #25/4" data-price="550">اطلب العرض</button> </div> </div> <div class="p-6 rounded-2xl shadow-lg product-card offer-card fade-in-up flex flex-col"> <img src="file.png" alt="Offer 6" class="w-full h-48 object-contain mb-4 rounded-xl" loading="lazy" decoding="async"> <div class="flex-grow"> <h3 class="text-xl font-semibold text-white mb-2">Ever x capsule + D-seal 8 gm</h3> </div> <div class="flex items-center justify-between mt-4"> <span class="text-2xl font-bold text-red-500">400 ج.م</span> <button class="product-link bg-red-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-700 transition-colors duration-300" data-product="Offer 6: Ever x capsule + D-seal 8 gm" data-price="400">اطلب العرض</button> </div> </div>
             </div>
         </div>
     </section>
 
+    <!-- Creative Separator -->
+    <div class="text-6xl text-center py-12 text-teal-400 opacity-20">
+        <i class="fas fa-tooth"></i>
+    </div>
+
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 px-4 bg-[#212121]">
+    <section id="testimonials" class="py-20 px-4 bg-[#1f1f1f]">
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold text-blue-400 mb-12">آراء عملائنا</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
-                <!-- Testimonial Images -->
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="a.jpg" alt="رأي عميل ١" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="s.jpg" alt="رأي عميل ٢" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="i.jpg" alt="رأي عميل ٣" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="b.jpg" alt="رأي عميل ٤" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="c.jpg" alt="رأي عميل ٥" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="d.jpg" alt="رأي عميل ٦" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="f.jpg" alt="رأي عميل ٧" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="h.jpg" alt="رأي عميل ٨" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="e.jpg" alt="رأي عميل ٩" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="t.jpg" alt="رأي عميل ١٠" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="w.jpg" alt="رأي عميل ١١" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
-                <div class="testimonial-card cursor-pointer overflow-hidden rounded-lg shadow-lg">
-                    <img src="g.jpg" alt="رأي عميل ١٢" class="w-full h-full object-cover" loading="lazy" decoding="async">
-                </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <!-- NEW: Added 'fade-in-up' class for scroll animation -->
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="a.jpg" alt="رأي عميل ١" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="s.jpg" alt="رأي عميل ٢" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="i.jpg" alt="رأي عميل ٣" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="b.jpg" alt="رأي عميل ٤" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="c.jpg" alt="رأي عميل ٥" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="d.jpg" alt="رأي عميل ٦" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="f.jpg" alt="رأي عميل ٧" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="h.jpg" alt="رأي عميل ٨" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="e.jpg" alt="رأي عميل ٩" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="t.jpg" alt="رأي عميل ١٠" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="w.jpg" alt="رأي عميل ١١" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
+                    <div class="testimonial-card fade-in-up cursor-pointer overflow-hidden rounded-lg shadow-lg"> <img src="g.jpg" alt="رأي عميل ١٢" class="w-full h-full object-cover" loading="lazy" decoding="async"> </div>
             </div>
         </div>
     </section>
     
     <!-- Contact Form Section -->
-    <section id="contact" class="py-20 px-4 bg-[#212121]">
+    <section id="contact" class="py-20 px-4 bg-[#1f1f1f]">
         <div class="container mx-auto flex flex-col md:flex-row-reverse md:items-start justify-center gap-12">
-            <div class="w-full md:w-1/2 bg-[#2b2b2b] p-8 rounded-2xl shadow-lg">
+            <div class="w-full md:w-1/2 bg-[#2a2a2a] p-8 rounded-2xl shadow-lg">
                 <form id="orderForm" action="#" method="post" class="space-y-6">
-                    <div>
-                        <label for="name" class="block text-lg font-medium text-gray-400">الاسم بالكامل</label>
-                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white">
-                    </div>
-                    <div>
-                        <label for="phone" class="block text-lg font-medium text-gray-400">رقم الهاتف</label>
-                        <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white">
-                    </div>
-                    <div>
-                        <label for="address" class="block text-lg font-medium text-gray-400">العنوان</label>
-                        <input type="text" id="address" name="address" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white">
-                    </div>
-                    <!-- حقل جديد لعرض المنتجات المختارة مع قائمة منسدلة لإضافة المزيد -->
-                    <div>
-                        <label class="block text-lg font-medium text-gray-400 mb-2">المنتجات المختارة</label>
-                        <div class="relative">
-                            <button type="button" id="toggle-products-list" class="flex items-center justify-between w-full px-4 py-2 text-right bg-gray-600 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 text-white">
-                                <span class="text-gray-200">إضافة المزيد من المنتجات</span>
-                                <i id="toggle-icon" class="fas fa-chevron-down transform transition-transform duration-300"></i>
-                            </button>
-                            <!-- قائمة المنتجات المنسدلة -->
-                            <div id="products-list-dropdown" class="absolute hidden w-full mt-2 bg-gray-700 border border-gray-600 rounded-xl shadow-lg max-h-60 overflow-y-auto z-10">
-                                <ul id="product-list-ul">
-                                    <!-- المنتجات سيتم إضافتها هنا عبر JavaScript -->
-                                    </ul>
-                            </div>
-                        </div>
-                        <div id="selected-products-container" class="space-y-4 p-4 border border-gray-600 rounded-xl bg-gray-800 mt-4">
-                            <p class="text-gray-500 text-sm" id="empty-cart-message">لم يتم اختيار أي منتجات بعد.</p>
-                        </div>
-
-                        <!-- إجمالي الفاتورة -->
-                        <div id="total-price-container" class="mt-4 p-4 rounded-xl bg-teal-800 text-teal-200 font-bold text-lg flex justify-between items-center hidden">
-                            <span>الإجمالي:</span>
-                            <span id="total-price">0 ج.م</span>
-                        </div>
-                    </div>
-                    <div>
-                        <button type="submit" class="w-full bg-teal-600 text-white font-bold py-3 rounded-full text-lg hover:bg-teal-700 transition-colors duration-300 shadow-md">
-                            إرسال الطلب
-                        </button>
-                        <!-- New note for desktop users -->
-                        <p class="text-center text-sm text-red-400 mt-2">
-                            <i class="fas fa-info-circle ml-1"></i>
-                            ملاحظة: إذا كنت تستخدم جهاز كمبيوتر، يرجى فتح تطبيق واتساب الخاص بك أولاً لتجنب أي مشاكل في إرسال الطلب.
-                        </p>
-                    </div>
+                     <!-- Form fields remain here -->
+                     <div> <label for="name" class="block text-lg font-medium text-gray-400">الاسم بالكامل</label> <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white"> </div> <div> <label for="phone" class="block text-lg font-medium text-gray-400">رقم الهاتف</label> <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white"> </div> <div> <label for="address" class="block text-lg font-medium text-gray-400">العنوان</label> <input type="text" id="address" name="address" required class="mt-1 block w-full px-4 py-2 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 bg-gray-700 text-white"> </div> <div> <label class="block text-lg font-medium text-gray-400 mb-2">المنتجات المختارة</label> <div class="relative"> <button type="button" id="toggle-products-list" class="flex items-center justify-between w-full px-4 py-2 text-right bg-gray-600 border border-gray-600 rounded-full shadow-sm focus:ring-teal-500 focus:border-teal-500 text-white"> <span class="text-gray-200">إضافة المزيد من المنتجات</span> <i id="toggle-icon" class="fas fa-chevron-down transform transition-transform duration-300"></i> </button> <div id="products-list-dropdown" class="absolute hidden w-full mt-2 bg-gray-700 border border-gray-600 rounded-xl shadow-lg max-h-60 overflow-y-auto z-10"> <ul id="product-list-ul"> </ul> </div> </div> <div id="selected-products-container" class="space-y-4 p-4 border border-gray-600 rounded-xl bg-gray-800 mt-4"> <p class="text-gray-500 text-sm" id="empty-cart-message">لم يتم اختيار أي منتجات بعد.</p> </div> <div id="total-price-container" class="mt-4 p-4 rounded-xl bg-teal-800 text-teal-200 font-bold text-lg flex justify-between items-center hidden"> <span>الإجمالي:</span> <span id="total-price">0 ج.م</span> </div> </div> <div> <button type="submit" class="w-full bg-teal-600 text-white font-bold py-3 rounded-full text-lg hover:bg-teal-700 transition-colors duration-300 shadow-md"> إرسال الطلب </button> <p class="text-center text-sm text-red-400 mt-2"> <i class="fas fa-info-circle ml-1"></i> ملاحظة: إذا كنت تستخدم جهاز كمبيوتر، يرجى فتح واتساب أولاً. </p> </div>
                 </form>
             </div>
             <div class="text-center w-full md:w-1/2 md:text-right">
@@ -637,888 +215,27 @@
                     املأ النموذج أو تواصل معنا عبر وسائل التواصل الاجتماعي.
                 </p>
                 <div class="flex justify-center md:justify-start gap-8 text-4xl mb-8">
-                    <a href="https://wa.me/201508259538" target="_blank" class="text-green-600 hover:text-green-700 transition-colors duration-300">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61563008606045" target="_blank" class="text-blue-600 hover:text-blue-700 transition-colors duration-300">
-                        <i class="fab fa-facebook"></i>
-                    </a>
+                    <a href="https://wa.me/201508259538" target="_blank" class="text-green-600 hover:text-green-700 transition-colors duration-300"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61563008606045" target="_blank" class="text-blue-600 hover:text-blue-700 transition-colors duration-300"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer Section -->
-    <footer class="bg-[#212121] text-gray-400 text-center py-6">
+    <footer class="bg-[#1f1f1f] text-gray-400 text-center py-6">
         <p>&copy; <span id="currentYear"></span> Dentleen. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <!-- Custom Confirmation Modal -->
-    <div id="confirmationModal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 class="text-2xl font-bold mb-4">تأكيد الطلب</h3>
-            <div id="order-summary" class="text-gray-400 mb-6 text-right"></div>
-            <p class="text-gray-400 mb-6">هل أنت متأكد من إرسال هذا الطلب؟</p>
-            <div class="flex justify-center gap-4">
-                <button id="confirmYes" class="bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300">
-                    نعم
-                </button>
-                <button id="confirmNo" class="bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300">
-                    إلغاء
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Message Modal -->
-    <div id="successModal" class="modal-overlay">
-        <div class="modal-content">
-            <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i>
-            <h3 class="text-2xl font-bold mb-2">تم استلام طلبك!</h3>
-            <p class="text-gray-400">سيتم توجيهك الآن إلى واتساب لإرسال تفاصيل طلبك. شكراً لك.</p>
-            <button id="closeSuccessModal" class="mt-6 bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300">
-                إغلاق
-            </button></div>
-    </div>
-    
-    <!-- Product Details Modal -->
-    <div id="productDetailsModal" class="modal-overlay">
-        <div class="modal-content max-w-sm p-6 rounded-lg relative">
-            <img id="product-details-image" src="" alt="Product Image" class="w-1/2 h-auto mb-4 rounded-xl mx-auto hidden" decoding="async">
-            <div id="product-details-body" class="text-gray-400 text-right space-y-4 max-h-96 overflow-y-auto pr-2">
-                <!-- Product details will be injected here -->
-            </div>
-
-            <button id="closeProductDetailsModal" class="mt-6 bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300 w-full">إغلاق</button>
-        </div>
-    </div>
-
-    <!-- Image Viewer Modal -->
-    <div id="imageViewerModal" class="modal-overlay">
-        <div class="modal-content p-0 bg-transparent max-w-3xl w-full relative">
-            <img id="modalImage" src="" alt="Full size review" class="w-full h-auto rounded-lg" decoding="async">
-            <button id="closeImageViewer" class="absolute -top-2 -right-2 text-white bg-black bg-opacity-50 rounded-full h-10 w-10 flex items-center justify-center text-2xl hover:bg-opacity-75">&times;</button>
-        </div>
-    </div>
-
-
-    <!-- Loading Overlay (kept for future use if needed, but not used in this version) -->
-    <div id="loadingOverlay" class="flex flex-col gap-4">
-        <div class="spinner"></div>
-        <p class="text-xl font-bold text-gray-400">جاري إرسال الطلب...</p>
-    </div>
+    <!-- Modals (Confirmation, Success, Product Details, Image Viewer) -->
+     <div id="confirmationModal" class="modal-overlay"> <div class="modal-content"> <h3 class="text-2xl font-bold mb-4">تأكيد الطلب</h3> <div id="order-summary" class="text-gray-400 mb-6 text-right"></div> <p class="text-gray-400 mb-6">هل أنت متأكد من إرسال هذا الطلب؟</p> <div class="flex justify-center gap-4"> <button id="confirmYes" class="bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300">نعم</button> <button id="confirmNo" class="bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300">إلغاء</button> </div> </div> </div> <div id="successModal" class="modal-overlay"> <div class="modal-content"> <i class="fas fa-check-circle text-green-500 text-6xl mb-4"></i> <h3 class="text-2xl font-bold mb-2">تم استلام طلبك!</h3> <p class="text-gray-400">سيتم توجيهك الآن إلى واتساب لإرسال تفاصيل طلبك. شكراً لك.</p> <button id="closeSuccessModal" class="mt-6 bg-teal-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-teal-700 transition-colors duration-300">إغلاق</button> </div> </div> <div id="productDetailsModal" class="modal-overlay"> <div class="modal-content max-w-sm p-6 rounded-lg relative"> <img id="product-details-image" src="" alt="Product Image" class="w-1/2 h-auto mb-4 rounded-xl mx-auto hidden" decoding="async"> <div id="product-details-body" class="text-gray-400 text-right space-y-4 max-h-96 overflow-y-auto pr-2"></div> <button id="closeProductDetailsModal" class="mt-6 bg-gray-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-gray-700 transition-colors duration-300 w-full">إغلاق</button> </div> </div> <div id="imageViewerModal" class="modal-overlay"> <div class="modal-content p-0 bg-transparent max-w-3xl w-full relative"> <img id="modalImage" src="" alt="Full size review" class="w-full h-auto rounded-lg" decoding="async"> <button id="closeImageViewer" class="absolute -top-2 -right-2 text-white bg-black bg-opacity-50 rounded-full h-10 w-10 flex items-center justify-center text-2xl hover:bg-opacity-75">&times;</button> </div> </div>
 
     <!-- Scroll-to-top button -->
     <button id="scrollToTopBtn" class="scroll-to-top bg-teal-600 text-white p-4 rounded-full shadow-lg hover:bg-teal-700">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- The main application script is correctly placed at the end of the body to ensure the page content loads first. -->
-    <script>
-        document.getElementById("currentYear").textContent = new Date().getFullYear();
-
-        const form = document.getElementById('orderForm');
-        const confirmationModal = document.getElementById('confirmationModal');
-        const successModal = document.getElementById('successModal');
-        const confirmYesBtn = document.getElementById('confirmYes');
-        const confirmNoBtn = document.getElementById('confirmNo');
-        const closeSuccessModalBtn = document.getElementById('closeSuccessModal');
-        const productsContainer = document.getElementById('selected-products-container');
-        const emptyCartMessage = document.getElementById('empty-cart-message');
-        const toggleListBtn = document.getElementById('toggle-products-list');
-        const productsListDropdown = document.getElementById('products-list-dropdown');
-        const toggleIcon = document.getElementById('toggle-icon');
-        const productListUL = document.getElementById('product-list-ul');
-        const loadingOverlay = document.getElementById('loadingOverlay');
-        const totalPriceContainer = document.getElementById('total-price-container');
-        const totalPriceSpan = document.getElementById('total-price');
-
-        // Product details modal elements
-        const productDetailsModal = document.getElementById('productDetailsModal');
-        const productDetailsBody = document.getElementById('product-details-body');
-        const closeProductDetailsModalBtn = document.getElementById('closeProductDetailsModal');
-        const productDetailsImage = document.getElementById('product-details-image');
-        
-        // Image Viewer Modal elements
-        const imageViewerModal = document.getElementById('imageViewerModal');
-        const modalImage = document.getElementById('modalImage');
-        const closeImageViewerBtn = document.getElementById('closeImageViewer');
-
-        // Mobile Menu elements
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-
-        // Scroll-to-top button
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
-        // Replace with your WhatsApp Business number, including the country code
-        const whatsappNumber = '201508259538';
-
-        // قائمة بجميع المنتجات المتاحة مع أسعارها.
-        const allProducts = {
-            'SDF 1ml': { name: 'SDF 1ml', price: 400 },
-            'SDF 4ml': { name: 'SDF 4ml', price: 1190 },
-            'MTA 0.25g': { name: 'MTA 0.25 جرام', price: 50 },
-            'HEMOSTATIC LIQUID 15ml': { name: 'HEMOSTATIC LIQUID 15 مل', price: 135 },
-            'D-Seal 12g': { name: 'D-Seal 12 جرام', price: 395 },
-            'D-Seal 8g': { name: 'D-Seal 8 جرام', price: 300 },
-            'D-Seal 20g': { name: 'D-Seal 20 جرام', price: 495 },
-            'Edta 5g': { name: 'Edta 5 جرام', price: 170 },
-            'Porcelain Acid Etch 5g': { name: 'Porcelain Acid Etch 5 جرام', price: 170 },
-            'Etch 5g': { name: 'Etch 5 جرام', price: 50 },
-            'ROOT HEAL': { name: 'ROOT HEAL', price: 110 },
-            'HOLDENT 20g': { name: 'HOLDENT 20 جرام', price: 155 },
-            'باكدج': { name: 'باكدج', price: 260 },
-            'Caries detector dye 4ml': { name: 'Caries detector dye 4 مل', price: 225 },
-            // --- New Offers Added ---
-            'Offer 1: D-seal 8g + File mani 10': { name: 'عرض 1: D-seal 8g + File mani 10', price: 370 },
-            'Offer 2: Caries dye 4ml + ever x capsule': { name: 'عرض 2: Caries detector 4ml + ever x capsule', price: 320 },
-            'Offer 3: Caries dye 4ml + etch 5g + Bond bisco 0.5ml': { name: 'عرض 3: Caries detector 4ml + etch 5g + Bond bisco 0.5ml', price: 620 },
-            'Offer 4: D-seal 20g + syringe tokuyma': { name: 'عرض 4: D-seal 20g + syringe tokuyma', price: 1300 },
-            'Offer 5: D-seal 20g + gutta percha #25/4': { name: 'عرض 5: D-seal 20g + gutta percha #25/4', price: 550 },
-            'Offer 6: Ever x capsule + D-seal 8 gm': { name: 'عرض 6: Ever x capsule + D-seal 8 gm', price: 400 },
-        };
-
-        const productImages = {
-            'SDF': 'sdf.png',
-            'MTA': 'mta.jpg',
-            'HEMOSTATIC LIQUID': 'beld-of.png',
-            'D-Seal': 'd-seal12.png',
-            'D-Seal 8g': 'd-seal 8.PNG',
-            'D-Seal 20g': 'D-Seal20.JPG',
-            'Edta': 'edta.png',
-            'Porcelain Acid Etch': 'porclean.png',
-            'Etch': 'etch.jpg',
-            'ROOT HEAL': 'root heal.png',
-            'HOLDENT': 'hole.PNG',
-            'Caries detector dye': 'cdd.jpg',
-            'باكدج': 'bakedg.png',
-            // Generic placeholder for all offers
-            'Offer_Placeholder': 'https://placehold.co/200x200/0b5351/e0e0e0?text=SPECIAL+OFFER'
-        };
-
-        // Product details data with English and Arabic content
-        const productDetails = {
-            'SDF': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 What is SDF?</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>Silver Diamine Fluoride (SDF) is a topical cariostatic agent used in dentistry.</li>
-                                <li>It is a colorless to blue liquid, strongly alkaline (pH ~10).</li>
-                                <li>Approved in many countries for arresting dental caries and desensitizing dentin.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو الـ SDF؟</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>فلوريد الفضة ثنائي الأمين (SDF) هو عامل موضعي مضاد للتسوس يُستخدم في طب الأسنان.</li>
-                                <li>هو سائل عديم اللون إلى أزرق، شديد القلوية (pH ≈ 10).</li>
-                                <li>معتمد في العديد من الدول لإيقاف تسوس الأسنان وتقليل حساسية العاج.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'MTA': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 What is MTA?</h4>
-                            <p class="mt-2 text-gray-400">
-                                Mineral Trioxide Aggregate (MTA) is a bioactive endodontic material used for pulp therapy, perforation repair, root-end filling, and regenerative procedures.
-                            </p>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو الـ MTA؟</h4>
-                            <p class="mt-2 text-gray-400">
-                                MTA هو مادة حيوية تُستخدم في علاج لب الأسنان، وإصلاح ثقوب الجذور، وحشو نهاية الجذور، والإجراءات التجديدية.
-                            </p>
-                        </div>
-                    </div>
-                `
-            },
-            'D-Seal': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 Properties</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>✅ Biocompatible – calcium hydroxide & CaO enhance healing.</li>
-                                <li>✅ Low solubility – resists dissolution in periapical fluids.</li>
-                                <li>✅ Good adhesion – penetrates dentinal tubules and bonds with gutta-percha.</li>
-                                <li>✅ Alkaline pH – antimicrobial, prevents bacterial regrowth.</li>
-                                <li>✅ Dimensional stability – does not shrink after setting.</li>
-                                <li>✅ Radiopaque – visible under X-ray.</li>
-                                <li>✅ Adequate working & setting time.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 الخصائص</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>✅ متوافق حيوياً - هيدروكسيد الكالسيوم وأكسيد الكالسيوم يعززان الشفاء.</li>
-                                <li>✅ قابلية منخفضة للذوبان - يقاوم الذوبان في السوائل المحيطة بالجذر.</li>
-                                <li>✅ التصاق جيد - يخترق الأنابيب العاجية ويرتبط بالـ Gutta-percha.</li>
-                                <li>✅ درجة حموضة قلوية - مضاد للميكروبات، يمنع نمو البكتيريا.</li>
-                                <li>✅ استقرار الأبعاد - لا ينكمش بعد التصلب.</li>
-                                <li>✅ معتم للأشعة - مرئي تحت الأشعة السينية.</li>
-                                <li>✅ وقت عمل وتصلب كافٍ.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'D-Seal 8g': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 Properties</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>✅ Biocompatible – calcium hydroxide & CaO enhance healing.</li>
-                                <li>✅ Low solubility – resists dissolution in periapical fluids.</li>
-                                <li>✅ Good adhesion – penetrates dentinal tubules and bonds with gutta-percha.</li>
-                                <li>✅ Alkaline pH – antimicrobial, prevents bacterial regrowth.</li>
-                                <li>✅ Dimensional stability – does not shrink after setting.</li>
-                                <li>✅ Radiopaque – visible under X-ray.</li>
-                                <li>✅ Adequate working & setting time.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 الخصائص</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>✅ متوافق حيوياً - هيدروكسيد الكالسيوم وأكسيد الكالسيوم يعززان الشفاء.</li>
-                                <li>✅ قابلية منخفضة للذوبان - يقاوم الذوبان في السوائل المحيطة بالجذر.</li>
-                                <li>✅ التصاق جيد - يخترق الأنابيب العاجية ويرتبط بالـ Gutta-percha.</li>
-                                <li>✅ درجة حموضة قلوية - مضاد للميكروبات، يمنع نمو البكتيريا.</li>
-                                <li>✅ استقرار الأبعاد - لا ينكمش بعد التصلب.</li>
-                                <li>✅ معتم للأشعة - مرئي تحت الأشعة السينية.</li>
-                                <li>✅ وقت عمل وتصلب كافٍ.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'D-Seal 20g': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 Properties</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>✅ Biocompatible – calcium hydroxide & CaO enhance healing.</li>
-                                <li>✅ Low solubility – resists dissolution in periapical fluids.</li>
-                                <li>✅ Good adhesion – penetrates dentinal tubules and bonds with gutta-percha.</li>
-                                <li>✅ Alkaline pH – antimicrobial, prevents bacterial regrowth.</li>
-                                <li>✅ Dimensional stability – does not shrink after setting.</li>
-                                <li>✅ Radiopaque – visible under X-ray.</li>
-                                <li>✅ Adequate working & setting time.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 الخصائص</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>✅ متوافق حيوياً - هيدروكسيد الكالسيوم وأكسيد الكالسيوم يعززان الشفاء.</li>
-                                <li>✅ قابلية منخفضة للذوبان - يقاوم الذوبان في السوائل المحيطة بالجذر.</li>
-                                <li>✅ التصاق جيد - يخترق الأنابيب العاجية ويرتبط بالـ Gutta-percha.</li>
-                                <li>✅ درجة حموضة قلوية - مضاد للميكروبات، يمنع نمو البكتيريا.</li>
-                                <li>✅ استقرار الأبعاد - لا ينكمش بعد التصلب.</li>
-                                <li>✅ معتم للأشعة - مرئي تحت الأشعة السينية.</li>
-                                <li>✅ وقت عمل وتصلب كافٍ.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'Etch': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 What is Dentleen 37% Phosphoric Acid Etch?</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>A dental etching gel manufactured under the Dentleen brand.</li>
-                                <li>Contains 37% phosphoric acid (H₃PO₄) in a thixotropic gel base.</li>
-                                <li>Used in etch-and-rinse adhesive dentistry to condition enamel and dentin before bonding.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو جل الحفر (Etch)؟</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>جل حفر للأسنان من إنتاج Dentleen يحتوي على 37% من حمض الفوسفوريك (H₃PO₄).</li>
-                                <li>يُستخدم لتجهيز مينا الأسنان والعاج قبل وضع المواد اللاصقة لضمان أفضل ارتباط.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'Edta': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 What is Dentleen EDTA Gel?</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>A 17% EDTA (Ethylenediaminetetraacetic Acid) gel manufactured under the Dentleen brand.</li>
-                                <li>Used in endodontics to remove the smear layer, chelate calcium ions, and aid in root canal instrumentation.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو جل الـ EDTA من Dentleen؟</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>جل يحتوي على 17% من حمض الإيثيلين ثنائي أمين رباعي حمض الخليك (EDTA).</li>
-                                <li>يُستخدم في علاج جذور الأسنان لإزالة الطبقة اللزجة (smear layer) وتسهيل عملية تنظيف وتوسيع القناة.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'Porcelain Acid Etch': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 What is Dentleen 9.5% Porcelain Etch?</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>A 9.5% hydrofluoric acid (HF) gel produced under the Dentleen brand.</li>
-                                <li>Used for etching porcelain and ceramic restorations before bonding.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو جل حفر البورسلين؟</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>جل حفر بتركيز 9.5% من حمض الهيدروفلوريك (HF).</li>
-                                <li>يُستخدم لتحضير سطح الترميمات الخزفية والبورسلين قبل عملية اللصق، مما يضمن التصاقًا قوياً.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'HEMOSTATIC LIQUID': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 What is Hemostatic Liquid?</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>A liquid agent used in dentistry to control bleeding during dental procedures.</li>
-                                <li>Helps create a clean, dry field for procedures like bonding, impressions, and restorative work.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو السائل القابض للنزيف؟</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>سائل طبي يُستخدم في طب الأسنان للسيطرة على النزيف.</li>
-                                <li>يساعد على الحصول على منطقة عمل نظيفة وجافة لعمليات مثل اللصق وأخذ الطبعات.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'ROOT HEAL': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 Dentleen Rootheal – Intracanal Medicament</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>An intracanal medicament used to disinfect the root canal between appointments.</li>
-                                <li>Promotes healing of periapical tissues and helps neutralize bacterial toxins.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 Dentleen Rootheal – دواء داخل القناة</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>دواء موضعي داخل القناة يستخدم لتعقيم قناة الجذر بين المواعيد.</li>
-                                <li>يعزز شفاء الأنسجة حول نهاية الجذر ويساعد على معادلة السموم البكتيرية.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'HOLDENT': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 Dentleen Holdent – Denture Adhesive Cream</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>A denture adhesive cream designed to securely hold complete or partial dentures in place.</li>
-                                <li>Prevents movement and slipping, providing confidence and comfort.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 Dentleen Holdent – كريم تثبيت أطقم الأسنان</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>مصمم لتثبيت الأطقم الكاملة أو الجزئية بإحكام.</li>
-                                <li>يمنع الحركة أو الانزلاق، مما يمنح المريض راحة وثقة.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'Caries detector dye': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 What is Caries Detector Dye?</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>A diagnostic aid to distinguish between infected and affected dentin during cavity preparation.</li>
-                                <li>Helps remove only the irreversibly damaged dentin, preserving healthy tooth structure.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو صبغة كاشف التسوس؟</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>أداة تشخيصية للمساعدة في التمييز بين العاج المصاب (الذي يجب إزالته) والعاج المتأثر (الذي يمكن الحفاظ عليه).</li>
-                                <li>يساعد على الحفاظ على أكبر قدر ممكن من بنية السن السليمة.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            'باكدج': {
-                body: `
-                    <div class="space-y-4">
-                        <div dir="ltr" class="text-left">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 What is the Package?</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>The Dentleen package combines a variety of our essential products.</li>
-                                <li>It is an economical option to experience our range of products.</li>
-                                <li>Includes: Etch, Edta, MTA, Resin sealer, and Caries detector.</li>
-                            </ul>
-                        </div>
-                        <div class="pt-4 mt-4 border-t border-gray-600" dir="rtl" class="text-right">
-                            <h4 class="font-bold text-xl text-teal-700">🔹 ما هو الباكدج؟</h4>
-                            <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400">
-                                <li>باكدج Dentleen يجمع مجموعة من منتجاتنا الأساسية في حزمة واحدة.</li>
-                                <li>يُعد خياراً اقتصادياً مثالياً لتجربة منتجاتنا المتنوعة.</li>
-                                <li>يشمل: Etch, Edta, MTA, Resin sealer, و Caires detector.</li>
-                            </ul>
-                        </div>
-                    </div>
-                `
-            },
-            // --- Offer Details ---
-            'Offer 1': {
-                body: `
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-2xl text-red-500" dir="rtl">عرض خاص: D-seal 8 gm + File mani 10</h4>
-                        <p class="mt-2 text-gray-400" dir="rtl">
-                            احصل على سيلر D-seal بوزن 8 جرام بالإضافة إلى حزمة ملفات ماني (File mani 10).
-                        </p>
-                        <h5 class="font-bold text-xl text-teal-700" dir="rtl">المكونات:</h5>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400" dir="rtl">
-                            <li>سيلر D-Seal 8g: لعمليات حشو جذور موثوقة.</li>
-                            <li>File Mani 10: ملفات قناة جذر يدوية عالية الجودة.</li>
-                        </ul>
-                        <p class="text-lg font-bold text-red-400 mt-4" dir="rtl">سعر العرض: 370 ج.م</p>
-                    </div>
-                `
-            },
-            'Offer 2': {
-                body: `
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-2xl text-red-500" dir="rtl">عرض خاص: Caires detector dye 4ml + ever x capsule</h4>
-                        <p class="mt-2 text-gray-400" dir="rtl">
-                            اقتنِ صبغة كاشف التسوس مع كبسولة Ever X لترميمات قوية وفعالة.
-                        </p>
-                        <h5 class="font-bold text-xl text-teal-700" dir="rtl">المكونات:</h5>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400" dir="rtl">
-                            <li>Caries detector dye 4ml: للمساعدة في التشخيص وحفظ الأنسجة السليمة.</li>
-                            <li>Ever X Capsule: كبسولة ترميم ذات أساس راتنجي مقوى بالألياف.</li>
-                        </ul>
-                        <p class="text-lg font-bold text-red-400 mt-4" dir="rtl">سعر العرض: 320 ج.م</p>
-                    </div>
-                `
-            },
-            'Offer 3': {
-                body: `
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-2xl text-red-500" dir="rtl">عرض خاص: Caires detector dye 4ml + etch 5gm + Bond bisco 0.5ml</h4>
-                        <p class="mt-2 text-gray-400" dir="rtl">
-                            باقة متكاملة لأساسيات اللصق واكتشاف التسوس.
-                        </p>
-                        <h5 class="font-bold text-xl text-teal-700" dir="rtl">المكونات:</h5>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400" dir="rtl">
-                            <li>Caries detector dye 4ml.</li>
-                            <li>Etch 5gm (جل الحفر).</li>
-                            <li>Bond bisco 0.5ml (لاصق عالي الجودة).</li>
-                        </ul>
-                        <p class="text-lg font-bold text-red-400 mt-4" dir="rtl">سعر العرض: 620 ج.م</p>
-                    </div>
-                `
-            },
-            'Offer 4': {
-                body: `
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-2xl text-red-500" dir="rtl">عرض خاص: D-seal 20 gm + syringe tokuyma</h4>
-                        <p class="mt-2 text-gray-400" dir="rtl">
-                            عرض مميز للعيادات التي تستخدم كميات كبيرة من السيلر، مع محقن Tokuyama لسهولة الاستخدام.
-                        </p>
-                        <h5 class="font-bold text-xl text-teal-700" dir="rtl">المكونات:</h5>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400" dir="rtl">
-                            <li>سيلر D-seal 20 gm (حجم كبير).</li>
-                            <li>Syringe Tokuyma (محقن من توكوياما).</li>
-                        </ul>
-                        <p class="text-lg font-bold text-red-400 mt-4" dir="rtl">سعر العرض: 1300 ج.م</p>
-                    </div>
-                `
-            },
-            'Offer 5': {
-                body: `
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-2xl text-red-500" dir="rtl">عرض خاص: D-seal 20 gm + gutta percha 25 taper 4</h4>
-                        <p class="mt-2 text-gray-400" dir="rtl">
-                            باقة شاملة لسيلر الحجم الكبير مع أقماع Gutta-percha المناسبة.
-                        </p>
-                        <h5 class="font-bold text-xl text-teal-700" dir="rtl">المكونات:</h5>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400" dir="rtl">
-                            <li>سيلر D-seal 20 gm (حجم كبير).</li>
-                            <li>Gutta percha 25 taper 4 (أقماع كتا برشا).</li>
-                        </ul>
-                        <p class="text-lg font-bold text-red-400 mt-4" dir="rtl">سعر العرض: 550 ج.م</p>
-                    </div>
-                `
-            },
-            'Offer 6': {
-                body: `
-                    <div class="space-y-4">
-                        <h4 class="font-bold text-2xl text-red-500" dir="rtl">عرض خاص: Ever x capsule + D-seal 8 gm</h4>
-                        <p class="mt-2 text-gray-400" dir="rtl">
-                            جمع بين قوة ترميم Ever X وكفاءة سيلر D-Seal.
-                        </p>
-                        <h5 class="font-bold text-xl text-teal-700" dir="rtl">المكونات:</h5>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-400" dir="rtl">
-                            <li>Ever X Capsule: لترميمات تدوم طويلاً.</li>
-                            <li>سيلر D-seal 8 gm.</li>
-                        </ul>
-                        <p class="text-lg font-bold text-red-400 mt-4" dir="rtl">سعر العرض: 400 ج.م</p>
-                    </div>
-                `
-            }
-        };
-
-        // قائمة المنتجات المختارة
-        let selectedProducts = [];
-
-        // دالة لحساب الإجمالي
-        function calculateTotal() {
-            let total = 0;
-            selectedProducts.forEach(product => {
-                if (typeof product.price === 'number') {
-                    total += product.price * product.quantity;
-                }
-            });
-            return total;
-        }
-
-        // دالة لعرض المنتجات في نموذج الطلب
-        function renderSelectedProducts() {
-            productsContainer.innerHTML = '';
-            if (selectedProducts.length === 0) {
-                emptyCartMessage.style.display = 'block';
-                productsContainer.appendChild(emptyCartMessage);
-                totalPriceContainer.classList.add('hidden');
-            } else {
-                emptyCartMessage.style.display = 'none';
-                totalPriceContainer.classList.remove('hidden');
-                selectedProducts.forEach(product => {
-                    const productItem = document.createElement('div');
-                    productItem.className = 'flex items-center justify-between bg-gray-700 p-4 rounded-xl shadow-sm border border-gray-600';
-                    const priceText = typeof product.price === 'number' ? product.price + ' ج.م' : 'غير محدد';
-                    
-                    productItem.innerHTML = `
-                        <div class="flex-grow font-medium">${product.name}</div>
-                        <div class="text-sm text-gray-400 ml-4">${priceText}</div>
-                        <div class="flex items-center gap-2">
-                            <input type="number" value="${product.quantity}" min="1" data-product-name="${product.name}" class="w-16 text-center border border-gray-600 rounded-lg focus:ring-teal-500 focus:border-teal-500 bg-gray-800 text-white">
-                            <button type="button" class="remove-product-btn text-red-400 hover:text-red-500 transition-colors" data-product-name="${product.name}">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    `;
-                    productsContainer.appendChild(productItem);
-                });
-
-                // إضافة مستمعي الأحداث لزر الإزالة وتعديل الكمية
-                productsContainer.querySelectorAll('.remove-product-btn').forEach(button => {
-                    button.addEventListener('click', (event) => {
-                        const productName = event.target.dataset.productName || event.target.closest('button').dataset.productName;
-                        selectedProducts = selectedProducts.filter(p => p.name !== productName);
-                        renderSelectedProducts();
-                    });
-                });
-
-                productsContainer.querySelectorAll('input[type="number"]').forEach(input => {
-                    input.addEventListener('input', (event) => {
-                        const productName = event.target.dataset.productName;
-                        const newQuantity = parseInt(event.target.value, 10);
-                        const product = selectedProducts.find(p => p.name === productName);
-                        if (product && newQuantity > 0) {
-                            product.quantity = newQuantity;
-                            // تحديث الإجمالي بعد تغيير الكمية
-                            totalPriceSpan.textContent = calculateTotal() + ' ج.م';
-                        } else if (newQuantity <= 0) {
-                            // إذا كانت الكمية صفر أو أقل، يتم إزالة المنتج
-                            selectedProducts = selectedProducts.filter(p => p.name !== productName);
-                            renderSelectedProducts();
-                        }
-                    });
-                });
-            }
-            totalPriceSpan.textContent = calculateTotal() + ' ج.م';
-        }
-
-        // دالة لإضافة منتج إلى سلة التسوق
-        function addProductToCart(productKey) {
-            const product = allProducts[productKey];
-            if (!product) return;
-
-            const existingProduct = selectedProducts.find(p => p.name === product.name);
-
-            if (existingProduct) {
-                existingProduct.quantity += 1;
-            } else {
-                selectedProducts.push({ name: product.name, quantity: 1, price: product.price });
-            }
-            renderSelectedProducts();
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // إضافة حركة السكرول السلسة للروابط التي لها الفئة .smooth-scroll-link
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add event listeners for "View Details" buttons
-        document.querySelectorAll('.view-details-btn').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const productKey = event.target.dataset.product;
-                const details = productDetails[productKey];
-                
-                // Determine image URL based on whether it's an offer or a standard product
-                let imageUrl;
-                if (productKey.startsWith('Offer')) {
-                    imageUrl = productImages['Offer_Placeholder'];
-                } else {
-                    imageUrl = productImages[productKey];
-                }
-
-                if (details) {
-                    if (imageUrl) {
-                        productDetailsImage.src = imageUrl;
-                        productDetailsImage.classList.remove('hidden');
-                        productDetailsImage.classList.add('small-image');
-                    } else {
-                        productDetailsImage.classList.add('hidden');
-                    }
-                    
-                    productDetailsBody.innerHTML = details.body;
-                    
-                    productDetailsModal.classList.add('is-open');
-
-                    // Reset scroll position
-                    productDetailsBody.scrollTop = 0;
-                }
-            });
-        });
-        
-        // Close product details modal
-        closeProductDetailsModalBtn.addEventListener('click', () => {
-            productDetailsModal.classList.remove('is-open');
-        });
-        
-        // Close modal when clicking outside the content
-        productDetailsModal.addEventListener('click', (event) => {
-            if (event.target === productDetailsModal) {
-                productDetailsModal.classList.remove('is-open');
-            }
-        });
-
-        // دالة لملء القائمة المنسدلة بالمنتجات
-        function populateProductDropdown() {
-            productListUL.innerHTML = '';
-            // Get all product keys from the allProducts object
-            const productKeys = Object.keys(allProducts);
-            productKeys.forEach(key => {
-                const li = document.createElement('li');
-                li.className = 'px-4 py-2 text-gray-200 hover:bg-gray-600 cursor-pointer transition-colors';
-                li.textContent = allProducts[key].name;
-                li.dataset.product = key;
-                li.addEventListener('click', (event) => {
-                    addProductToCart(event.target.dataset.product);
-                    productsListDropdown.classList.add('hidden');
-                    toggleIcon.classList.remove('rotate-180');
-                });
-                productListUL.appendChild(li);
-            });
-        }
-        populateProductDropdown();
-
-        // إضافة مستمعي الأحداث لجميع أزرار "اطلب الآن"
-        const productLinks = document.querySelectorAll('.product-link');
-        productLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                const productKey = event.target.dataset.product;
-                addProductToCart(productKey);
-            });
-        });
-
-        // التعامل مع القائمة المنسدلة
-        toggleListBtn.addEventListener('click', () => {
-            productsListDropdown.classList.toggle('hidden');
-            toggleIcon.classList.toggle('rotate-180');
-        });
-
-        // إغلاق القائمة المنسدلة عند النقر خارجها
-        document.addEventListener('click', (event) => {
-            if (!toggleListBtn.contains(event.target) && !productsListDropdown.contains(event.target)) {
-                productsListDropdown.classList.add('hidden');
-                toggleIcon.classList.remove('rotate-180');
-            }
-        });
-
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // منع إرسال النموذج الافتراضي
-            if (selectedProducts.length === 0) {
-                const noProductMessage = document.createElement('div');
-                noProductMessage.className = 'bg-red-900 text-red-300 px-4 py-3 rounded relative mt-4 border border-red-700';
-                noProductMessage.textContent = 'الرجاء اختيار منتج واحد على الأقل قبل الإرسال.';
-                form.insertBefore(noProductMessage, form.lastElementChild);
-                setTimeout(() => noProductMessage.remove(), 3000);
-                return;
-            }
-
-            // تحديث محتوى نافذة التأكيد
-            const orderSummaryDiv = document.getElementById('order-summary');
-            let summaryHTML = '<ul>';
-            selectedProducts.forEach(product => {
-                const priceText = typeof product.price === 'number' ? product.price + ' ج.م' : 'غير محدد';
-                const itemTotal = typeof product.price === 'number' ? (product.price * product.quantity) + ' ج.م' : 'غير محدد';
-                summaryHTML += `<li><i class="fas fa-check-circle text-green-500 ml-2"></i><strong>${product.name}</strong> - الكمية: ${product.quantity} - السعر: ${priceText} - الإجمالي: ${itemTotal}</li>`;
-            });
-            summaryHTML += `</ul><div class="mt-4 font-bold text-lg">الإجمالي الكلي: ${calculateTotal()} ج.م</div>`;
-            orderSummaryDiv.innerHTML = summaryHTML;
-            confirmationModal.classList.add('is-open');
-        });
-
-        confirmYesBtn.addEventListener('click', function() {
-            confirmationModal.classList.remove('is-open');
-
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const address = document.getElementById('address').value;
-            
-            // Prepare the order message for WhatsApp
-            let message = `*طلب جديد من موقع Dentleen*\n\n`;
-            message += `*الاسم:* ${name}\n`;
-            message += `*رقم الهاتف:* ${phone}\n`;
-            message += `*العنوان:* ${address}\n\n`;
-            message += `*المنتجات المطلوبة:*\n`;
-            selectedProducts.forEach(product => {
-                const priceText = typeof product.price === 'number' ? product.price + ' ج.م' : 'غير محدد';
-                const itemTotal = typeof product.price === 'number' ? (product.price * product.quantity) + ' ج.م' : 'غير محدد';
-                message += `- ${product.name} (الكمية: ${product.quantity}, السعر: ${priceText}, الإجمالي: ${itemTotal})\n`;
-            });
-            message += `\n*الإجمالي الكلي:* ${calculateTotal()} ج.م`;
-
-            // Encode the message for the URL
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            // Open the WhatsApp link in a new tab for desktop and mobile compatibility
-            window.open(whatsappUrl, '_blank');
-            
-            // Show a success message to the user
-            successModal.classList.add('is-open');
-            form.reset();
-            selectedProducts = [];
-            renderSelectedProducts();
-        });
-
-        confirmNoBtn.addEventListener('click', () => {
-            confirmationModal.classList.remove('is-open');
-        });
-
-        closeSuccessModalBtn.addEventListener('click', () => {
-            successModal.classList.remove('is-open');
-        });
-
-        // Intersection Observer for fade-in effect
-        document.addEventListener('DOMContentLoaded', () => {
-            // Include both product and offer cards
-            const animatedCards = document.querySelectorAll('.product-card, .testimonial-card');
-
-            const observerOptions = {
-                root: null, // viewport
-                rootMargin: '0px',
-                threshold: 0.1 // Trigger when 10% of the item is visible
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Optional: stop observing once animated
-                    }
-                });
-            }, observerOptions);
-
-            animatedCards.forEach(card => {
-                observer.observe(card);
-            });
-        });
-
-        // Scroll-to-top button logic
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.add('show');
-            } else {
-                scrollToTopBtn.classList.remove('show');
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Testimonial Image Viewer Logic
-        document.querySelectorAll('.testimonial-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const imgSrc = card.querySelector('img').src;
-                modalImage.src = imgSrc;
-                imageViewerModal.classList.add('is-open');
-            });
-        });
-
-        function closeImageViewer() {
-            imageViewerModal.classList.remove('is-open');
-        }
-
-        closeImageViewerBtn.addEventListener('click', closeImageViewer);
-        imageViewerModal.addEventListener('click', (event) => {
-            if (event.target === imageViewerModal) {
-                closeImageViewer();
-            }
-        });
-        
-        // Mobile Menu Logic
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if(window.innerWidth < 768) { // Tailwind's 'md' breakpoint
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-    </script>
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js" defer></script>
 </body>
 </html>
-
