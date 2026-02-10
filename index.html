@@ -1,15 +1,14 @@
-<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DENTLEEN | دنت لين - مستلزمات أسنان وتجهيز عيادات في مصر</title>
-   
+  
     <!-- SEO -->
     <meta name="description" content="دنت لين (Dentleen) - المتجر الأول لمستلزمات طب الأسنان في مصر. تسوق أونلاين: حشو كومبوزيت، Caries Detector، أدوات Endo.">
     <meta name="keywords" content="مستلزمات أسنان, Dentleen, Caries Detector Dye Gel, حشو عصب, أدوات أسنان مصر, D-Seal">
     <meta name="author" content="Dentleen">
-   
+  
     <!-- Scripts & Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -19,14 +18,14 @@
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Tajawal', sans-serif; background-color: #1f1f1f; color: #e0e0e0; overflow-x: hidden; }
-       
+      
         .product-card { background-color: #2a2a2a; border: 1px solid #374151; transition: all 0.3s ease; }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(45, 212, 191, 0.2); border-color: #2dd4bf; }
-       
+      
         /* Modal Transitions */
         .modal-overlay { transition: opacity 0.3s ease-in-out, visibility 0.3s; opacity: 0; visibility: hidden; pointer-events: none; }
         .modal-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; }
-       
+      
         .modal-content { transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
         .modal-overlay.open .modal-content { transform: scale(1); }
         .full-page-view {
@@ -55,7 +54,9 @@
         .feedback-bubble { background: #2a2a2a; border-radius: 1rem; padding: 1rem; border: 1px solid #374151; margin-bottom: 1rem; position: relative; }
         .star-rating i { cursor: pointer; transition: color 0.2s; }
         .star-rating i.active { color: #facc15; }
-       
+        .reply-bubble { background: #374151; border-radius: 1rem; padding: 1rem; margin-top: 1rem; position: relative; }
+        .reply-bubble:before { content: ''; position: absolute; top: -10px; right: 20px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #374151; }
+      
         /* Loading Overlay */
         #loading-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999;
@@ -97,7 +98,7 @@
     <!-- Header -->
     <header class="bg-gray-900/95 backdrop-blur-md shadow-lg p-4 sticky top-0 z-50 border-b border-gray-700">
         <div class="container mx-auto flex justify-between items-center relative">
-           
+          
             <div class="flex items-center gap-4">
                 <img src="logo.png" alt="Dentleen" class="h-10 w-auto cursor-pointer hover:opacity-80 transition" onclick="window.showMainView()">
                 <div id="user-status-area" class="hidden md:flex items-center gap-3"></div>
@@ -107,6 +108,8 @@
                 <a href="#offers" onclick="window.showMainView()" class="hover:text-red-400 transition">العروض</a>
                 <a href="#contact" onclick="window.showMainView()" class="hover:text-teal-400 transition">سلة المشتريات</a>
                 <a href="#feedback-section" onclick="window.showMainView()" class="hover:text-blue-400 transition">آراء العملاء</a>
+                <a href="#contact-us" onclick="window.showMainView()" class="hover:text-green-400 transition">تواصل معنا</a>
+                <button id="profile-link-btn" onclick="window.showProfile()" class="hidden text-blue-500 font-bold hover:text-blue-400 transition"><i class="fas fa-user"></i> ملفي</button>
                 <button id="admin-link-btn" onclick="window.showAdminDashboard()" class="hidden text-yellow-500 font-bold hover:text-yellow-400 transition"><i class="fas fa-cogs"></i> لوحة التحكم</button>
             </nav>
             <div class="flex items-center gap-4">
@@ -123,18 +126,20 @@
                 <button class="md:hidden text-gray-300 text-2xl p-2" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-       
+      
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden bg-gray-800 p-4 absolute top-full w-full left-0 border-t border-gray-700 text-center space-y-4 shadow-xl z-40">
              <div id="mobile-user-status" class="flex justify-center mb-2"></div>
+             <button id="mobile-profile-btn" onclick="window.showProfile()" class="hidden w-full text-blue-500 font-bold py-2 border border-blue-500 rounded-lg">ملفي</button>
              <button id="mobile-admin-btn" onclick="window.showAdminDashboard()" class="hidden w-full text-yellow-500 font-bold py-2 border border-yellow-500 rounded-lg">لوحة التحكم</button>
              <button id="mobile-login-btn" onclick="window.toggleAuthModal()" class="w-full bg-teal-600 text-white py-2 rounded-lg font-bold">تسجيل الدخول</button>
              <button id="mobile-logout-btn" onclick="window.logout()" class="hidden w-full bg-red-600 text-white py-2 rounded-lg font-bold">تسجيل الخروج</button>
-            
+           
              <a href="#products" onclick="window.showMainView();window.toggleMobileMenu()" class="block py-2 text-teal-400 border-b border-gray-700">المنتجات</a>
              <a href="#offers" onclick="window.showMainView();window.toggleMobileMenu()" class="block py-2 text-red-400 border-b border-gray-700">العروض</a>
              <a href="#contact" onclick="window.showMainView();window.toggleMobileMenu()" class="block py-2">سلة المشتريات</a>
              <a href="#feedback-section" onclick="window.showMainView();window.toggleMobileMenu()" class="block py-2 text-blue-400">آراء العملاء</a>
+             <a href="#contact-us" onclick="window.showMainView();window.toggleMobileMenu()" class="block py-2 text-green-400">تواصل معنا</a>
         </div>
     </header>
     <!-- ADMIN DASHBOARD -->
@@ -214,9 +219,45 @@
             </div>
         </div>
     </div>
+    <!-- PROFILE VIEW -->
+    <div id="profile-view" class="hidden min-h-screen bg-gray-900 p-6">
+        <div class="container mx-auto max-w-4xl">
+            <div class="flex justify-between items-center mb-8 bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-700">
+                <div>
+                    <h1 class="text-3xl font-bold text-blue-500"><i class="fas fa-user ml-3"></i> ملفك الشخصي</h1>
+                    <p class="text-gray-400 mt-2">معلوماتك وسجل طلباتك</p>
+                </div>
+                <button onclick="window.showMainView()" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-lg font-bold">العودة</button>
+            </div>
+            <div class="bg-gray-800 rounded-2xl shadow-xl p-6 mb-8 border border-gray-700">
+                <h2 class="text-2xl font-bold text-white mb-4">بياناتك</h2>
+                <div class="space-y-3 text-lg">
+                    <div>
+                        <span class="font-bold text-teal-400">الاسم:</span>
+                        <input type="text" id="profile-edit-name" class="bg-gray-700 border border-gray-600 rounded px-3 py-1 text-white" value="--">
+                    </div>
+                    <div>
+                        <span class="font-bold text-teal-400">العنوان:</span>
+                        <input type="text" id="profile-edit-address" class="bg-gray-700 border border-gray-600 rounded px-3 py-1 text-white" value="--">
+                    </div>
+                    <p><span class="font-bold text-teal-400">الهاتف:</span> <span id="profile-phone">--</span></p>
+                    <p><span class="font-bold text-yellow-400">النقاط:</span> <span id="profile-points">--</span></p>
+                    <button onclick="window.saveProfileChanges()" class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-bold mt-4">حفظ التعديلات</button>
+                </div>
+            </div>
+            <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-700">
+                <div class="p-6 border-b border-gray-700">
+                    <h2 class="text-xl font-bold text-white">سجل الطلبات</h2>
+                </div>
+                <div id="profile-orders" class="space-y-3 p-6 max-h-[50vh] overflow-y-auto custom-scrollbar">
+                    <p class="text-gray-400 text-center">لا توجد طلبات سابقة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- MAIN VIEW -->
     <div id="main-view" class="transition-opacity duration-300">
-       
+      
         <!-- Hero -->
         <section class="relative bg-gray-800 py-16 md:py-24 overflow-hidden">
             <div class="absolute inset-0 opacity-10 pointer-events-none">
@@ -224,6 +265,7 @@
             </div>
             <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-10 relative z-10">
                 <div class="md:w-1/2 text-center md:text-right">
+                    <p id="welcome-msg" class="text-2xl text-yellow-500 font-bold mb-4 hidden"></p>
                     <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                         شريكك الموثوق <br> <span class="text-teal-400">لتجهيز عيادات الأسنان</span>
                     </h1>
@@ -235,7 +277,7 @@
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                         <a href="#products" class="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-full font-bold shadow-lg transition transform hover:scale-105">تصفح المنتجات</a>
                     </div>
-                   
+                  
                     <!-- Promo Points Badge -->
                     <p class="mt-6 text-sm text-yellow-400 font-semibold bg-gray-700/50 inline-block px-4 py-2 rounded-full border border-yellow-500/30 shadow-sm animate-pulse">
                         <i class="fas fa-gift text-yellow-500 ml-2"></i> كل 50 نقطة تمنحك خصم 25 جنيه!
@@ -266,7 +308,7 @@
                         <h2 class="text-3xl font-bold text-teal-400"><i class="fas fa-shopping-cart ml-2"></i>السلة</h2>
                         <div id="auth-inline-container"></div>
                     </div>
-                   
+                  
                     <div class="mb-6">
                         <label class="block text-sm text-gray-400 mb-2">إضافة منتج للسلة سريعاً:</label>
                         <div class="relative">
@@ -306,7 +348,7 @@
                             </span>
                         </div>
                     </div>
-                   
+                  
                     <div class="bg-blue-900/30 p-3 rounded-lg mt-4 mb-8 text-center border border-blue-900/50">
                         <p class="text-blue-200 text-sm">نقاط جديدة مستحقة من هذا الطلب: <span id="potential-points" class="font-bold text-white text-lg">0</span> (تضاف يدوياً)</p>
                     </div>
@@ -327,14 +369,14 @@
         <section id="feedback-section" class="py-16 bg-gray-900 border-t border-gray-700">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold text-blue-400 text-center mb-12">آراء العملاء</h2>
-               
+              
                 <div class="grid md:grid-cols-2 gap-12">
                     <!-- Feedback Form -->
                     <div class="bg-gray-800 p-8 rounded-2xl border border-gray-600 shadow-xl">
                         <h3 class="text-xl font-bold text-white mb-6">شاركنا رأيك</h3>
                         <div class="space-y-4">
                             <input type="text" id="feedback-name" placeholder="الاسم (مطلوب)" class="w-full bg-gray-700 border border-gray-500 rounded-xl px-4 py-3 text-white focus:border-blue-500 outline-none">
-                           
+                          
                             <!-- Rating Stars -->
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-gray-400 text-sm">تقييمك:</span>
@@ -346,14 +388,14 @@
                                     <i class="fas fa-star text-gray-600 hover:text-yellow-400 transition" onclick="window.setRating(5)"></i>
                                 </div>
                             </div>
-                           
+                          
                             <textarea id="feedback-msg" placeholder="اكتب تعليقك هنا..." rows="3" class="w-full bg-gray-700 border border-gray-500 rounded-xl px-4 py-3 text-white focus:border-blue-500 outline-none"></textarea>
                             <button onclick="window.sendFeedback()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition">
                                 <i class="fas fa-paper-plane ml-2"></i> إرسال التعليق
                             </button>
                         </div>
                     </div>
-                   
+                  
                     <!-- Feedback List -->
                     <div>
                         <h3 class="text-xl font-bold text-white mb-6">أحدث التعليقات</h3>
@@ -361,6 +403,16 @@
                             <p class="text-gray-500 text-center">لا توجد تعليقات بعد. كن أول من يشارك!</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Us Section -->
+        <section id="contact-us" class="py-16 bg-gray-800 border-t border-gray-700">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-green-400 mb-8">تواصل معنا</h2>
+                <div class="flex justify-center gap-8">
+                    <a href="https://www.facebook.com/profile.php?id=61563008606045&mibextid=rS40aB7S9Ucbxw6v" target="_blank" class="text-blue-600 hover:text-blue-400 text-5xl transition"><i class="fab fa-facebook"></i></a>
+                    <a href="https://wa.me/201508259538" target="_blank" class="text-green-600 hover:text-green-400 text-5xl transition"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </section>
@@ -438,7 +490,7 @@
     <!-- App Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-        import { getFirestore, collection, doc, getDoc, setDoc, updateDoc, onSnapshot, deleteDoc, addDoc, query, orderBy, getDocs, increment } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+        import { getFirestore, collection, doc, getDoc, setDoc, updateDoc, onSnapshot, deleteDoc, addDoc, query, orderBy, getDocs, increment, arrayUnion } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
         // Configuration based on environment
         let firebaseConfig;
@@ -467,7 +519,7 @@
         const STATS_COLLECTION = `artifacts/${appId}/public/data/stats`;
         const STATS_DAILY_COLLECTION = `artifacts/${appId}/public/data/stats_daily`;
         const FEEDBACK_COLLECTION = `artifacts/${appId}/public/data/feedback`;
-       
+      
         // Initial Auth Logic
         const initAuth = async () => {
              if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
@@ -509,6 +561,7 @@
         let adminUnsubscribe = null;
         let allUsersData = [];
         let selectedRating = 5;
+        let profileUnsubscribe = null;
         // Auth Listener
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -543,10 +596,12 @@
         window.showMainView = () => {
             document.getElementById('product-full-view').classList.remove('active');
             document.getElementById('admin-view').classList.add('hidden');
+            document.getElementById('profile-view').classList.add('hidden');
             document.getElementById('main-view').classList.remove('hidden');
             if(adminUnsubscribe) { adminUnsubscribe(); adminUnsubscribe = null; }
+            if(profileUnsubscribe) { profileUnsubscribe(); profileUnsubscribe = null; }
         };
-       
+      
         window.openProductPage = (id) => {
             const product = PRODUCTS_DATA.find(p => p.id === id);
             if (!product) return;
@@ -559,7 +614,7 @@
             document.getElementById('product-full-view').classList.add('active');
         };
         window.toggleMobileMenu = () => document.getElementById('mobile-menu').classList.toggle('hidden');
-       
+      
         // Modal Handlers
         window.toggleAuthModal = () => {
             const el = document.getElementById('auth-modal');
@@ -570,7 +625,7 @@
         window.closeAuthModal = () => { document.getElementById('auth-modal').classList.remove('open'); };
         window.updateFpQuantity = (n) => { const el = document.getElementById('fp-quantity'); let v = parseInt(el.value)+n; if(v<1)v=1; el.value=v; };
         window.scrollToCart = () => { window.showMainView(); document.getElementById('contact').scrollIntoView(); };
-       
+      
         window.showLoading = (show) => {
             const el = document.getElementById('loading-overlay');
             if(show) { el.style.display = 'flex'; setTimeout(() => el.style.display = 'none', 10000); }
@@ -628,7 +683,7 @@
             const container = document.getElementById('cart-items');
             container.innerHTML = '';
             let subtotal = 0, count = 0;
-           
+          
             if(cart.length === 0) {
                 container.innerHTML = '<p class="text-center text-gray-500 py-4">السلة فارغة</p>';
                 isRedeeming = false;
@@ -648,12 +703,12 @@
                         </div>`;
                 });
             }
-           
+          
             const badge = document.getElementById('header-cart-count');
             if(count>0) { badge.textContent = count; badge.classList.remove('hidden'); } else badge.classList.add('hidden');
-           
+          
             document.getElementById('cart-subtotal').textContent = subtotal + ' ج.م';
-           
+          
             const totalEl = document.getElementById('cart-total');
             const discountRow = document.getElementById('discount-row');
             const cartDiscountEl = document.getElementById('cart-discount');
@@ -672,7 +727,7 @@
                 cartDiscountEl.textContent = discount;
                 const finalTotal = subtotal - discount;
                 totalEl.innerHTML = `<span class="line-through text-gray-500 text-lg ml-2">${subtotal} ج.م</span> <span class="text-green-400">${finalTotal} ج.م</span>`;
-               
+              
                 if(redeemBtn) {
                     redeemBtn.textContent = "إلغاء الخصم";
                     redeemBtn.classList.remove('bg-yellow-600');
@@ -686,7 +741,7 @@
             } else {
                 discountRow.classList.add('hidden');
                 totalEl.textContent = subtotal + ' ج.م';
-               
+              
                 if(redeemBtn) {
                     redeemBtn.classList.remove('bg-red-600');
                     redeemBtn.classList.add('bg-yellow-600');
@@ -702,15 +757,16 @@
         }
         window.handleAuthSubmit = async (e) => {
             e.preventDefault();
-            const name = document.getElementById('auth-name').value.trim();
+            let name = document.getElementById('auth-name').value.trim();
             const phone = document.getElementById('auth-phone').value.trim();
             const address = document.getElementById('auth-address').value.trim();
             if(phone.length !== 11) { window.showCustomAlert('خطأ', 'رقم الهاتف يجب أن يكون 11 رقم'); return; }
             if(!name) { window.showCustomAlert('خطأ', 'الاسم مطلوب'); return; }
             if(!address) { window.showCustomAlert('خطأ', 'العنوان مطلوب'); return; }
+            // Removed adding "د." 
             // 1. Close Modal Immediately
             window.closeAuthModal();
-           
+          
             // 2. Show Loading
             window.showLoading(true);
             if(phone === ADMIN_PHONE) {
@@ -727,18 +783,25 @@
                 const userRef = doc(db, USERS_COLLECTION, phone);
                 const snap = await getDoc(userRef);
                 if(snap.exists()) {
-                    currentUser = snap.data();
+                    const existingData = snap.data();
+                    if (existingData.name !== name) {
+                        window.showCustomAlert('خطأ', 'الاسم غير مطابق. يجب استخدام نفس الاسم المسجل.');
+                        window.showLoading(false);
+                        return;
+                    }
+                    currentUser = existingData;
                     // Update address if changed
                     if (currentUser.address !== address) {
                         await updateDoc(userRef, { address: address });
                         currentUser.address = address;
                     }
-                    window.showCustomAlert('مرحباً', `أهلاً بك مجدداً ${currentUser.name}`);
+                    window.showCustomAlert('مرحباً', `اهلا د. ${currentUser.name}`);
                 } else {
                     const newUser = { name, phone, address, points: 50, role: 'user', joined: new Date().toLocaleDateString('ar-EG') };
                     await setDoc(userRef, newUser);
                     currentUser = newUser;
                     window.showCustomAlert('تم التسجيل', 'تم إنشاء حسابك بنجاح! حصلت على 50 نقطة.');
+                    window.showCustomAlert('مرحباً', `اهلا د. ${newUser.name}`);
                 }
                 localStorage.setItem('dentleen_user_phone', phone);
                 setupUserListener(phone);
@@ -759,7 +822,7 @@
         };
         window.initiateCheckout = () => {
             if(cart.length===0) return window.showCustomAlert('تنبيه', 'السلة فارغة');
-           
+          
             const name = document.getElementById('checkout-name').value.trim();
             const phone = document.getElementById('checkout-phone').value.trim();
             const address = document.getElementById('checkout-address').value.trim();
@@ -783,14 +846,14 @@
             const totalEl = document.getElementById('confirm-total-price');
             if(discount > 0) { totalEl.innerHTML = `<span class="line-through text-gray-500 text-sm ml-2">${subtotal}</span> ${total} ج.م`; }
             else { totalEl.textContent = total + " ج.م"; }
-           
+          
             document.getElementById('confirmation-modal').classList.add('open');
         };
         window.closeConfirmModal = () => { document.getElementById('confirmation-modal').classList.remove('open'); };
         window.confirmOrder = async () => {
             window.closeConfirmModal();
             window.showLoading(true);
-           
+          
             const name = document.getElementById('checkout-name').value;
             const phone = document.getElementById('checkout-phone').value;
             const address = document.getElementById('checkout-address').value;
@@ -803,7 +866,7 @@
             const total = subtotal - discount;
             const pointsUsed = discount * 2;
             const earnedPoints = Math.floor(subtotal * 0.5);
-           
+          
             // IMPROVED FORMAT FOR WHATSAPP
             let msg = `*طلب جديد من الموقع* 🦷\n`;
             msg += `━━━━━━━━━━━━\n`;
@@ -819,21 +882,21 @@
             msg += `━━━━━━━━━━━━\n`;
             msg += `*💰 الحساب*\n`;
             msg += `المجموع: ${subtotal} ج.م\n`;
-           
+          
             if(discount > 0) {
                 msg += `خصم نقاط: -${discount} ج.م\n`;
             }
-           
+          
             msg += `*الإجمالي النهائي: ${total} ج.م*\n`;
             msg += `━━━━━━━━━━━━\n`;
             msg += `*⭐ نقاط الولاء*\n`;
             msg += `مستحقة: ${earnedPoints} نقطة\n`;
-           
+          
             if (currentUser && currentUser.role !== 'admin') {
                 let newPointsBalance = currentUser.points - pointsUsed;
                 msg += `الرصيد: ${currentUser.points} ➡️ ${newPointsBalance}\n`;
             }
-           
+          
           const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 window.location.href = whatsappURL;
             if(currentUser && db && currentUser.role !== 'admin') {
@@ -842,7 +905,7 @@ window.location.href = whatsappURL;
                     const updateData = {};
                     if(pointsUsed > 0) updateData.points = currentUser.points - pointsUsed;
                     if(currentUser.address !== address) updateData.address = address;
-                   
+                  
                     if(Object.keys(updateData).length > 0) {
                         await updateDoc(doc(db, USERS_COLLECTION, currentUser.phone), updateData);
                         if(updateData.address) currentUser.address = address;
@@ -869,6 +932,7 @@ window.location.href = whatsappURL;
                 currentUser = null;
                 isRedeeming = false;
                 if(adminUnsubscribe) { adminUnsubscribe(); adminUnsubscribe = null; }
+                if(profileUnsubscribe) { profileUnsubscribe(); profileUnsubscribe = null; }
                 const cName = document.getElementById('checkout-name');
                 const cPhone = document.getElementById('checkout-phone');
                 const cAddr = document.getElementById('checkout-address');
@@ -877,25 +941,26 @@ window.location.href = whatsappURL;
                 if(cAddr) cAddr.value = '';
                 document.getElementById('mobile-menu').classList.add('hidden');
                 document.getElementById('admin-view').classList.add('hidden');
+                document.getElementById('profile-view').classList.add('hidden');
                 document.getElementById('main-view').classList.remove('hidden');
                 document.getElementById('auth-modal').classList.remove('open');
-               
+              
                 // IMPORTANT: Reset UI and Re-setup listener as guest
                 updateUserUI();
                 updateCartUI();
                 setupFeedbackListener(); // Re-run as guest
-               
+              
                 window.showCustomAlert('تم الخروج', 'تم تسجيل الخروج بنجاح');
                 window.scrollTo(0,0);
             }
         };
         // --- TRACKING & FEEDBACK ---
-       
+      
         async function trackVisitor() {
             if(!db) return;
             const VISITOR_KEY = 'dentleen_visited_ever';
             const DAILY_KEY = 'dentleen_visited_' + new Date().toISOString().split('T')[0];
-           
+          
             // 1. Total Visitors (Unique per device/browser)
             if (!localStorage.getItem(VISITOR_KEY)) {
                 try {
@@ -923,7 +988,7 @@ window.location.href = whatsappURL;
                     localStorage.setItem(DAILY_KEY, 'true');
                 } catch (e) { console.error("Daily Tracking Error:", e); }
             }
-           
+          
             // Listener for Admin Dashboard
             if(currentUser && currentUser.role === 'admin') {
                  // Total
@@ -932,7 +997,7 @@ window.location.href = whatsappURL;
                         document.getElementById('admin-total-visitors').textContent = doc.data().total_visitors || 0;
                     }
                 });
-               
+              
                 // Daily
                 const today = new Date().toISOString().split('T')[0];
                 onSnapshot(doc(db, STATS_DAILY_COLLECTION, today), (doc) => {
@@ -944,7 +1009,7 @@ window.location.href = whatsappURL;
                 });
             }
         }
-       
+      
         window.setRating = (n) => {
             selectedRating = n;
             const stars = document.getElementById('star-input-container').children;
@@ -954,12 +1019,13 @@ window.location.href = whatsappURL;
             }
         };
         window.sendFeedback = async () => {
-            const name = document.getElementById('feedback-name').value.trim(); // No fallback
+            let name = document.getElementById('feedback-name').value.trim(); // No fallback
             const msg = document.getElementById('feedback-msg').value.trim();
-           
+          
             if(!name) return window.showCustomAlert('تنبيه', 'يرجى كتابة الاسم');
             if(!msg) return window.showCustomAlert('تنبيه', 'يرجى كتابة تعليق');
-           
+            // Removed adding "د."
+          
             window.showLoading(true);
             try {
                 await addDoc(collection(db, FEEDBACK_COLLECTION), {
@@ -967,7 +1033,8 @@ window.location.href = whatsappURL;
                     message: msg,
                     rating: selectedRating,
                     date: new Date().toLocaleDateString('ar-EG'),
-                    timestamp: Date.now()
+                    timestamp: Date.now(),
+                    replies: [] // Initialize replies array
                 });
                 document.getElementById('feedback-msg').value = '';
                 window.showCustomAlert('شكرأ', 'تم إرسال تعليقك بنجاح');
@@ -982,7 +1049,7 @@ window.location.href = whatsappURL;
             if(!currentUser || currentUser.role !== 'admin') {
                 return window.showCustomAlert('تنبيه', 'غير مصرح لك بالحذف');
             }
-           
+          
             if(confirm('هل أنت متأكد من حذف هذا التعليق؟')) {
                 window.showLoading(true);
                 try {
@@ -995,14 +1062,39 @@ window.location.href = whatsappURL;
                 window.showLoading(false);
             }
         };
+        // NEW: Reply to Feedback (Admin Only)
+        window.sendReply = async (feedbackId) => {
+            if(!currentUser || currentUser.role !== 'admin') return;
+            const replyInput = document.getElementById(`reply-input-${feedbackId}`);
+            const replyMsg = replyInput.value.trim();
+            if(!replyMsg) return window.showCustomAlert('تنبيه', 'يرجى كتابة الرد');
+          
+            window.showLoading(true);
+            try {
+                const feedbackRef = doc(db, FEEDBACK_COLLECTION, feedbackId);
+                await updateDoc(feedbackRef, {
+                    replies: arrayUnion({
+                        message: replyMsg,
+                        date: new Date().toLocaleDateString('ar-EG'),
+                        timestamp: Date.now()
+                    })
+                });
+                replyInput.value = '';
+                window.showCustomAlert('تم', 'تم إرسال الرد بنجاح');
+            } catch(e) {
+                console.error(e);
+                window.showCustomAlert('خطأ', 'فشل إرسال الرد');
+            }
+            window.showLoading(false);
+        };
         let feedbackUnsubscribe = null;
         function setupFeedbackListener() {
             if(!db) return;
             if(feedbackUnsubscribe) feedbackUnsubscribe();
-           
+          
             // Removing orderBy to avoid index errors on first run
             const q = collection(db, FEEDBACK_COLLECTION);
-           
+          
             feedbackUnsubscribe = onSnapshot(q, (snapshot) => {
                 const container = document.getElementById('feedback-list');
                 container.innerHTML = '';
@@ -1010,7 +1102,7 @@ window.location.href = whatsappURL;
                     container.innerHTML = '<p class="text-gray-500 text-center">لا توجد تعليقات بعد.</p>';
                     return;
                 }
-               
+              
                 // Sort in memory to avoid firestore index requirement errors
                 let feedbacks = [];
                 snapshot.forEach(doc => {
@@ -1018,29 +1110,69 @@ window.location.href = whatsappURL;
                 });
                 feedbacks.sort((a, b) => b.timestamp - a.timestamp); // Newest first
                 feedbacks.forEach(data => {
+                    // Removed adding "د." to name
+                    let displayName = data.name;
+                    if (displayName.startsWith('د. ')) {
+                        displayName = displayName.substring(3);
+                    }
                     // Generate stars HTML
                     let starsHTML = '';
                     for(let i=0; i<5; i++) {
                         starsHTML += `<i class="fas fa-star text-xs ${i < data.rating ? 'text-yellow-400' : 'text-gray-600'}"></i>`;
                     }
-                   
+                  
                     // Delete Button (Only for Admin)
                     let deleteBtn = '';
                     if(currentUser && currentUser.role === 'admin') {
                         deleteBtn = `<button onclick="window.deleteFeedback('${data.id}')" class="absolute top-4 left-4 text-red-500 hover:text-red-400 transition" title="حذف التعليق"><i class="fas fa-trash-alt"></i></button>`;
                     }
-                   
+                  
+                    // Replies Section
+                    let repliesHTML = '';
+                    if (data.replies && data.replies.length > 0) {
+                        data.replies.sort((a, b) => b.timestamp - a.timestamp); // Newest replies first
+                        data.replies.forEach(reply => {
+                            repliesHTML += `
+                                <div class="reply-bubble">
+                                    <div class="flex items-center mb-2">
+                                        <img src="logo.png" alt="DENTLEEN" class="w-8 h-8 rounded-full ml-2">
+                                        <div>
+                                            <h4 class="font-bold text-teal-400 text-sm">DENTLEEN <span class="text-xs text-gray-400">(مسؤول)</span></h4>
+                                            <span class="text-xs text-gray-500">${reply.date}</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-300 text-sm leading-relaxed">${reply.message}</p>
+                                </div>
+                            `;
+                        });
+                    }
+                  
+                    // Reply Form (Admin Only)
+                    let replyForm = '';
+                    if(currentUser && currentUser.role === 'admin') {
+                        replyForm = `
+                            <div class="mt-4">
+                                <textarea id="reply-input-${data.id}" placeholder="اكتب ردك هنا..." rows="2" class="w-full bg-gray-700 border border-gray-500 rounded-xl px-4 py-3 text-white focus:border-blue-500 outline-none"></textarea>
+                                <button onclick="window.sendReply('${data.id}')" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded-xl transition mt-2">
+                                    <i class="fas fa-reply ml-2"></i> إرسال الرد
+                                </button>
+                            </div>
+                        `;
+                    }
+                  
                     container.innerHTML += `
                         <div class="feedback-bubble relative pr-4 pl-10">
                             ${deleteBtn}
                             <div class="flex justify-between items-start mb-2">
                                 <div>
-                                    <h4 class="font-bold text-teal-400 text-sm">${data.name}</h4>
+                                    <h4 class="font-bold text-teal-400 text-sm">${displayName}</h4>
                                     <div class="flex">${starsHTML}</div>
                                 </div>
                                 <span class="text-xs text-gray-500 mr-2">${data.date}</span>
                             </div>
                             <p class="text-gray-300 text-sm leading-relaxed">${data.message}</p>
+                            ${repliesHTML}
+                            ${replyForm}
                         </div>
                     `;
                 });
@@ -1050,12 +1182,13 @@ window.location.href = whatsappURL;
         window.showAdminDashboard = () => {
             if(!currentUser || currentUser.role !== 'admin') return;
             document.getElementById('main-view').classList.add('hidden');
+            document.getElementById('profile-view').classList.add('hidden');
             document.getElementById('admin-view').classList.remove('hidden');
             document.getElementById('mobile-menu').classList.add('hidden');
-           
+          
              // Refresh visitor stats
              trackVisitor();
-           
+          
             if(db) {
                 if(adminUnsubscribe) adminUnsubscribe();
                 adminUnsubscribe = onSnapshot(collection(db, USERS_COLLECTION), (snap) => {
@@ -1106,17 +1239,20 @@ window.location.href = whatsappURL;
                 const snap = await getDocs(q);
                 const container = document.getElementById('admin-history-content');
                 container.innerHTML = '';
-               
+              
                 if(snap.empty) {
                     container.innerHTML = '<p class="text-gray-400 text-center">لا توجد طلبات سابقة لهذا العميل.</p>';
                 } else {
                     let orders = [];
-                    snap.forEach(doc => orders.push(doc.data()));
+                    snap.forEach(d => {
+                        orders.push({ ...d.data(), id: d.id });
+                    });
                     // Sort descending by date (naive string sort or timestamp if available, relying on date string format here)
                     orders.reverse();
                     orders.forEach(o => {
                         container.innerHTML += `
-                            <div class="bg-gray-700 p-3 rounded-lg border border-gray-600 text-sm">
+                            <div class="bg-gray-700 p-3 rounded-lg border border-gray-600 text-sm relative">
+                                <button onclick="window.deleteOrder('${phone}', '${o.id}')" class="absolute top-2 left-2 text-red-500 hover:text-red-400"><i class="fas fa-trash-alt"></i></button>
                                 <div class="flex justify-between text-teal-400 font-bold mb-1">
                                     <span>${o.date}</span>
                                     <span>${o.total} ج.م</span>
@@ -1136,6 +1272,22 @@ window.location.href = whatsappURL;
                 window.showCustomAlert('خطأ', 'فشل تحميل السجل');
             }
             window.showLoading(false);
+        };
+        window.deleteOrder = async (phone, orderId) => {
+            if(confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
+                window.showLoading(true);
+                try {
+                    await deleteDoc(doc(db, USERS_COLLECTION, phone, 'orders', orderId));
+                    window.showCustomAlert('تم', 'تم حذف الطلب');
+                    // Reload history
+                    document.getElementById('admin-history-modal').classList.remove('open');
+                    window.viewUserHistory(phone);
+                } catch(e) {
+                    console.error(e);
+                    window.showCustomAlert('خطأ', 'حدث خطأ أثناء الحذف');
+                }
+                window.showLoading(false);
+            }
         };
         window.searchUsers = () => {
             const term = document.getElementById('admin-search').value.toLowerCase();
@@ -1162,7 +1314,7 @@ window.location.href = whatsappURL;
             const input = document.getElementById(`pts-${phone}`);
             const amount = parseInt(input.value);
             if(isNaN(amount)) return window.showCustomAlert('خطأ', 'أدخل رقم صحيح');
-           
+          
             const ref = doc(db, USERS_COLLECTION, phone);
             const s = await getDoc(ref);
             if(s.exists()) {
@@ -1180,7 +1332,11 @@ window.location.href = whatsappURL;
                     if(s.exists()) {
                         currentUser.points = s.data().points;
                         currentUser.address = s.data().address || currentUser.address; // Keep address sync
+                        currentUser.name = s.data().name; // Sync name
                         updateUserUI();
+                        if(document.getElementById('profile-view').classList.contains('hidden') === false) {
+                            loadProfileOrders();
+                        }
                     }
                 });
             }
@@ -1190,11 +1346,14 @@ window.location.href = whatsappURL;
             const mLogin = document.getElementById('mobile-login-btn');
             const mLogout = document.getElementById('mobile-logout-btn');
             const mAdmin = document.getElementById('mobile-admin-btn');
+            const mProfile = document.getElementById('mobile-profile-btn');
             const loyalty = document.getElementById('loyalty-section');
             const adminBtn = document.getElementById('admin-link-btn');
+            const profileBtn = document.getElementById('profile-link-btn');
             const heroText = document.getElementById('hero-promo-text');
             const statusArea = document.getElementById('user-status-area');
-           
+            const welcomeMsg = document.getElementById('welcome-msg');
+          
             const checkoutName = document.getElementById('checkout-name');
             const checkoutPhone = document.getElementById('checkout-phone');
             const checkoutAddress = document.getElementById('checkout-address');
@@ -1204,19 +1363,26 @@ window.location.href = whatsappURL;
                 wrapper.innerHTML = `<button onclick="window.logout()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold text-sm">خروج</button>`;
                 mLogin.classList.add('hidden');
                 mLogout.classList.remove('hidden');
-               
+              
                 // Pre-fill checkout if user role
                 if(currentUser.role !== 'admin') {
                     statusArea.innerHTML = `<div class="points-badge"><i class="fas fa-star text-yellow-600"></i><span>${currentUser.points || 0} نقطة</span></div>`;
                     statusArea.classList.remove('hidden');
-                   
+                    profileBtn.classList.remove('hidden');
+                    mProfile.classList.remove('hidden');
+                    welcomeMsg.textContent = `اهلا د. ${currentUser.name}`;
+                    welcomeMsg.classList.remove('hidden');
+                  
                     if(checkoutName) checkoutName.value = currentUser.name || '';
                     if(checkoutPhone) checkoutPhone.value = currentUser.phone || '';
                     if(checkoutAddress) checkoutAddress.value = currentUser.address || '';
                 } else {
                     statusArea.classList.add('hidden');
+                    profileBtn.classList.add('hidden');
+                    mProfile.classList.add('hidden');
+                    welcomeMsg.classList.add('hidden');
                 }
-               
+              
                 if(currentUser.role === 'admin') {
                     adminBtn.classList.remove('hidden');
                     mAdmin.classList.remove('hidden');
@@ -1225,7 +1391,7 @@ window.location.href = whatsappURL;
                     loyalty.classList.remove('hidden');
                     document.getElementById('user-points-display').textContent = currentUser.points;
                     const btn = document.getElementById('redeem-btn');
-                    if(currentUser.points >= 50) {
+                    if(currentUser.points > 0) {
                         btn.disabled = false;
                         btn.classList.remove('opacity-50');
                     } else {
@@ -1242,14 +1408,91 @@ window.location.href = whatsappURL;
                 mLogout.classList.add('hidden');
                 adminBtn.classList.add('hidden');
                 mAdmin.classList.add('hidden');
+                profileBtn.classList.add('hidden');
+                mProfile.classList.add('hidden');
+                welcomeMsg.classList.add('hidden');
                 loyalty.classList.add('hidden');
-               
+              
                 if(checkoutName) checkoutName.value = '';
                 if(checkoutPhone) checkoutPhone.value = '';
                 if(checkoutAddress) checkoutAddress.value = '';
             }
             // Fix: Force update cart UI to refresh button text based on new login state
             updateCartUI();
+        }
+        // NEW: Show Profile
+        window.showProfile = () => {
+            if(!currentUser || currentUser.role === 'admin') return;
+            document.getElementById('main-view').classList.add('hidden');
+            document.getElementById('admin-view').classList.add('hidden');
+            document.getElementById('profile-view').classList.remove('hidden');
+            document.getElementById('mobile-menu').classList.add('hidden');
+          
+            // Load user data into editable fields
+            document.getElementById('profile-edit-name').value = currentUser.name || '--';
+            document.getElementById('profile-edit-address').value = currentUser.address || '--';
+            document.getElementById('profile-phone').textContent = currentUser.phone || '--';
+            document.getElementById('profile-points').textContent = currentUser.points || 0;
+          
+            loadProfileOrders();
+        };
+        // NEW: Save Profile Changes
+        window.saveProfileChanges = async () => {
+            if(!db || !currentUser) return;
+            const newName = document.getElementById('profile-edit-name').value.trim();
+            const newAddress = document.getElementById('profile-edit-address').value.trim();
+            if(!newName) return window.showCustomAlert('خطأ', 'الاسم مطلوب');
+            if(!newAddress) return window.showCustomAlert('خطأ', 'العنوان مطلوب');
+          
+            window.showLoading(true);
+            try {
+                const updateData = {};
+                if(newName !== currentUser.name) updateData.name = newName;
+                if(newAddress !== currentUser.address) updateData.address = newAddress;
+                if(Object.keys(updateData).length > 0) {
+                    await updateDoc(doc(db, USERS_COLLECTION, currentUser.phone), updateData);
+                    window.showCustomAlert('تم', 'تم حفظ التعديلات بنجاح');
+                }
+            } catch(e) {
+                console.error(e);
+                window.showCustomAlert('خطأ', 'فشل حفظ التعديلات');
+            }
+            window.showLoading(false);
+        };
+        async function loadProfileOrders() {
+            if(!db || !currentUser) return;
+            const container = document.getElementById('profile-orders');
+            container.innerHTML = '<p class="text-gray-400 text-center">جاري التحميل...</p>';
+            try {
+                const q = collection(db, USERS_COLLECTION, currentUser.phone, 'orders');
+                const snap = await getDocs(q);
+                container.innerHTML = '';
+                if(snap.empty) {
+                    container.innerHTML = '<p class="text-gray-400 text-center">لا توجد طلبات سابقة.</p>';
+                } else {
+                    let orders = [];
+                    snap.forEach(doc => orders.push(doc.data()));
+                    orders.reverse();
+                    orders.forEach(o => {
+                        container.innerHTML += `
+                            <div class="bg-gray-700 p-3 rounded-lg border border-gray-600 text-sm">
+                                <div class="flex justify-between text-teal-400 font-bold mb-1">
+                                    <span>${o.date}</span>
+                                    <span>${o.total} ج.م</span>
+                                </div>
+                                <p class="text-gray-300 mb-1">${o.itemsSummary}</p>
+                                <div class="flex justify-between text-xs text-gray-400">
+                                    <span>خصم: ${o.discount} ج.م</span>
+                                    <span>نقاط مستخدمة: ${o.pointsUsed}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+            } catch(e) {
+                console.error(e);
+                container.innerHTML = '<p class="text-red-400 text-center">خطأ في تحميل السجل</p>';
+            }
         }
         function populateProductDropdown() {
             const select = document.getElementById('quick-product-select');
@@ -1276,7 +1519,7 @@ window.location.href = whatsappURL;
             </div>`;
             if(p.type === 'offer') oGrid.innerHTML += h; else pGrid.innerHTML += h;
         });
-       
+      
         document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
         populateProductDropdown();
         // Removed the initial check from here as it's now handled in onAuthStateChanged
@@ -1284,9 +1527,9 @@ window.location.href = whatsappURL;
         document.getElementById('auth-form').addEventListener('submit', window.handleAuthSubmit);
         document.getElementById('mobile-menu-btn').addEventListener('click', window.toggleMobileMenu);
         document.getElementById('scrollToTopBtn').addEventListener('click', () => window.scrollTo(0,0));
-       
+      
         // Removed global calls to trackVisitor() and setupFeedbackListener() - they are now in auth listener
-       
+      
     </script>
 </body>
 </html>
