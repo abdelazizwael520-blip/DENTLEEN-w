@@ -3,12 +3,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DENTLEEN | دنت لين - مستلزمات أسنان وتجهيز عيادات في مصر</title>
-  
+ 
     <!-- SEO -->
-    <meta name="description" content="دنت لين (Dentleen) - المتجر الأول لمستلزمات طب الأسنان في مصر. تسوق أونلاين: حشو كومبوزيت، Caries Detector، أدوات Endo.">
-    <meta name="keywords" content="مستلزمات أسنان, Dentleen, Caries Detector Dye Gel, حشو عصب, أدوات أسنان مصر, D-Seal">
+    <meta name="description" content="دنت لين (Dentleen) - أفضل متجر لمستلزمات طب الأسنان في مصر. تسوق أونلاين: SDF, Caries Detector Dye Gel, حشو كومبوزيت, أدوات Endo, MTA, D-Seal, EDTA, Etch, Porcelain Acid Etch, Hemostatic Liquid, Root Heal, Holdent. منتجات أسنان عالية الجودة لعيادات الأسنان وأطباء الأسنان.">
+    <meta name="keywords" content="مستلزمات أسنان, Dentleen, طب أسنان, منتجات أسنان, SDF, Caries Detector Dye Gel, حشو عصب, أدوات أسنان مصر, D-Seal, MTA, EDTA, Etch, Porcelain Acid Etch, Hemostatic Liquid, Root Heal, Holdent, تجهيز عيادات أسنان, أدوات أندو, كومبوزيت, كاشف تسوس, مواد حشو, مواد طب أسنان, عروض أسنان, باكدجات أسنان, أطباء أسنان مصر, معدات أسنان">
     <meta name="author" content="Dentleen">
-  
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Dentleen - مستلزمات طب الأسنان في مصر">
+    <meta property="og:description" content="تسوق أفضل منتجات طب الأسنان مثل SDF, MTA, D-Seal وغيرها مع عروض حصرية ونقاط ولاء.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:url" content="https://dentleen.com">
+    <meta name="twitter:card" content="summary_large_image">
+ 
     <!-- Scripts & Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -18,14 +24,14 @@
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Tajawal', sans-serif; background-color: #1f1f1f; color: #e0e0e0; overflow-x: hidden; }
-      
+     
         .product-card { background-color: #2a2a2a; border: 1px solid #374151; transition: all 0.3s ease; }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(45, 212, 191, 0.2); border-color: #2dd4bf; }
-      
+     
         /* Modal Transitions */
         .modal-overlay { transition: opacity 0.3s ease-in-out, visibility 0.3s; opacity: 0; visibility: hidden; pointer-events: none; }
         .modal-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; }
-      
+     
         .modal-content { transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
         .modal-overlay.open .modal-content { transform: scale(1); }
         .full-page-view {
@@ -56,7 +62,7 @@
         .star-rating i.active { color: #facc15; }
         .reply-bubble { background: #374151; border-radius: 1rem; padding: 1rem; margin-top: 1rem; position: relative; }
         .reply-bubble:before { content: ''; position: absolute; top: -10px; right: 20px; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 10px solid #374151; }
-      
+     
         /* Loading Overlay */
         #loading-overlay {
             position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9999;
@@ -98,9 +104,9 @@
     <!-- Header -->
     <header class="bg-gray-900/95 backdrop-blur-md shadow-lg p-4 sticky top-0 z-50 border-b border-gray-700">
         <div class="container mx-auto flex justify-between items-center relative">
-          
+         
             <div class="flex items-center gap-4">
-                <img src="logo.png" alt="Dentleen" class="h-10 w-auto cursor-pointer hover:opacity-80 transition" onclick="window.showMainView()">
+                <img src="logo.png" alt="Dentleen - مستلزمات أسنان وطب أسنان في مصر" class="h-10 w-auto cursor-pointer hover:opacity-80 transition" onclick="window.showMainView()">
                 <div id="user-status-area" class="hidden md:flex items-center gap-3"></div>
             </div>
             <nav class="hidden md:flex items-center gap-6 font-medium">
@@ -126,7 +132,7 @@
                 <button class="md:hidden text-gray-300 text-2xl p-2" id="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
-      
+     
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden bg-gray-800 p-4 absolute top-full w-full left-0 border-t border-gray-700 text-center space-y-4 shadow-xl z-40">
              <div id="mobile-user-status" class="flex justify-center mb-2"></div>
@@ -134,7 +140,7 @@
              <button id="mobile-admin-btn" onclick="window.showAdminDashboard()" class="hidden w-full text-yellow-500 font-bold py-2 border border-yellow-500 rounded-lg">لوحة التحكم</button>
              <button id="mobile-login-btn" onclick="window.toggleAuthModal()" class="w-full bg-teal-600 text-white py-2 rounded-lg font-bold">تسجيل الدخول</button>
              <button id="mobile-logout-btn" onclick="window.logout()" class="hidden w-full bg-red-600 text-white py-2 rounded-lg font-bold">تسجيل الخروج</button>
-           
+          
              <a href="#products" onclick="window.showMainView();window.toggleMobileMenu()" class="block py-2 text-teal-400 border-b border-gray-700">المنتجات</a>
              <a href="#offers" onclick="window.showMainView();window.toggleMobileMenu()" class="block py-2 text-red-400 border-b border-gray-700">العروض</a>
              <a href="#contact" onclick="window.showMainView();window.toggleMobileMenu()" class="block py-2">سلة المشتريات</a>
@@ -257,7 +263,7 @@
     </div>
     <!-- MAIN VIEW -->
     <div id="main-view" class="transition-opacity duration-300">
-      
+     
         <!-- Hero -->
         <section class="relative bg-gray-800 py-16 md:py-24 overflow-hidden">
             <div class="absolute inset-0 opacity-10 pointer-events-none">
@@ -277,26 +283,26 @@
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                         <a href="#products" class="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-full font-bold shadow-lg transition transform hover:scale-105">تصفح المنتجات</a>
                     </div>
-                  
+                 
                     <!-- Promo Points Badge -->
                     <p class="mt-6 text-sm text-yellow-400 font-semibold bg-gray-700/50 inline-block px-4 py-2 rounded-full border border-yellow-500/30 shadow-sm animate-pulse">
                         <i class="fas fa-gift text-yellow-500 ml-2"></i> كل 50 نقطة تمنحك خصم 25 جنيه!
                     </p>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="logo.png" alt="Dentleen" class="w-full max-w-md mx-auto drop-shadow-2xl animate-float">
+                    <img src="logo.png" alt="Dentleen - منتجات طب أسنان ومستلزمات أسنان في مصر" class="w-full max-w-md mx-auto drop-shadow-2xl animate-float">
                 </div>
             </div>
         </section>
         <!-- Products -->
         <section id="products" class="py-16 container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-teal-400 mb-8 border-b border-gray-700 pb-4">المنتجات</h2>
+            <h2 class="text-3xl font-bold text-teal-400 mb-8 border-b border-gray-700 pb-4">منتجات طب الأسنان ومستلزمات الأسنان</h2>
             <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8"></div>
         </section>
         <!-- Offers -->
         <section id="offers" class="py-16 bg-gray-800/50">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-red-500 text-center mb-12">العروض والباكدجات</h2>
+                <h2 class="text-3xl font-bold text-red-500 text-center mb-12">عروض وباكدجات مستلزمات الأسنان</h2>
                 <div id="offers-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
             </div>
         </section>
@@ -308,7 +314,7 @@
                         <h2 class="text-3xl font-bold text-teal-400"><i class="fas fa-shopping-cart ml-2"></i>السلة</h2>
                         <div id="auth-inline-container"></div>
                     </div>
-                  
+                 
                     <div class="mb-6">
                         <label class="block text-sm text-gray-400 mb-2">إضافة منتج للسلة سريعاً:</label>
                         <div class="relative">
@@ -348,7 +354,7 @@
                             </span>
                         </div>
                     </div>
-                  
+                 
                     <div class="bg-blue-900/30 p-3 rounded-lg mt-4 mb-8 text-center border border-blue-900/50">
                         <p class="text-blue-200 text-sm">نقاط جديدة مستحقة من هذا الطلب: <span id="potential-points" class="font-bold text-white text-lg">0</span> (تضاف يدوياً)</p>
                     </div>
@@ -368,15 +374,15 @@
         <!-- Feedback Section (Moved Below Cart) -->
         <section id="feedback-section" class="py-16 bg-gray-900 border-t border-gray-700">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-blue-400 text-center mb-12">آراء العملاء</h2>
-              
+                <h2 class="text-3xl font-bold text-blue-400 text-center mb-12">آراء العملاء عن منتجات طب الأسنان ومستلزمات Dentleen</h2>
+             
                 <div class="grid md:grid-cols-2 gap-12">
                     <!-- Feedback Form -->
                     <div class="bg-gray-800 p-8 rounded-2xl border border-gray-600 shadow-xl">
-                        <h3 class="text-xl font-bold text-white mb-6">شاركنا رأيك</h3>
+                        <h3 class="text-xl font-bold text-white mb-6">شاركنا رأيك في منتجات الأسنان</h3>
                         <div class="space-y-4">
                             <input type="text" id="feedback-name" placeholder="الاسم (مطلوب)" class="w-full bg-gray-700 border border-gray-500 rounded-xl px-4 py-3 text-white focus:border-blue-500 outline-none">
-                          
+                         
                             <!-- Rating Stars -->
                             <div class="flex items-center gap-2 mb-2">
                                 <span class="text-gray-400 text-sm">تقييمك:</span>
@@ -388,20 +394,39 @@
                                     <i class="fas fa-star text-gray-600 hover:text-yellow-400 transition" onclick="window.setRating(5)"></i>
                                 </div>
                             </div>
-                          
+                         
                             <textarea id="feedback-msg" placeholder="اكتب تعليقك هنا..." rows="3" class="w-full bg-gray-700 border border-gray-500 rounded-xl px-4 py-3 text-white focus:border-blue-500 outline-none"></textarea>
                             <button onclick="window.sendFeedback()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition">
                                 <i class="fas fa-paper-plane ml-2"></i> إرسال التعليق
                             </button>
                         </div>
                     </div>
-                  
+                 
                     <!-- Feedback List -->
                     <div>
-                        <h3 class="text-xl font-bold text-white mb-6">أحدث التعليقات</h3>
+                        <h3 class="text-xl font-bold text-white mb-6">أحدث التعليقات عن منتجات الأسنان</h3>
                         <div id="feedback-list" class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                             <p class="text-gray-500 text-center">لا توجد تعليقات بعد. كن أول من يشارك!</p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Additional Images Under Feedback -->
+                <div class="mt-12">
+                    <h3 class="text-xl font-bold text-white mb-6 text-center">صور من آراء العملاء</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                        <img src="a.jpg" alt="منتج أسنان SDF في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="b.jpg" alt="كاشف تسوس Caries Detector في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="c.jpg" alt="حشو عصب MTA في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="d.jpg" alt="D-Seal Resin Sealer في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="e.jpg" alt="EDTA Gel لطب الأسنان في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="f.jpg" alt="Etch 37% لمنتجات الأسنان في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="g.jpg" alt="Porcelain Acid Etch في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="h.jpg" alt="Hemostatic Liquid لوقف النزيف في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="i.jpg" alt="Root Heal Intracanal Medicament في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="j.jpg" alt="Holdent كريم تثبيت أطقم في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="k.jpg" alt="عروض باكدجات أسنان في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
+                        <img src="l.jpg" alt="منتج أسنان SDF إضافي في Dentleen" class="w-full h-32 object-cover rounded-lg shadow-md cursor-pointer" onclick="window.openImageModal(this.src)">
                     </div>
                 </div>
             </div>
@@ -409,14 +434,14 @@
         <!-- Contact Us Section -->
         <section id="contact-us" class="py-16 bg-gray-800 border-t border-gray-700">
             <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl font-bold text-green-400 mb-8">تواصل معنا</h2>
+                <h2 class="text-3xl font-bold text-green-400 mb-8">تواصل معنا لاستفسارات عن منتجات الأسنان</h2>
                 <div class="flex justify-center gap-8">
                     <a href="https://www.facebook.com/profile.php?id=61563008606045&mibextid=rS40aB7S9Ucbxw6v" target="_blank" class="text-blue-600 hover:text-blue-400 text-5xl transition"><i class="fab fa-facebook"></i></a>
                     <a href="https://wa.me/201508259538" target="_blank" class="text-green-600 hover:text-green-400 text-5xl transition"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </section>
-        <footer class="bg-black py-8 text-center text-gray-500 text-sm"><p>&copy; 2024 Dentleen</p></footer>
+        <footer class="bg-black py-8 text-center text-gray-500 text-sm"><p>&copy; 2024 Dentleen - مستلزمات طب الأسنان في مصر</p></footer>
     </div>
     <!-- Product View Modal -->
     <div id="product-full-view" class="full-page-view p-4 md:p-12 overflow-y-auto">
@@ -469,8 +494,11 @@
                 <h2 class="text-2xl font-bold text-white mb-2">تأكيد الطلب</h2>
                 <p class="text-gray-400 text-sm">هل أنت متأكد من إرسال هذا الطلب؟</p>
                 <!-- NEW WARNING -->
-                <p class="text-red-500 font-bold text-xs mt-4 bg-red-900/30 p-2 rounded border border-red-500/50">
+                <p id="points-deduction-warning" class="text-red-500 font-bold text-xs mt-4 bg-red-900/30 p-2 rounded border border-red-500/50 hidden">
                     <i class="fas fa-exclamation-circle ml-1"></i> تنبيه: سيتم خصم النقاط المستخدمة فوراً عند الضغط على تأكيد والذهاب للواتساب.
+                </p>
+                <p id="points-unused-reminder" class="text-yellow-500 font-bold text-xs mt-4 bg-yellow-900/30 p-2 rounded border border-yellow-500/50 hidden">
+                    <i class="fas fa-info-circle ml-1"></i> تذكير: لديك نقاط متوفرة لم تستخدمها في هذا الطلب. هل تريد استخدامها؟
                 </p>
             </div>
             <div class="bg-gray-800/50 rounded-xl p-4 mb-6 border border-gray-700 max-h-40 overflow-y-auto custom-scrollbar" id="confirm-items-list"></div>
@@ -484,6 +512,13 @@
                     <i class="fab fa-whatsapp text-xl"></i> تأكيد وإرسال
                 </button>
             </div>
+        </div>
+    </div>
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal-overlay fixed inset-0 z-[5000] flex items-center justify-center bg-black/95 backdrop-blur-sm px-4" onclick="window.closeImageModal()">
+        <div class="modal-content relative max-w-[90vw] max-h-[90vh]" onclick="event.stopPropagation()">
+            <button onclick="window.closeImageModal()" class="absolute top-4 left-4 text-white hover:text-gray-300 z-10"><i class="fas fa-times text-3xl"></i></button>
+            <img id="modal-image" src="" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
         </div>
     </div>
     <button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-teal-600 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-all z-40"><i class="fas fa-arrow-up"></i></button>
@@ -519,7 +554,7 @@
         const STATS_COLLECTION = `artifacts/${appId}/public/data/stats`;
         const STATS_DAILY_COLLECTION = `artifacts/${appId}/public/data/stats_daily`;
         const FEEDBACK_COLLECTION = `artifacts/${appId}/public/data/feedback`;
-      
+     
         // Initial Auth Logic
         const initAuth = async () => {
              if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
@@ -601,7 +636,7 @@
             if(adminUnsubscribe) { adminUnsubscribe(); adminUnsubscribe = null; }
             if(profileUnsubscribe) { profileUnsubscribe(); profileUnsubscribe = null; }
         };
-      
+     
         window.openProductPage = (id) => {
             const product = PRODUCTS_DATA.find(p => p.id === id);
             if (!product) return;
@@ -614,7 +649,7 @@
             document.getElementById('product-full-view').classList.add('active');
         };
         window.toggleMobileMenu = () => document.getElementById('mobile-menu').classList.toggle('hidden');
-      
+     
         // Modal Handlers
         window.toggleAuthModal = () => {
             const el = document.getElementById('auth-modal');
@@ -625,7 +660,7 @@
         window.closeAuthModal = () => { document.getElementById('auth-modal').classList.remove('open'); };
         window.updateFpQuantity = (n) => { const el = document.getElementById('fp-quantity'); let v = parseInt(el.value)+n; if(v<1)v=1; el.value=v; };
         window.scrollToCart = () => { window.showMainView(); document.getElementById('contact').scrollIntoView(); };
-      
+     
         window.showLoading = (show) => {
             const el = document.getElementById('loading-overlay');
             if(show) { el.style.display = 'flex'; setTimeout(() => el.style.display = 'none', 10000); }
@@ -683,7 +718,7 @@
             const container = document.getElementById('cart-items');
             container.innerHTML = '';
             let subtotal = 0, count = 0;
-          
+         
             if(cart.length === 0) {
                 container.innerHTML = '<p class="text-center text-gray-500 py-4">السلة فارغة</p>';
                 isRedeeming = false;
@@ -703,12 +738,12 @@
                         </div>`;
                 });
             }
-          
+         
             const badge = document.getElementById('header-cart-count');
             if(count>0) { badge.textContent = count; badge.classList.remove('hidden'); } else badge.classList.add('hidden');
-          
+         
             document.getElementById('cart-subtotal').textContent = subtotal + ' ج.م';
-          
+         
             const totalEl = document.getElementById('cart-total');
             const discountRow = document.getElementById('discount-row');
             const cartDiscountEl = document.getElementById('cart-discount');
@@ -727,7 +762,7 @@
                 cartDiscountEl.textContent = discount;
                 const finalTotal = subtotal - discount;
                 totalEl.innerHTML = `<span class="line-through text-gray-500 text-lg ml-2">${subtotal} ج.م</span> <span class="text-green-400">${finalTotal} ج.م</span>`;
-              
+             
                 if(redeemBtn) {
                     redeemBtn.textContent = "إلغاء الخصم";
                     redeemBtn.classList.remove('bg-yellow-600');
@@ -741,7 +776,7 @@
             } else {
                 discountRow.classList.add('hidden');
                 totalEl.textContent = subtotal + ' ج.م';
-              
+             
                 if(redeemBtn) {
                     redeemBtn.classList.remove('bg-red-600');
                     redeemBtn.classList.add('bg-yellow-600');
@@ -763,10 +798,10 @@
             if(phone.length !== 11) { window.showCustomAlert('خطأ', 'رقم الهاتف يجب أن يكون 11 رقم'); return; }
             if(!name) { window.showCustomAlert('خطأ', 'الاسم مطلوب'); return; }
             if(!address) { window.showCustomAlert('خطأ', 'العنوان مطلوب'); return; }
-            // Removed adding "د." 
+            // Removed adding "د."
             // 1. Close Modal Immediately
             window.closeAuthModal();
-          
+         
             // 2. Show Loading
             window.showLoading(true);
             if(phone === ADMIN_PHONE) {
@@ -822,7 +857,7 @@
         };
         window.initiateCheckout = () => {
             if(cart.length===0) return window.showCustomAlert('تنبيه', 'السلة فارغة');
-          
+         
             const name = document.getElementById('checkout-name').value.trim();
             const phone = document.getElementById('checkout-phone').value.trim();
             const address = document.getElementById('checkout-address').value.trim();
@@ -846,14 +881,28 @@
             const totalEl = document.getElementById('confirm-total-price');
             if(discount > 0) { totalEl.innerHTML = `<span class="line-through text-gray-500 text-sm ml-2">${subtotal}</span> ${total} ج.م`; }
             else { totalEl.textContent = total + " ج.م"; }
-          
+         
+            // Show/Hide Points Warnings
+            const deductionWarning = document.getElementById('points-deduction-warning');
+            const unusedReminder = document.getElementById('points-unused-reminder');
+            if (discount > 0) {
+                deductionWarning.classList.remove('hidden');
+                unusedReminder.classList.add('hidden');
+            } else if (currentUser && currentUser.points > 0) {
+                deductionWarning.classList.add('hidden');
+                unusedReminder.classList.remove('hidden');
+            } else {
+                deductionWarning.classList.add('hidden');
+                unusedReminder.classList.add('hidden');
+            }
+         
             document.getElementById('confirmation-modal').classList.add('open');
         };
         window.closeConfirmModal = () => { document.getElementById('confirmation-modal').classList.remove('open'); };
         window.confirmOrder = async () => {
             window.closeConfirmModal();
             window.showLoading(true);
-          
+         
             const name = document.getElementById('checkout-name').value;
             const phone = document.getElementById('checkout-phone').value;
             const address = document.getElementById('checkout-address').value;
@@ -866,7 +915,7 @@
             const total = subtotal - discount;
             const pointsUsed = discount * 2;
             const earnedPoints = Math.floor(subtotal * 0.5);
-          
+         
             // IMPROVED FORMAT FOR WHATSAPP
             let msg = `*طلب جديد من الموقع* 🦷\n`;
             msg += `━━━━━━━━━━━━\n`;
@@ -882,21 +931,21 @@
             msg += `━━━━━━━━━━━━\n`;
             msg += `*💰 الحساب*\n`;
             msg += `المجموع: ${subtotal} ج.م\n`;
-          
+         
             if(discount > 0) {
                 msg += `خصم نقاط: -${discount} ج.م\n`;
             }
-          
+         
             msg += `*الإجمالي النهائي: ${total} ج.م*\n`;
             msg += `━━━━━━━━━━━━\n`;
             msg += `*⭐ نقاط الولاء*\n`;
             msg += `مستحقة: ${earnedPoints} نقطة\n`;
-          
+         
             if (currentUser && currentUser.role !== 'admin') {
                 let newPointsBalance = currentUser.points - pointsUsed;
                 msg += `الرصيد: ${currentUser.points} ➡️ ${newPointsBalance}\n`;
             }
-          
+         
           const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 window.location.href = whatsappURL;
             if(currentUser && db && currentUser.role !== 'admin') {
@@ -905,7 +954,7 @@ window.location.href = whatsappURL;
                     const updateData = {};
                     if(pointsUsed > 0) updateData.points = currentUser.points - pointsUsed;
                     if(currentUser.address !== address) updateData.address = address;
-                  
+                 
                     if(Object.keys(updateData).length > 0) {
                         await updateDoc(doc(db, USERS_COLLECTION, currentUser.phone), updateData);
                         if(updateData.address) currentUser.address = address;
@@ -944,23 +993,23 @@ window.location.href = whatsappURL;
                 document.getElementById('profile-view').classList.add('hidden');
                 document.getElementById('main-view').classList.remove('hidden');
                 document.getElementById('auth-modal').classList.remove('open');
-              
+             
                 // IMPORTANT: Reset UI and Re-setup listener as guest
                 updateUserUI();
                 updateCartUI();
                 setupFeedbackListener(); // Re-run as guest
-              
+             
                 window.showCustomAlert('تم الخروج', 'تم تسجيل الخروج بنجاح');
                 window.scrollTo(0,0);
             }
         };
         // --- TRACKING & FEEDBACK ---
-      
+     
         async function trackVisitor() {
             if(!db) return;
             const VISITOR_KEY = 'dentleen_visited_ever';
             const DAILY_KEY = 'dentleen_visited_' + new Date().toISOString().split('T')[0];
-          
+         
             // 1. Total Visitors (Unique per device/browser)
             if (!localStorage.getItem(VISITOR_KEY)) {
                 try {
@@ -988,7 +1037,7 @@ window.location.href = whatsappURL;
                     localStorage.setItem(DAILY_KEY, 'true');
                 } catch (e) { console.error("Daily Tracking Error:", e); }
             }
-          
+         
             // Listener for Admin Dashboard
             if(currentUser && currentUser.role === 'admin') {
                  // Total
@@ -997,7 +1046,7 @@ window.location.href = whatsappURL;
                         document.getElementById('admin-total-visitors').textContent = doc.data().total_visitors || 0;
                     }
                 });
-              
+             
                 // Daily
                 const today = new Date().toISOString().split('T')[0];
                 onSnapshot(doc(db, STATS_DAILY_COLLECTION, today), (doc) => {
@@ -1009,7 +1058,7 @@ window.location.href = whatsappURL;
                 });
             }
         }
-      
+     
         window.setRating = (n) => {
             selectedRating = n;
             const stars = document.getElementById('star-input-container').children;
@@ -1021,11 +1070,11 @@ window.location.href = whatsappURL;
         window.sendFeedback = async () => {
             let name = document.getElementById('feedback-name').value.trim(); // No fallback
             const msg = document.getElementById('feedback-msg').value.trim();
-          
+         
             if(!name) return window.showCustomAlert('تنبيه', 'يرجى كتابة الاسم');
             if(!msg) return window.showCustomAlert('تنبيه', 'يرجى كتابة تعليق');
             // Removed adding "د."
-          
+         
             window.showLoading(true);
             try {
                 await addDoc(collection(db, FEEDBACK_COLLECTION), {
@@ -1049,7 +1098,7 @@ window.location.href = whatsappURL;
             if(!currentUser || currentUser.role !== 'admin') {
                 return window.showCustomAlert('تنبيه', 'غير مصرح لك بالحذف');
             }
-          
+         
             if(confirm('هل أنت متأكد من حذف هذا التعليق؟')) {
                 window.showLoading(true);
                 try {
@@ -1068,7 +1117,7 @@ window.location.href = whatsappURL;
             const replyInput = document.getElementById(`reply-input-${feedbackId}`);
             const replyMsg = replyInput.value.trim();
             if(!replyMsg) return window.showCustomAlert('تنبيه', 'يرجى كتابة الرد');
-          
+         
             window.showLoading(true);
             try {
                 const feedbackRef = doc(db, FEEDBACK_COLLECTION, feedbackId);
@@ -1091,10 +1140,10 @@ window.location.href = whatsappURL;
         function setupFeedbackListener() {
             if(!db) return;
             if(feedbackUnsubscribe) feedbackUnsubscribe();
-          
+         
             // Removing orderBy to avoid index errors on first run
             const q = collection(db, FEEDBACK_COLLECTION);
-          
+         
             feedbackUnsubscribe = onSnapshot(q, (snapshot) => {
                 const container = document.getElementById('feedback-list');
                 container.innerHTML = '';
@@ -1102,7 +1151,7 @@ window.location.href = whatsappURL;
                     container.innerHTML = '<p class="text-gray-500 text-center">لا توجد تعليقات بعد.</p>';
                     return;
                 }
-              
+             
                 // Sort in memory to avoid firestore index requirement errors
                 let feedbacks = [];
                 snapshot.forEach(doc => {
@@ -1120,13 +1169,13 @@ window.location.href = whatsappURL;
                     for(let i=0; i<5; i++) {
                         starsHTML += `<i class="fas fa-star text-xs ${i < data.rating ? 'text-yellow-400' : 'text-gray-600'}"></i>`;
                     }
-                  
+                 
                     // Delete Button (Only for Admin)
                     let deleteBtn = '';
                     if(currentUser && currentUser.role === 'admin') {
                         deleteBtn = `<button onclick="window.deleteFeedback('${data.id}')" class="absolute top-4 left-4 text-red-500 hover:text-red-400 transition" title="حذف التعليق"><i class="fas fa-trash-alt"></i></button>`;
                     }
-                  
+                 
                     // Replies Section
                     let repliesHTML = '';
                     if (data.replies && data.replies.length > 0) {
@@ -1146,7 +1195,7 @@ window.location.href = whatsappURL;
                             `;
                         });
                     }
-                  
+                 
                     // Reply Form (Admin Only)
                     let replyForm = '';
                     if(currentUser && currentUser.role === 'admin') {
@@ -1159,7 +1208,7 @@ window.location.href = whatsappURL;
                             </div>
                         `;
                     }
-                  
+                 
                     container.innerHTML += `
                         <div class="feedback-bubble relative pr-4 pl-10">
                             ${deleteBtn}
@@ -1185,10 +1234,10 @@ window.location.href = whatsappURL;
             document.getElementById('profile-view').classList.add('hidden');
             document.getElementById('admin-view').classList.remove('hidden');
             document.getElementById('mobile-menu').classList.add('hidden');
-          
+         
              // Refresh visitor stats
              trackVisitor();
-          
+         
             if(db) {
                 if(adminUnsubscribe) adminUnsubscribe();
                 adminUnsubscribe = onSnapshot(collection(db, USERS_COLLECTION), (snap) => {
@@ -1239,7 +1288,7 @@ window.location.href = whatsappURL;
                 const snap = await getDocs(q);
                 const container = document.getElementById('admin-history-content');
                 container.innerHTML = '';
-              
+             
                 if(snap.empty) {
                     container.innerHTML = '<p class="text-gray-400 text-center">لا توجد طلبات سابقة لهذا العميل.</p>';
                 } else {
@@ -1314,7 +1363,7 @@ window.location.href = whatsappURL;
             const input = document.getElementById(`pts-${phone}`);
             const amount = parseInt(input.value);
             if(isNaN(amount)) return window.showCustomAlert('خطأ', 'أدخل رقم صحيح');
-          
+         
             const ref = doc(db, USERS_COLLECTION, phone);
             const s = await getDoc(ref);
             if(s.exists()) {
@@ -1353,7 +1402,7 @@ window.location.href = whatsappURL;
             const heroText = document.getElementById('hero-promo-text');
             const statusArea = document.getElementById('user-status-area');
             const welcomeMsg = document.getElementById('welcome-msg');
-          
+         
             const checkoutName = document.getElementById('checkout-name');
             const checkoutPhone = document.getElementById('checkout-phone');
             const checkoutAddress = document.getElementById('checkout-address');
@@ -1363,7 +1412,7 @@ window.location.href = whatsappURL;
                 wrapper.innerHTML = `<button onclick="window.logout()" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-bold text-sm">خروج</button>`;
                 mLogin.classList.add('hidden');
                 mLogout.classList.remove('hidden');
-              
+             
                 // Pre-fill checkout if user role
                 if(currentUser.role !== 'admin') {
                     statusArea.innerHTML = `<div class="points-badge"><i class="fas fa-star text-yellow-600"></i><span>${currentUser.points || 0} نقطة</span></div>`;
@@ -1372,7 +1421,7 @@ window.location.href = whatsappURL;
                     mProfile.classList.remove('hidden');
                     welcomeMsg.textContent = `اهلا د. ${currentUser.name}`;
                     welcomeMsg.classList.remove('hidden');
-                  
+                 
                     if(checkoutName) checkoutName.value = currentUser.name || '';
                     if(checkoutPhone) checkoutPhone.value = currentUser.phone || '';
                     if(checkoutAddress) checkoutAddress.value = currentUser.address || '';
@@ -1382,7 +1431,7 @@ window.location.href = whatsappURL;
                     mProfile.classList.add('hidden');
                     welcomeMsg.classList.add('hidden');
                 }
-              
+             
                 if(currentUser.role === 'admin') {
                     adminBtn.classList.remove('hidden');
                     mAdmin.classList.remove('hidden');
@@ -1412,7 +1461,7 @@ window.location.href = whatsappURL;
                 mProfile.classList.add('hidden');
                 welcomeMsg.classList.add('hidden');
                 loyalty.classList.add('hidden');
-              
+             
                 if(checkoutName) checkoutName.value = '';
                 if(checkoutPhone) checkoutPhone.value = '';
                 if(checkoutAddress) checkoutAddress.value = '';
@@ -1427,13 +1476,13 @@ window.location.href = whatsappURL;
             document.getElementById('admin-view').classList.add('hidden');
             document.getElementById('profile-view').classList.remove('hidden');
             document.getElementById('mobile-menu').classList.add('hidden');
-          
+         
             // Load user data into editable fields
             document.getElementById('profile-edit-name').value = currentUser.name || '--';
             document.getElementById('profile-edit-address').value = currentUser.address || '--';
             document.getElementById('profile-phone').textContent = currentUser.phone || '--';
             document.getElementById('profile-points').textContent = currentUser.points || 0;
-          
+         
             loadProfileOrders();
         };
         // NEW: Save Profile Changes
@@ -1443,7 +1492,7 @@ window.location.href = whatsappURL;
             const newAddress = document.getElementById('profile-edit-address').value.trim();
             if(!newName) return window.showCustomAlert('خطأ', 'الاسم مطلوب');
             if(!newAddress) return window.showCustomAlert('خطأ', 'العنوان مطلوب');
-          
+         
             window.showLoading(true);
             try {
                 const updateData = {};
@@ -1494,6 +1543,14 @@ window.location.href = whatsappURL;
                 container.innerHTML = '<p class="text-red-400 text-center">خطأ في تحميل السجل</p>';
             }
         }
+        // NEW: Image Modal Functions
+        window.openImageModal = (src) => {
+            document.getElementById('modal-image').src = src;
+            document.getElementById('image-modal').classList.add('open');
+        };
+        window.closeImageModal = () => {
+            document.getElementById('image-modal').classList.remove('open');
+        };
         function populateProductDropdown() {
             const select = document.getElementById('quick-product-select');
             select.innerHTML = '<option value="">اختر المنتج للإضافة الفورية...</option>';
@@ -1514,12 +1571,12 @@ window.location.href = whatsappURL;
         const oGrid = document.getElementById('offers-grid');
         PRODUCTS_DATA.forEach(p => {
             const h = `<div class="product-card rounded-2xl overflow-hidden cursor-pointer group reveal-on-scroll" onclick="window.openProductPage('${p.id}')">
-                <div class="h-48 bg-gray-700/50 flex items-center justify-center p-4"><img src="${p.img}" loading="lazy" class="h-full object-contain" onerror="this.src='https://placehold.co/200?text=Image'"></div>
+                <div class="h-48 bg-gray-700/50 flex items-center justify-center p-4"><img src="${p.img}" alt="${p.name} - منتج طب أسنان في Dentleen" loading="lazy" class="h-full object-contain" onerror="this.src='https://placehold.co/200?text=Image'"></div>
                 <div class="p-4"><h3 class="font-bold text-lg text-white mb-2">${p.name}</h3><div class="flex justify-between items-center"><span class="text-teal-400 font-bold">${p.price} ج.م</span><button class="w-8 h-8 rounded-full bg-gray-700 text-white hover:bg-teal-600" onclick="event.stopPropagation(); window.quickAdd('${p.id}')">+</button></div></div>
             </div>`;
             if(p.type === 'offer') oGrid.innerHTML += h; else pGrid.innerHTML += h;
         });
-      
+     
         document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
         populateProductDropdown();
         // Removed the initial check from here as it's now handled in onAuthStateChanged
@@ -1527,9 +1584,9 @@ window.location.href = whatsappURL;
         document.getElementById('auth-form').addEventListener('submit', window.handleAuthSubmit);
         document.getElementById('mobile-menu-btn').addEventListener('click', window.toggleMobileMenu);
         document.getElementById('scrollToTopBtn').addEventListener('click', () => window.scrollTo(0,0));
-      
+     
         // Removed global calls to trackVisitor() and setupFeedbackListener() - they are now in auth listener
-      
+     
     </script>
 </body>
 </html>
