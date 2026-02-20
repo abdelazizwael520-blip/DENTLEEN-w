@@ -301,10 +301,6 @@
                 <div class="bg-gray-800/50 p-6 rounded-3xl border border-gray-700">
                     <h1 id="fp-title" class="text-3xl font-bold text-white mb-4"></h1>
                     <p id="fp-price" class="text-3xl text-teal-400 font-bold mb-6"></p>
-                    <!-- هنا يظهر الوصف المفصل للمنتج (detailedDesc) -->
-                    <div id="fp-detailed-desc" class="text-gray-300 mb-8 leading-relaxed"></div>
-                    <!-- الوصف القصير (desc) -->
-                    <div id="fp-desc" class="text-gray-300 mb-8 leading-relaxed"></div>
                     <!-- تحكم في الكمية -->
                     <div class="flex items-center gap-4 bg-gray-700 p-2 rounded-xl mb-4">
                         <span class="text-gray-400 mr-2">الكمية:</span>
@@ -362,27 +358,27 @@
         
         // بيانات المنتجات (أضف هنا الوصف المفصل detailedDesc لكل منتج، مثلاً: detailedDesc: 'وصف مفصل عن المنتج هنا...' )
         const PRODUCTS_DATA = [
-            { id: 'p3', name: 'Caries Detector Dye Gel', price: 160, img: 'cdd2.jpg', desc: 'جل كاشف للتسوس (3 جم).', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p1', name: 'SDF 1ml', price: 400, img: 'sdf.png', desc: 'Silver Diamine Fluoride 1ml.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p2', name: 'SDF 4ml', price: 1190, img: 'sdf.png', desc: 'SDF 4ml Value Pack.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p4', name: 'Caries Detector Dye Liquid', price: 225, img: 'cdd.jpg', desc: 'سائل كاشف للتسوس 4 مل.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p5', name: 'MTA 0.25 gm', price: 50, img: 'mta.jpg', desc: 'MTA 0.25g.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p7', name: 'D-Seal 12 gm', price: 395, img: 'd-seal12.png', desc: 'D-Seal Resin Sealer Automix.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p8', name: 'D-Seal 8 gm', price: 300, img: 'd-seal 8.PNG', desc: 'D-Seal Manual Mix.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p9', name: 'D-Seal 20 gm', price: 495, img: 'D-Seal20.JPG', desc: 'D-Seal Economy Pack.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p10', name: 'Edta 5 gm', price: 170, img: 'edta.png', desc: 'EDTA Gel 5g.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p11', name: 'Etch 5 gm', price: 50, img: 'etch.jpg', desc: 'Etch 37%.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p12', name: 'Porcelain Acid Etch', price: 170, img: 'porclean.png', desc: 'Hydrofluoric Acid.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p13', name: 'HEMOSTATIC LIQUID', price: 135, img: 'beld-of.png', desc: 'سائل وقف النزيف.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p14', name: 'ROOT HEAL', price: 110, img: 'root heal.png', desc: 'Intracanal Medicament.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'p15', name: 'HOLDENT 20 gm', price: 155, img: 'hole.PNG', desc: 'كريم تثبيت أطقم.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'product' },
-            { id: 'o1', name: 'باكدج التوفير الشامل', price: 260, img: 'bakedg.png', desc: 'Etch, Edta, MTA, Resin Sealer, Caries Detector.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'offer' },
-            { id: 'o2', name: 'Offer 1: Endo Basic', price: 370, img: 'file.png', desc: 'D-seal 8g + File Mani #10.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'offer' },
-            { id: 'o3', name: 'Offer 2: Fiber Post Kit', price: 320, img: 'ever x .png', desc: 'Caries dye + Ever X.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'offer' },
-            { id: 'o4', name: 'Offer 3: Bonding Master', price: 620, img: 'bond.png', desc: 'Caries dye + Etch + Bond Bisco.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'offer' },
-            { id: 'o5', name: 'Offer 4: Tokuyama Special', price: 1300, img: 'tok.png', desc: 'D-seal 20g + Syringe Tokuyama.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'offer' },
-            { id: 'o6', name: 'Offer 5: Gutta Percha Deal', price: 550, img: 'guta.png', desc: 'D-seal 20g + Gutta Percha.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'offer' },
-            { id: 'o7', name: 'Offer 6: Ever X + Sealer', price: 400, img: 'Ever x capsule.png', desc: 'Ever X + D-seal 8g.', detailedDesc: 'أضف الوصف المفصل هنا بنفسك...', type: 'offer' }
+            { id: 'p3', name: 'Caries Detector Dye Gel', price: 160, img: 'cdd2.jpg', type: 'product' },
+            { id: 'p1', name: 'SDF 1ml', price: 400, img: 'sdf.png', type: 'product' },
+            { id: 'p2', name: 'SDF 4ml', price: 1190, img: 'sdf.png', type: 'product' },
+            { id: 'p4', name: 'Caries Detector Dye Liquid', price: 225, img: 'cdd.jpg', type: 'product' },
+            { id: 'p5', name: 'MTA 0.25 gm', price: 50, img: 'mta.jpg', type: 'product' },
+            { id: 'p7', name: 'D-Seal 12 gm', price: 395, img: 'd-seal12.png', type: 'product' },
+            { id: 'p8', name: 'D-Seal 8 gm', price: 300, img: 'd-seal 8.PNG', type: 'product' },
+            { id: 'p9', name: 'D-Seal 20 gm', price: 495, img: 'D-Seal20.JPG', type: 'product' },
+            { id: 'p10', name: 'Edta 5 gm', price: 170, img: 'edta.png', type: 'product' },
+            { id: 'p11', name: 'Etch 5 gm', price: 50, img: 'etch.jpg', type: 'product' },
+            { id: 'p12', name: 'Porcelain Acid Etch', price: 170, img: 'porclean.png', type: 'product' },
+            { id: 'p13', name: 'HEMOSTATIC LIQUID', price: 135, img: 'beld-of.png', type: 'product' },
+            { id: 'p14', name: 'ROOT HEAL', price: 110, img: 'root heal.png', type: 'product' },
+            { id: 'p15', name: 'HOLDENT 20 gm', price: 155, img: 'hole.PNG', type: 'product' },
+            { id: 'o1', name: 'باكدج التوفير الشامل', price: 260, img: 'bakedg.png', type: 'offer' },
+            { id: 'o2', name: 'Offer 1: Endo Basic', price: 370, img: 'file.png', type: 'offer' },
+            { id: 'o3', name: 'Offer 2: Fiber Post Kit', price: 320, img: 'ever x .png', type: 'offer' },
+            { id: 'o4', name: 'Offer 3: Bonding Master', price: 620, img: 'bond.png', type: 'offer' },
+            { id: 'o5', name: 'Offer 4: Tokuyama Special', price: 1300, img: 'tok.png', type: 'offer' },
+            { id: 'o6', name: 'Offer 5: Gutta Percha Deal', price: 550, img: 'guta.png', type: 'offer' },
+            { id: 'o7', name: 'Offer 6: Ever X + Sealer', price: 400, img: 'Ever x capsule.png', type: 'offer' }
         ];
         
         // استرجاع السلة من LocalStorage
@@ -411,12 +407,6 @@
             
             // عرض الصورة
             document.getElementById('fp-image').src = product.img;
-            
-            // عرض الوصف المفصل (detailedDesc)
-            document.getElementById('fp-detailed-desc').textContent = product.detailedDesc;
-            
-            // عرض الوصف القصير (desc)
-            document.getElementById('fp-desc').textContent = product.desc;
             
             // إعادة تعيين الكمية
             document.getElementById('fp-quantity').value = 1;
@@ -695,7 +685,6 @@
                             <span class="text-teal-400 font-bold">${p.price} ج.م</span>
                             <button class="w-8 h-8 rounded-full bg-gray-700 text-white hover:bg-teal-600" onclick="event.stopPropagation(); window.quickAdd('${p.id}')">+</button>
                         </div>
-                        <p class="text-sm text-gray-400 mt-2">عرض التفاصيل</p>
                     </div>
                 </div>`;
             
