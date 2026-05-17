@@ -153,11 +153,14 @@
                         شريكك الموثوق <br> <span class="text-teal-400">لتجهيز عيادات الأسنان</span>
                     </h1>
                     <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                        <!-- ✅ زر تصفح المنتجات - ViewContent -->
+                        <!--
+                            زر "احجز الآن" / "تصفح المنتجات"
+                            ✅ ViewContent على الصفحة الرئيسية (main page view)
+                        -->
                         <a href="#products"
-                           onclick="window.showMainView(); window.trackFbq('track', 'ViewContent', { content_name: 'Main Page', content_type: 'page' });"
+                           onclick="window.trackFbq('track', 'ViewContent', { content_name: 'Main Page', content_type: 'page' });"
                            class="bg-teal-500 hover:bg-teal-600 text-white px-8 py-3 rounded-full font-bold shadow-lg transition transform hover:scale-105">
-                            تصفح المنتجات
+                       تصفح المنتجات
                         </a>
                     </div>
                 </div>
@@ -317,16 +320,20 @@
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl font-bold text-green-400 mb-8">تواصل معنا</h2>
                 <div class="flex justify-center gap-8">
-                    <!-- ✅ زر واتساب - Contact + Lead Events -->
+                    <!--
+                        ✅ زر واتساب - Contact Event
+                    -->
                     <a href="https://wa.me/201508259538"
                        target="_blank"
-                       onclick="window.trackFbq('track', 'Contact'); window.trackFbq('track', 'Lead');"
+                       onclick="window.trackFbq('track', 'Contact');"
                        class="text-green-600 hover:text-green-400 text-5xl transition"
                        title="واتساب - تواصل معنا">
                         <i class="fab fa-whatsapp"></i>
                     </a>
 
-                    <!-- ✅ زر فيسبوك - Contact Event -->
+                    <!--
+                        ✅ زر فيسبوك - Contact Event
+                    -->
                     <a href="https://www.facebook.com/profile.php?id=61563008606045"
                        target="_blank"
                        onclick="window.trackFbq('track', 'Contact');"
@@ -335,9 +342,11 @@
                         <i class="fab fa-facebook"></i>
                     </a>
 
-                    <!-- ✅ زر اتصال هاتفي - Contact + Lead Events -->
+                    <!--
+                        ✅ زر اتصال هاتفي - Contact Event
+                    -->
                     <a href="tel:+201508259538"
-                       onclick="window.trackFbq('track', 'Contact'); window.trackFbq('track', 'Lead');"
+                       onclick="window.trackFbq('track', 'Contact');"
                        class="text-teal-400 hover:text-teal-200 text-5xl transition"
                        title="اتصل بنا">
                         <i class="fas fa-phone"></i>
@@ -381,10 +390,11 @@
         </div>
     </div>
 
-    <!-- ✅ مودال تأكيد الطلب -->
+    <!-- ✅ مودال تأكيد الطلب (بكل البيانات) -->
     <div id="confirmation-modal" class="modal-overlay fixed inset-0 z-[4000] flex items-center justify-center bg-black/90 backdrop-blur-sm px-4">
         <div class="modal-content bg-gray-900 border border-gray-700 rounded-3xl max-w-md w-full relative shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
 
+            <!-- هيدر المودال -->
             <div class="bg-gradient-to-l from-teal-700 to-teal-600 px-6 py-5 flex items-center gap-4 sticky top-0">
                 <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-clipboard-check text-white text-lg"></i>
@@ -400,6 +410,7 @@
 
             <div class="p-5 space-y-4">
 
+                <!-- بيانات العميل -->
                 <div class="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700">
                     <div class="px-4 py-2 bg-gray-700/50 border-b border-gray-700">
                         <span class="text-xs text-gray-400 font-bold uppercase tracking-widest"><i class="fas fa-user ml-1 text-teal-400"></i>بيانات العميل</span>
@@ -420,6 +431,7 @@
                     </div>
                 </div>
 
+                <!-- المنتجات -->
                 <div class="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700">
                     <div class="px-4 py-2 bg-gray-700/50 border-b border-gray-700">
                         <span class="text-xs text-gray-400 font-bold uppercase tracking-widest"><i class="fas fa-box ml-1 text-teal-400"></i>المنتجات المطلوبة</span>
@@ -427,16 +439,19 @@
                     <div id="confirm-items-list" class="divide-y divide-gray-700/50 max-h-48 overflow-y-auto"></div>
                 </div>
 
+                <!-- الإجمالي -->
                 <div class="bg-gradient-to-l from-teal-900/60 to-teal-800/40 border border-teal-700/40 rounded-2xl px-5 py-4 flex justify-between items-center">
                     <span class="text-gray-300 font-bold">الإجمالي النهائي</span>
                     <span id="confirm-total-price" class="text-2xl font-extrabold text-teal-400">0 ج.م</span>
                 </div>
 
+                <!-- ملاحظة -->
                 <div class="bg-yellow-900/20 border border-yellow-700/30 rounded-xl px-4 py-3 flex gap-3 items-start">
                     <i class="fas fa-info-circle text-yellow-400 mt-0.5 flex-shrink-0"></i>
                     <p class="text-yellow-200/80 text-xs leading-relaxed">بعد إرسال الطلب سيتواصل معك فريق Dentleen على رقمك للتأكيد وتحديد موعد التوصيل.</p>
                 </div>
 
+                <!-- الأزرار -->
                 <div class="flex gap-3 pt-1">
                     <button onclick="window.closeConfirmModal()"
                         class="flex-1 bg-gray-800 hover:bg-gray-700 border border-gray-600 text-gray-300 font-bold py-3 rounded-xl transition text-sm">
@@ -452,14 +467,16 @@
         </div>
     </div>
 
-    <!-- ✅ مودال النجاح -->
+    <!-- ✅ مودال النجاح (بعد إرسال الطلب) -->
     <div id="success-modal" class="modal-overlay fixed inset-0 z-[4500] flex items-center justify-center bg-black/90 backdrop-blur-sm px-4">
         <div class="modal-content bg-gray-900 border border-gray-700 rounded-3xl max-w-sm w-full relative shadow-2xl overflow-hidden">
 
+            <!-- خلفية ديكورية -->
             <div class="absolute inset-0 bg-gradient-to-br from-green-900/20 to-teal-900/10 pointer-events-none"></div>
 
             <div class="relative p-6 text-center space-y-5">
 
+                <!-- أيقونة النجاح -->
                 <div class="w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center mx-auto shadow-lg shadow-green-900/40">
                     <i class="fas fa-check text-white text-3xl"></i>
                 </div>
@@ -469,6 +486,7 @@
                     <p class="text-gray-400 text-sm leading-relaxed">وصل طلبك بنجاح، سيتواصل معك فريق Dentleen قريباً على رقمك لتأكيد الطلب وتحديد موعد التوصيل.</p>
                 </div>
 
+                <!-- ملخص الطلب -->
                 <div class="bg-gray-800 rounded-2xl border border-gray-700 text-right overflow-hidden">
                     <div class="px-4 py-2 bg-gray-700/50 border-b border-gray-700">
                         <span class="text-xs text-gray-400 font-bold uppercase tracking-widest">ملخص طلبك</span>
@@ -493,6 +511,7 @@
                     </div>
                 </div>
 
+                <!-- رسالة طمأنينة -->
                 <div class="bg-blue-900/20 border border-blue-700/30 rounded-xl px-4 py-3 flex gap-3 items-center">
                     <i class="fas fa-phone-alt text-blue-400 flex-shrink-0"></i>
                     <p class="text-blue-200/80 text-xs text-right leading-relaxed">سيتم التواصل معك على رقم <strong id="success-phone-2" class="text-blue-300" dir="ltr"></strong> في أقرب وقت ممكن.</p>
@@ -550,13 +569,16 @@
         let currentViewingProduct = null;
 
         // ======================================================
-        // ✅ Helper آمن لاستدعاء fbq
+        // ✅ Helper آمن لاستدعاء fbq بدون أخطاء إذا لم يكن متاحاً
         // ======================================================
         window.trackFbq = function(method, event, params) {
             try {
                 if (typeof window.fbq === 'function') {
-                    if (params) { window.fbq(method, event, params); }
-                    else { window.fbq(method, event); }
+                    if (params) {
+                        window.fbq(method, event, params);
+                    } else {
+                        window.fbq(method, event);
+                    }
                 }
             } catch (e) {
                 console.warn('[Pixel] trackFbq error:', e);
@@ -574,13 +596,13 @@
             document.getElementById('fp-title').textContent = product.name;
             document.getElementById('fp-price').textContent = `${product.price.toLocaleString('ar-EG')} ج.م`;
             document.getElementById('fp-image').src = product.img;
+            // إزالة حقل detailedDesc — نعرض desc فقط
             const detEl = document.getElementById('fp-detailed-desc');
             if (detEl) detEl.textContent = '';
             document.getElementById('fp-desc').textContent = product.desc;
             document.getElementById('fp-quantity').value = 1;
             document.getElementById('product-full-view').classList.add('active');
 
-            // ✅ ViewContent - مطلوب للحملات
             window.trackFbq('track', 'ViewContent', {
                 content_ids: [product.id],
                 content_name: product.name,
@@ -626,7 +648,7 @@
             localStorage.setItem('dentleen_cart', JSON.stringify(cart));
             updateCartUI();
 
-            // ✅ AddToCart - مطلوب للحملات
+            // ✅ AddToCart
             window.trackFbq('track', 'AddToCart', {
                 content_ids: [p.id],
                 content_name: p.name,
@@ -657,7 +679,7 @@
             localStorage.setItem('dentleen_cart', JSON.stringify(cart));
             updateCartUI();
 
-            // ✅ AddToCart - مطلوب للحملات
+            // ✅ AddToCart
             window.trackFbq('track', 'AddToCart', {
                 content_ids: [p.id],
                 content_name: p.name,
@@ -739,7 +761,8 @@
         }
 
         // ======================================================
-        // ✅ initiateCheckout: InitiateCheckout Event
+        // ✅ initiateCheckout: InitiateCheckout يُسجَّل هنا فقط
+        //    بعد التحقق من صحة بيانات العميل
         // ======================================================
         window.initiateCheckout = () => {
             if (cart.length === 0) return window.showCustomAlert('تنبيه', 'السلة فارغة، أضف منتجاً أولاً.');
@@ -748,25 +771,25 @@
             const phone   = document.getElementById('checkout-phone').value.trim();
             const address = document.getElementById('checkout-address').value.trim();
 
-            if (!name)              { window.showCustomAlert('بيانات ناقصة', 'من فضلك أدخل اسمك بالكامل.'); return; }
-            if (phone.length !== 11){ window.showCustomAlert('رقم خاطئ', 'تأكد إن رقم الهاتف 11 رقم.'); return; }
-            if (!address)           { window.showCustomAlert('بيانات ناقصة', 'من فضلك أدخل عنوانك بالتفصيل.'); return; }
+            if (!name) { window.showCustomAlert('بيانات ناقصة', 'من فضلك أدخل اسمك بالكامل.'); return; }
+            if (phone.length !== 11) { window.showCustomAlert('رقم خاطئ', 'تأكد إن رقم الهاتف 11 رقم.'); return; }
+            if (!address) { window.showCustomAlert('بيانات ناقصة', 'من فضلك أدخل عنوانك بالتفصيل.'); return; }
 
             let subtotal = 0;
             cart.forEach(i => { subtotal += i.price * i.quantity; });
 
-            // ✅ InitiateCheckout - مطلوب للحملات
             window.trackFbq('track', 'InitiateCheckout', {
-                value: subtotal,
-                currency: 'EGP',
+                value: subtotal, currency: 'EGP',
                 num_items: cart.reduce((s, i) => s + i.quantity, 0),
                 content_ids: cart.map(i => i.id)
             });
 
+            // ✅ ملء بيانات العميل في مودال التأكيد
             document.getElementById('confirm-name').textContent    = name;
             document.getElementById('confirm-phone').textContent   = phone;
             document.getElementById('confirm-address').textContent = address;
 
+            // ✅ ملء قائمة المنتجات
             const list = document.getElementById('confirm-items-list');
             list.innerHTML = '';
             cart.forEach(i => {
@@ -787,7 +810,7 @@
         window.closeConfirmModal = () => { document.getElementById('confirmation-modal').classList.remove('open'); };
 
         // ======================================================
-        // ✅ confirmOrder: Purchase Event - الأهم في الحملات
+        // ✅ confirmOrder: Purchase Event قبل التحويل
         // ======================================================
         window.confirmOrder = async () => {
             window.closeConfirmModal();
@@ -801,18 +824,18 @@
             cart.forEach(i => subtotal += i.price * i.quantity);
             const totalItems = cart.reduce((s, i) => s + i.quantity, 0);
 
-            // ✅ Purchase Event - الأهم: بيقيس نجاح الحملة
+            // ✅ Purchase Event
             window.trackFbq('track', 'Purchase', {
-                value: subtotal,
-                currency: 'EGP',
+                value: subtotal, currency: 'EGP',
                 num_items: totalItems,
                 content_ids: cart.map(i => i.id),
                 content_type: 'product'
             });
 
-            // ✅ Lead Event - لتتبع العملاء المحتملين
+            // ✅ Lead Event
             window.trackFbq('track', 'Lead');
 
+            // بناء قائمة المنتجات للإيميل
             let itemsText = '';
             cart.forEach(i => { itemsText += `▪️ ${i.name}  ×${i.quantity}  —  ${(i.price * i.quantity).toLocaleString('ar-EG')} ج.م\n`; });
 
@@ -823,32 +846,41 @@
                     customer_phone:   phone,
                     customer_address: address,
                     order_items:      itemsText,
-                    order_total:      subtotal.toLocaleString('ar-EG')
+                    order_total:      subtotal.toLocaleString('ar-EG'),
+                    whatsapp_message: encodeURIComponent(msg)
                 });
                 console.log('✅ الإيميل اتبعت بنجاح');
             } catch (e) {
                 console.warn('⚠️ EmailJS error:', e);
             }
 
+            // ✅ ملء مودال النجاح ببيانات الطلب
             document.getElementById('success-name').textContent        = name;
             document.getElementById('success-phone').textContent       = phone;
             document.getElementById('success-phone-2').textContent     = phone;
             document.getElementById('success-items-count').textContent = `${totalItems} منتج`;
             document.getElementById('success-total').textContent       = subtotal.toLocaleString('ar-EG') + ' ج.م';
 
+            // تفريغ السلة
             cart = [];
             localStorage.removeItem('dentleen_cart');
             updateCartUI();
 
+            // إعادة تعيين الفورم
             document.getElementById('checkout-name').value    = '';
             document.getElementById('checkout-phone').value   = '';
             document.getElementById('checkout-address').value = '';
 
             window.showLoading(false);
+
+            // ✅ عرض مودال النجاح
             document.getElementById('success-modal').classList.add('open');
         };
 
-        window.closeSuccessModal = () => { document.getElementById('success-modal').classList.remove('open'); };
+        window.closeSuccessModal = () => {
+            document.getElementById('success-modal').classList.remove('open');
+        };
+
         window.openImageModal = (src) => {
             document.getElementById('modal-image').src = src;
             document.getElementById('image-modal').classList.add('open');
