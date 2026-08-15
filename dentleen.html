@@ -318,7 +318,17 @@
                     <!-- وصف المنتج -->
                     <div id="fp-desc" class="text-gray-300 mb-8 leading-relaxed text-lg"></div>
                     
-                    <!-- زر التواصل للطلب (بديل لعربة التسوق) -->
+                    <!-- قسم عرض آراء العملاء الخاص بالمنتج (يظهر ويختفي ديناميكياً) -->
+                    <div id="fp-reviews-container" class="hidden mb-8 bg-gray-900/50 p-4 rounded-2xl border border-gray-700">
+                        <h3 class="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2">
+                            <i class="fas fa-comments"></i> آراء العملاء في هذا المنتج
+                        </h3>
+                        <div id="fp-reviews-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <!-- سيتم حقن صور الآراء هنا بواسطة الجافاسكريبت -->
+                        </div>
+                    </div>
+
+                    <!-- زر التواصل للطلب -->
                     <a href="#contact-us" 
                        onclick="window.showMainView()" 
                        class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 rounded-xl shadow-lg transition">
@@ -359,7 +369,8 @@
                 price: 450,  
                 img: 'sdf.png',            
                 desc: 'Silver Diamine Fluoride 1ml — لإيقاف التسوس وتعقيم قنوات الجذور.', 
-                type: 'product' 
+                type: 'product',
+                // reviewImages: ['c.jpg'] // تم ذكره في صورة c
             },
             { 
                 id: 'p2',  
@@ -367,7 +378,8 @@
                 price: 1350, 
                 img: 'sdf.png',            
                 desc: 'Silver Diamine Fluoride 4ml.', 
-                type: 'product' 
+                type: 'product',
+                // reviewImages: ['c.jpg'] // تم ذكره في صورة c
             },
             { 
                 id: 'p3',  
@@ -375,7 +387,8 @@
                 price: 160,  
                 img: 'cdd2.jpg',           
                 desc: 'كاشف التسوس جل أزرق — يميّز الأنسجة المصابة بدقة عالية.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: ['c.jpg'] // تم ذكره في صورة c 
             },
             { 
                 id: 'p4',  
@@ -383,7 +396,8 @@
                 price: 240, 
                 img: 'cdd.jpg',        
                 desc: 'كاشف التسوس جيل أحمر — سهل الاستخدام ويُزال بالغسيل.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: ['c.jpg'] // تم ذكره في صورة c
             },
             { 
                 id: 'p5',  
@@ -391,7 +405,8 @@
                 price: 55,   
                 img: 'mta.jpg',            
                 desc: 'Mineral Trioxide Aggregate — لعلاج قنوات الجذور وإصلاح الانثقاب.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: ['d.jpg', 'f.jpg'] // تم ذكر الـ MTA وصوره في d و f
             },
             { 
                 id: 'p6',  
@@ -399,7 +414,8 @@
                 price: 55,   
                 img: 'etch.jpg',           
                 desc: 'حمض الفوسفوريك 37% — لحفر المينا قبل وضع الراتنج.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: ['a.jpg', 'b.jpg', 'c.jpg'] // تم ذكره في هذه الصور الثلاثة
             },
             { 
                 id: 'p7',  
@@ -407,7 +423,8 @@
                 price: 70,   
                 img: 'edta.png',           
                 desc: 'EDTA Gel 5g — لتوسيع وتليين جدران قنوات الجذور.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: ['a.jpg'] // تم ذكره مع الـ Etch في صورة a
             },
             { 
                 id: 'p8',  
@@ -415,7 +432,8 @@
                 price: 170,  
                 img: 'porclean.png',       
                 desc: 'حمض الهيدروفلوريك — لحفر الخزف والسيراميك قبل اللصق.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: [] 
             },
             { 
                 id: 'p9',  
@@ -423,7 +441,8 @@
                 price: 490,  
                 img: 'D-Seal20.JPG',       
                 desc: 'D-Seal Resin Sealer 20g — حشو العصب راتنجي اقتصادي.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: ['g.jpg', 'h.jpg', 'i.jpg' , 'k.jpg' , 'j.jpg'] // آراء عامة عن D-Seal وذكر حجم 20g في h
             },
             { 
                 id: 'p10', 
@@ -431,7 +450,8 @@
                 price: 240,  
                 img: 'd-seal 8.PNG',       
                 desc: 'D-Seal Manual Mix 8g — للعيادات المتوسطة الاستخدام.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: ['g.jpg', 'h.jpg', 'i.jpg' , 'k.jpg' , 'j.jpg' ] // صورة e تتحدث عن الـ mix، و h تذكر 8g كهدية
             },
             { 
                 id: 'p11', 
@@ -439,7 +459,8 @@
                 price: 410,  
                 img: 'd-seal12.png',       
                 desc: 'D-Seal Automix 12g — خلط أوتوماتيكي لأعلى دقة ممكنة.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: ['g.jpg', 'h.jpg', 'i.jpg' , 'k.jpg' , 'j.jpg' ] // آراء عامة عن جودة السيلر
             },
             { 
                 id: 'p12', 
@@ -447,7 +468,8 @@
                 price: 150,  
                 img: 'beld-of.png',        
                 desc: 'سائل وقف النزيف Hemostop — للتحكم الفوري في نزيف اللثة.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: [] 
             },
             { 
                 id: 'p13', 
@@ -455,7 +477,8 @@
                 price: 90,   
                 img: 'beld-of.png',        
                 desc: 'جيل وقف النزيف Hemostop — تطبيق مضبوط في مناطق ضيقة.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: [] 
             },
             { 
                 id: 'p14', 
@@ -463,7 +486,8 @@
                 price: 650,  
                 img: 'Spotaway.png',      
                 desc: 'Spotaway — لإزالة البقع وتبييض الأسنان موضعياً.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: [] 
             },
             { 
                 id: 'p15', 
@@ -471,15 +495,17 @@
                 price: 155,  
                 img: 'hole.PNG',           
                 desc: 'كريم تثبيت الأطقم الكاملة — قوة تثبيت عالية طوال اليوم.', 
-                type: 'product' 
+                type: 'product',
+                reviewImages: [] 
             },
               { 
-                id: 'p15', 
-                name: 'HOLDENT 20 gm',              
+                id: 'p16', 
+                name: 'Root Heal',              
                 price: 90,  
                 img:  'root heal.png',           
-                // desc: 'كريم تثبيت الأطقم الكاملة — قوة تثبيت عالية طوال اليوم.', 
-                type: 'product' 
+                desc: 'منتج معالجة الجذور.', 
+                type: 'product',
+                reviewImages: [] 
             },
 
             // --------------------------------------------------
@@ -492,7 +518,8 @@
                 price: 260,  
                 img: 'bakedg.png',         
                 desc: 'يشمل: Etch + EDTA + MTA + Resin Sealer + Caries Detector.', 
-                type: 'offer' 
+                type: 'offer',
+                reviewImages: []
             },
             { 
                 id: 'o2',  
@@ -500,7 +527,8 @@
                 price: 370,  
                 img: 'file.png',           
                 desc: 'D-seal 8g + File Mani #10 — مستلزمات العصب الأساسية.', 
-                type: 'offer' 
+                type: 'offer',
+                reviewImages: [] 
             },
             { 
                 id: 'o3',  
@@ -508,7 +536,8 @@
                 price: 320,  
                 img: 'ever x .png',        
                 desc: 'Caries Detector + Ever X Fiber Post — ترميم شامل.', 
-                type: 'offer' 
+                type: 'offer',
+                reviewImages: [] 
             },
             { 
                 id: 'o4',  
@@ -516,7 +545,8 @@
                 price: 620,  
                 img: 'bond.png',           
                 desc: 'Caries Detector + Etch + Bond Bisco — لأعلى قوة لصق.', 
-                type: 'offer' 
+                type: 'offer',
+                reviewImages: [] 
             },
             { 
                 id: 'o5',  
@@ -524,7 +554,8 @@
                 price: 1300, 
                 img: 'tok.png',            
                 desc: 'D-seal 20g + Syringe Tokuyama — عرض المختبرات المتخصصة.', 
-                type: 'offer' 
+                type: 'offer',
+                reviewImages: [] 
             },
             { 
                 id: 'o6',  
@@ -532,7 +563,8 @@
                 price: 550,  
                 img: 'guta.png',           
                 desc: 'D-seal 20g + Gutta Percha — الكومبو المتكامل لحشو العصب.', 
-                type: 'offer' 
+                type: 'offer',
+                reviewImages: [] 
             },
             { 
                 id: 'o7',  
@@ -540,7 +572,8 @@
                 price: 400,  
                 img: 'Ever x capsule.png', 
                 desc: 'Ever X Capsule + D-seal 8g — ترميم وعصب في صفقة واحدة.', 
-                type: 'offer' 
+                type: 'offer',
+                reviewImages: [] 
             }
         ];
 
@@ -584,6 +617,27 @@
             document.getElementById('fp-price').textContent = `${product.price.toLocaleString('ar-EG')} ج.م`;
             document.getElementById('fp-image').src = product.img;
             document.getElementById('fp-desc').textContent = product.desc;
+            
+            // معالجة وإظهار صور آراء العملاء الخاصة بالمنتج
+            const reviewsContainer = document.getElementById('fp-reviews-container');
+            const reviewsGrid = document.getElementById('fp-reviews-grid');
+            reviewsGrid.innerHTML = ''; // تفريغ الصور السابقة
+            
+            if (product.reviewImages && product.reviewImages.length > 0) {
+                // إذا كان المنتج يمتلك صور آراء، قم بإنشائها
+                product.reviewImages.forEach(imgSrc => {
+                    const imgEl = document.createElement('img');
+                    imgEl.src = imgSrc;
+                    imgEl.alt = "رأي عميل في " + product.name;
+                    imgEl.className = "w-full h-24 object-cover rounded-lg shadow-md cursor-pointer hover:opacity-80 transition";
+                    imgEl.onclick = () => window.openImageModal(imgSrc); // فتح الصورة مكبرة عند الضغط عليها
+                    reviewsGrid.appendChild(imgEl);
+                });
+                reviewsContainer.classList.remove('hidden'); // إظهار قسم الآراء
+            } else {
+                // إذا لم يكن هناك صور، إخفاء القسم بالكامل
+                reviewsContainer.classList.add('hidden');
+            }
             
             // إظهار صفحة المنتج
             document.getElementById('product-full-view').classList.add('active');
